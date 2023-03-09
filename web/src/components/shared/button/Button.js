@@ -9,6 +9,9 @@ const Buttons = ({
   fontsize,
   fontweight,
   hover,
+  size,
+  onclick,
+  borderRadius,
 }) => {
   return (
     <Button
@@ -19,7 +22,10 @@ const Buttons = ({
       cursor={"pointer"}
       fontSize={fontsize}
       fontWeight={fontweight}
-      _hover={{ bg: hover }}
+      _hover={{ bg : hover }}
+      size={size}
+      onClick={onclick}
+      borderRadius={borderRadius}
     >
       {title}
     </Button>
