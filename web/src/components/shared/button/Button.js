@@ -1,6 +1,7 @@
 import { Button } from "@chakra-ui/react";
 
 const Buttons = ({
+  type,
   title,
   width,
   height,
@@ -15,6 +16,7 @@ const Buttons = ({
 }) => {
   return (
     <Button
+      type={type}
       w={width}
       h={height}
       bg={background}
@@ -22,7 +24,7 @@ const Buttons = ({
       cursor={"pointer"}
       fontSize={fontsize}
       fontWeight={fontweight}
-      _hover={{ bg : hover }}
+      _hover={{ bg: hover }}
       size={size}
       onClick={onclick}
       borderRadius={borderRadius}
