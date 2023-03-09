@@ -1,7 +1,8 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import SignIn from "./../pages/sign-in/SignIn";
-import SignUp from './../pages/sign-up/SignUp'
+import SignUp from "./../pages/sign-up/SignUp";
+import Main from "../pages/main/Main";
 
 const Routers = () => {
   return (
@@ -9,8 +10,9 @@ const Routers = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<SignIn />} />
-          <Route path="signin" element={<SignIn/>}/>
-          <Route path='signup' element={<SignUp/>}/>
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/main" element={<Main />} />
         </Routes>
       </BrowserRouter>
     </React.Fragment>
