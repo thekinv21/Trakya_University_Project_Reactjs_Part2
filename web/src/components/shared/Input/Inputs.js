@@ -14,6 +14,7 @@ const Inputs = ({
   placeholder,
   border,
   outline,
+  onblur,
 }) => {
   return (
     <Input
@@ -32,6 +33,7 @@ const Inputs = ({
       outline={outline}
       autoComplete="off"
       _placeholder={{ fontSize: "12px" }}
+      onBlur={onblur}
     />
   );
 };
