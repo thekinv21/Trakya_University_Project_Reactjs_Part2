@@ -4,7 +4,7 @@ import { Heading, Divider, Stack } from "@chakra-ui/react";
 const Title = ({ title }) => {
   return (
     <React.Fragment>
-      <Stack>
+      <Stack  alignItems='center'>
         <Heading
           color="rgb(0,0,0,0.6)"
           fontWeight="600"
