@@ -28,6 +28,7 @@ const Buttons = ({
       size={size}
       onClick={onclick}
       borderRadius={borderRadius}
+      overflow='hidden'
     >
       {title}
     </Button>
