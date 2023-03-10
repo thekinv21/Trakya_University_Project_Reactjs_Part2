@@ -5,7 +5,7 @@ import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 const HeaderHamburger = ({ isOpen, onClose, onOpen }) => {
   return (
     <IconButton
-      size='lg'
+      size="lg"
       icon={isOpen ? <CloseIcon /> : <HamburgerIcon fontSize="22px" />}
       display={{ md: "none" }}
       onClick={isOpen ? onClose : onOpen}

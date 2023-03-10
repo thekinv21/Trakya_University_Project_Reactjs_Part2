@@ -3,8 +3,6 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 const HeaderLink = () => {
-
-  
   //*-------------Header Links---------------
   const headerLinks = useSelector((state) => state.Link.headerLinks);
 

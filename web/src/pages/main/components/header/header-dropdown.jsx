@@ -33,9 +33,9 @@ const HeaderDropdown = ({ username, puan }) => {
 
         {/*--------------------Dropdown List when Click Avatar-------------------------*/}
 
-        <MenuList>
+        <MenuList bg="rgba(0,0,0,0.5)" border="none" color="#fff">
           <MenuCommand textAlign="center">
-            <Text fontSize={14} color="#000" mt={5} fontWeight={700}>
+            <Text fontSize={14} mt={5} fontWeight={700}>
               {username}
             </Text>
             <Text fontSize={10} fontWeight={700}>
@@ -54,7 +54,9 @@ const HeaderDropdown = ({ username, puan }) => {
               textDecoration="none"
               fontSize={13}
             >
-              <MenuItem icon={link.icon}>{link.name}</MenuItem>
+              <MenuItem bg="none" icon={link.icon}>
+                {link.name}
+              </MenuItem>
             </Link>
           ))}
         </MenuList>

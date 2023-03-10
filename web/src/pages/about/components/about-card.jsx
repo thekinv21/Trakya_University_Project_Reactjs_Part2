@@ -12,6 +12,7 @@ const AboutCard = ({ title, icon, text }) => {
         alignItems="center"
         justifyContent="center"
         overflow="hidden"
+        bg='blackAlpha.100'
       >
         <Stack fontSize={80}>{icon}</Stack>
         <Text fontWeight={600} fontSize={22}>

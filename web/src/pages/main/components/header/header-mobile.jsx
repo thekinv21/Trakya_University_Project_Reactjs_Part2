@@ -37,7 +37,12 @@ const HeaderMobile = ({ isOpen, onClose }) => {
 
             {/*----------------------Siderbar Content------------------*/}
 
-            <DrawerContent bg="#36454F" w="100%" h="100%" alignItems="center">
+            <DrawerContent
+              bg="rgb(0,0,0,0.7)"
+              w="100%"
+              h="100%"
+              alignItems="center"
+            >
               <DrawerCloseButton color="#fff" />
 
               {/*----------------------Siderbar header------------------*/}
