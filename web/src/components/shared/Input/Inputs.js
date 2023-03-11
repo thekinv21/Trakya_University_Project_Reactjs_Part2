@@ -1,6 +1,7 @@
 import { Input } from "@chakra-ui/react";
 
 const Inputs = ({
+  id,
   type,
   name,
   width,
@@ -15,6 +16,7 @@ const Inputs = ({
   border,
   outline,
   onblur,
+  variant,
 }) => {
   return (
     <Input
@@ -34,6 +36,8 @@ const Inputs = ({
       autoComplete="off"
       _placeholder={{ fontSize: "12px" }}
       onBlur={onblur}
+      variant={variant}
+      id={id}
     />
   );
 };
