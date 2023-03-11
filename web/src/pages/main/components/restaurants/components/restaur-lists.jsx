@@ -29,6 +29,7 @@ const RestaurantList = () => {
             cursor="pointer"
             bg="blackAlpha.100"
             onClick={() => navigate(restaurant.title)}
+            _hover={{ background: "orange.100" }}
           >
             {/*--------------------Restaurant Image----------------- */}
 

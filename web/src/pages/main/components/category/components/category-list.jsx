@@ -23,6 +23,7 @@ const CategoryList = () => {
             overflow="hidden"
             cursor="pointer"
             bg="blackAlpha.100"
+            _hover={{ background: "orange.100" }}
           >
             {/*--------------------Category Image----------------- */}
 
