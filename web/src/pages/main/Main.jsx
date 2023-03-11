@@ -5,6 +5,8 @@ import Banner from "./components/banner/Banner";
 import About from "./../about/About";
 import Restaurants from "./components/restaurants/Restaurants";
 import Category from "./components/category/Category";
+import Quetions from "./components/questions/Quetions";
+import Footer from "../../components/footer/Footer";
 
 const Main = () => {
   return (
@@ -21,6 +23,10 @@ const Main = () => {
         <About />
         {/*--------------------Menus Category-------------------- */}
         <Category />
+        {/*--------------------User Quetions-------------------- */}
+        <Quetions />
+        {/*--------------------Landing Footer-------------------- */}
+        <Footer/>
       </MainContainer>
     </React.Fragment>
   );
