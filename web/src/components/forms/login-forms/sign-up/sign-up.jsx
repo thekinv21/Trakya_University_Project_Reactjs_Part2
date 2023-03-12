@@ -10,13 +10,11 @@ import {
 import FormControls from "./../components/FormControl";
 import Inputs from "./../../../shared/Input/Inputs";
 import Buttons from "./../../../shared/button/Button";
-import { FaUser, FaPhone } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
 import { EmailIcon, ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import SignWith from "./../components/FormSignWith";
 import { useFormik } from "formik";
 import signUpSchema from "../validation/sign-up";
-import { useDispatch } from "react-redux";
-import { setAuth } from "../../../../redux/AuthSlicer";
 import { useRegister } from "../../../../api/auth";
 import { useNavigate } from "react-router-dom";
 
@@ -25,7 +23,6 @@ const SignUpForm = () => {
 
   const [show, setShow] = React.useState(false);
   const { mutate: register } = useRegister()
-  const dispatch = useDispatch()
   const navigate = useNavigate()
 
   //? -----------------Submiting Input values----------------

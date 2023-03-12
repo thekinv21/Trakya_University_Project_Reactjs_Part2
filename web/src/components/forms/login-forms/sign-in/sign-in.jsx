@@ -19,13 +19,19 @@ import { useDispatch } from "react-redux";
 import { setAuth } from "../../../../redux/AuthSlicer";
 import { useLogin } from "../../../../api/auth";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const SignInForm = () => {
   //*--------------Password show eye setups----------------
   const [show, setShow] = React.useState(false);
-  const { mutate: login } = useLogin()
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+
+  //*--------------Giriş yapıldı mı Biligisi----------------
+  const { mutate: login } = useLogin();
+  const dispatch = useDispatch();
+
+  //*-------------Navigations setup----------------
+  const navigate = useNavigate();
+
   //*----------------SignIn input values-------------------
 
   const { values, handleChange, handleBlur, handleSubmit, errors, touched } =
@@ -34,29 +40,35 @@ const SignInForm = () => {
         username: "",
         password: "",
       },
+
+      //*------------------Giriş Butonuna basıldıysa-----------------
+
       onSubmit: async (values, action) => {
         new Promise((resolve, reject) => {
           login(values, {
-            onSuccess: data => {
-              resolve(undefined)
+            onSuccess: (data) => {
+              resolve(undefined);
               dispatch(
                 setAuth({
                   myToken: data.accesToken,
                   myDetails: data.user,
                 })
-              )
-              navigate('/main')
-              console.log('başarılı')
-            },
-            onError: () => {
-              reject()
-              console.log('başarısız');
-            }
-          })
-        })
-        //todo : yapilacak işlemler gelecek
+              );
 
-        console.log(values);
+              //*------------------Eğer giriş başarılı ise-----------------
+              navigate("/");
+            },
+
+            //*------------------Eğer giriş başarılı değil ise-----------------
+            onError: () => {
+              reject();
+              toast.error("Kullanici Adi veya Şifre Yanliş!", {
+                position: "top-center",
+                autoClose: 1500,
+              });
+            },
+          });
+        });
         //*------------Clear Inputs after submit------------
         action.resetForm();
       },
