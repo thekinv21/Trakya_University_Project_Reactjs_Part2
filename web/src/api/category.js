@@ -2,9 +2,12 @@ import { END_POINTS } from "./end-points";
 import  {useQuery }from '@tanstack/react-query'
 import axios from 'axios'
 
+
+const Token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2YWRpbSIsImlzcyI6InJlenp0b3JhbiIsImV4cCI6MTY3NzczODAzN30.79BpLEt2N7xqDbHU6AQVCh2-bnAUmbdfj-FIgmuDoRY';
+
 //========== GET CATEGORY ============
 const getCategory = async () => {
-    const response = await axios.get(END_POINTS.CATEGORY_CONTROLLER)
+    const response = await axios.get(END_POINTS.CATEGORY_CONTROLLER.GET_CATEGORY , { headers: {"Authorization" : 'Bearer '  +  Token}})
     return response.data
 }
 
