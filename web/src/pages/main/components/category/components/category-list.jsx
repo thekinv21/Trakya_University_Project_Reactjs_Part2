@@ -1,17 +1,17 @@
 import React from "react";
 import SliderSlick from "../../../../../components/slider/Slider";
-import { useSelector } from "react-redux";
 import { Box, Image, Text } from "@chakra-ui/react";
+import { useGetCategory } from "./../../../../../api/category";
 
 const CategoryList = () => {
-  const MenuCategory = useSelector(
-    (state) => state.Restaurant.restaurant_category
-  );
+
+  //*-------------------------Take Restau category------------------
+  const { data: MenuCategory } = useGetCategory();
 
   return (
     <React.Fragment>
       <SliderSlick>
-        {MenuCategory.map((category) => (
+        {MenuCategory?.map((category) => (
           <Box
             key={category.id}
             w="200px"
@@ -28,12 +28,13 @@ const CategoryList = () => {
             {/*--------------------Category Image----------------- */}
 
             <Image
+              draggable={false}
               w={250}
               maxW="100%"
               h={180}
               maxH="100%"
-              src={category.imgURL}
-              alt={category.category}
+              src={category.categoryImage}
+              alt={category.categoryName}
             />
 
             <Box p={3}>
@@ -44,7 +45,7 @@ const CategoryList = () => {
                 fontSize={14}
                 textTransform="uppercase"
               >
-                {category.category}
+                {category.categoryName}
               </Text>
             </Box>
           </Box>
