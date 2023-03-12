@@ -4,50 +4,60 @@ import LoginContainer from "../../components/containers/login-container/Login-co
 import Karikatur from "../../assets/images/ourPn.png";
 import Logo from "../../assets/brand/Logo.svg";
 import SignInForm from "./../../components/forms/login-forms/sign-in/sign-in";
+import { ToastContainer } from "react-toastify";
 
 const SignIn = () => {
   return (
-    <LoginContainer>
-      {/*-----------------------Karikatur and SignUp------------------------*/}
-      <Flex
-        h="100%"
-        alignItems="flex-end"
-        display={["none", "none", "none", "flex"]}
-      >
-        <Stack>
-          <Image draggable="false" h={700} src={Karikatur} />
-        </Stack>
+    <React.Fragment>
+      {/*---------------------------Alert Container------------------ */}
+      <ToastContainer />
 
-        <Stack position="relative" bottom={200} left="-80px">
+      <LoginContainer>
+        {/*-----------------------Karikatur and SignUp------------------------*/}
+        <Flex
+          h="100%"
+          alignItems="flex-end"
+          display={["none", "none", "none", "flex"]}
+        >
           <Stack>
-            <Text fontSize="4xl" fontWeight="300">
-              Sign Up
-            </Text>
+            <Image draggable="false" h={700} src={Karikatur} />
+          </Stack>
 
-            <Stack textAlign="end" fontSize={"sm"} pl={10}>
-              <Text>Create Account...</Text>
+          <Stack position="relative" bottom={200} left="-80px">
+            <Stack>
+              <Text fontSize="4xl" fontWeight="300">
+                Sign Up
+              </Text>
 
-              <Link href="/signup" color="#4462f2">
-                Sign Up now!
-              </Link>
+              <Stack textAlign="end" fontSize={"sm"} pl={10}>
+                <Text>Create Account...</Text>
+
+                <Link href="/signup" color="#4462f2">
+                  Sign Up now!
+                </Link>
+              </Stack>
             </Stack>
           </Stack>
+        </Flex>
+
+        {/*------------------------Our Logo---------------------------- */}
+
+        <Stack display={["none", "none", "none", "block"]}>
+          <Image
+            draggable="false"
+            position="relative"
+            left="-130px"
+            src={Logo}
+          />
         </Stack>
-      </Flex>
 
-      {/*------------------------Our Logo---------------------------- */}
+        {/*------------------------SingIn form---------------------------- */}
 
-      <Stack display={["none", "none", "none", "block"]}>
-        <Image draggable="false" position="relative" left="-130px" src={Logo} />
-      </Stack>
-
-      {/*------------------------SingIn form---------------------------- */}
-
-      <Stack>
-        <SignInForm />
-      </Stack>
-      
-    </LoginContainer>
+        <Stack>
+          <SignInForm />
+        </Stack>
+      </LoginContainer>
+    </React.Fragment>
   );
 };
 

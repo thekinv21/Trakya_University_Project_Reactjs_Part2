@@ -42,7 +42,7 @@ const Notfound = () => {
             fontweight={100}
             background="green"
             color="#fff"
-            onclick={() => navigate("/main")}
+            onclick={() => navigate("/")}
           />
         </Stack>
       </NotfoundContainer>
