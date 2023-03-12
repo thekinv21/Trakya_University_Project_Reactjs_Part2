@@ -9,13 +9,20 @@ import {
   MenuDivider,
   MenuItem,
   Link,
+  Stack,
 } from "@chakra-ui/react";
 import Avatar from "../../../../assets/images/user1.png";
 import { useSelector } from "react-redux";
 
 const HeaderDropdown = ({ username, puan }) => {
-  //*------------------------Dropdown links-------------------
-  const navbarLink = useSelector((state) => state.Link.navbarLinks);
+  //*--------------------Giriş yapıp yapmadığı bilgisi--------------------
+  const isLogged = useSelector((state) => state.Auth.isLoggedIn);
+
+  //*------------------------Dropdown links when userLogin-------------------
+  const navbarLogin = useSelector((state) => state.Link.navbarLinksLogin);
+
+  //*------------------------Dropdown links when userLogout-------------------
+  const navbarLogout = useSelector((state) => state.Link.navbarLinksLogout);
 
   return (
     <React.Fragment>
@@ -45,20 +52,30 @@ const HeaderDropdown = ({ username, puan }) => {
 
           <MenuDivider m="20px 10px" />
 
-          {/*----------------------DropDown username and his Bonus---------------------*/}
+          {/*-------------------------Eğer kullanıcı giriş yaptıysa------------------- */}
 
-          {navbarLink.map((link, index) => (
-            <Link
-              key={index}
-              href={link.href}
-              textDecoration="none"
-              fontSize={13}
-            >
-              <MenuItem bg="none" icon={link.icon}>
-                {link.name}
-              </MenuItem>
-            </Link>
-          ))}
+          {isLogged ? (
+            <Stack>
+              {navbarLogin.map((link, index) => (
+                <Link key={index} href={link.href} fontSize={13}>
+                  <MenuItem bg="none" icon={link.icon}>
+                    {link.name}
+                  </MenuItem>
+                </Link>
+              ))}
+            </Stack>
+          ) : (
+            /*-------------------------Eğer kullanıcı giriş yapmadıysa------------------- */
+            <Stack>
+              {navbarLogout.map((link, index) => (
+                <Link key={index} href={link.href} fontSize={13}>
+                  <MenuItem bg="none" icon={link.icon}>
+                    {link.name}
+                  </MenuItem>
+                </Link>
+              ))}
+            </Stack>
+          )}
         </MenuList>
       </Menu>
     </React.Fragment>
