@@ -13,21 +13,14 @@ export const useLogin = () => {
 }
 
 //================= REGISTER ======================
-// const postRegister = async (values = { username, mail, password, name, surname }) => {
-//     const userData = {
-//         username: values.username,
-//         mail: values.mail,
-//         password: values.password,
-//         name: values.name,
-//         surname: values.surname,
-//     }
-//     const response = await axios.post(END_POINTS.AUTH_CONTROLLER.REGISTER, userData)
-//     return response.data
-// }
+const postRegister = async ({ username, mail, password, name, surname }) => {
+    const response = await axios.post(END_POINTS.AUTH_CONTROLLER.REGISTER, { username, mail, password, name, surname })
+    return response.data
+}
 
-// export const useRegister = () => {
-//     return useMutation(postRegister)
-// }
+export const useRegister = () => {
+    return useMutation(postRegister)
+}
 
 // //============== ME =================
 // const getMe = async () => {

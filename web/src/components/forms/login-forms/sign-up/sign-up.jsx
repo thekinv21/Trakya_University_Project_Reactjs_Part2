@@ -15,25 +15,47 @@ import { EmailIcon, ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import SignWith from "./../components/FormSignWith";
 import { useFormik } from "formik";
 import signUpSchema from "../validation/sign-up";
+import { useDispatch } from "react-redux";
+import { setAuth } from "../../../../redux/AuthSlicer";
+import { useRegister } from "../../../../api/auth";
+import { useNavigate } from "react-router-dom";
 
 const SignUpForm = () => {
   //?-------------Show Passsword when Click eye-------------
 
   const [show, setShow] = React.useState(false);
+  const { mutate: register } = useRegister()
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   //? -----------------Submiting Input values----------------
 
   const { values, errors, touched, handleChange, handleSubmit, handleBlur } =
     useFormik({
       initialValues: {
-        username: "",
-        email: "",
-        phone_number: "",
+        name: "",
+        surname: "",
+        mail: "",
         password: "",
+        username: "",
       },
 
-      onSubmit: (values, action) => {
-        
+      onSubmit: async (values, action) => {
+        new Promise((resolve, reject) => {
+          register(values, {
+            //data.content olacak sonradan
+            onSuccess: () => {
+              resolve(undefined)
+              console.log('başarılı')
+              navigate('/signin')
+              action.resetForm();
+            },
+            onError: () => {
+              reject()
+              console.log('başarısız');
+            }
+          })
+        })
         console.log(values);
 
         //?----------Clear inputs after submit---------
@@ -68,26 +90,55 @@ const SignUpForm = () => {
           </Text>
         </Stack>
 
-        {/*----------------------InputS Username-------------------------*/}
+        {/*----------------------InputS name-------------------------*/}
 
-        <FormControls title="Firstname" paddingTop={4}>
+        <FormControls title="Ad" paddingTop={4}>
           <InputGroup>
             <Inputs
               type="text"
-              name="username"
+              name="name"
               placeholder={
-                errors.username && touched.username
-                  ? `${errors.username}`
-                  : "Enter username.."
+                errors.name && touched.name
+                  ? `${errors.name}`
+                  : "Enter name.."
               }
               background="#ddd"
               color="#000"
               border={
-                errors.username && touched.username ? "2px solid red" : "none"
+                errors.name && touched.name ? "2px solid red" : "none"
               }
               outline="none"
               fontsize={14}
-              value={values.username}
+              value={values.name}
+              onchange={handleChange}
+              onblur={handleBlur}
+            />
+            <InputRightElement width="4.5rem">
+              <FaUser color="#000" />
+            </InputRightElement>
+          </InputGroup>
+        </FormControls>
+
+        {/*----------------------InputS surname-------------------------*/}
+
+        <FormControls title="Soyad" paddingTop={4}>
+          <InputGroup>
+            <Inputs
+              type="text"
+              name="surname"
+              placeholder={
+                errors.surname && touched.surname
+                  ? `${errors.surname}`
+                  : "Enter surname.."
+              }
+              background="#ddd"
+              color="#000"
+              border={
+                errors.surname && touched.surname ? "2px solid red" : "none"
+              }
+              outline="none"
+              fontsize={14}
+              value={values.surname}
               onchange={handleChange}
               onblur={handleBlur}
             />
@@ -99,22 +150,22 @@ const SignUpForm = () => {
 
         {/*----------------------InputS E-mail-------------------------*/}
 
-        <FormControls title="E-mail address" paddingTop={4}>
+        <FormControls title="E-mail adresi" paddingTop={4}>
           <InputGroup>
             <Inputs
               type="e-mail"
-              name="email"
+              name="mail"
               placeholder={
-                errors.email && touched.email
-                  ? `${errors.email}`
+                errors.mail && touched.mail
+                  ? `${errors.mail}`
                   : "Enter E-mail.."
               }
               background="#ddd"
               color="#000"
-              border={errors.email && touched.email ? "2px solid red" : "none"}
+              border={errors.mail && touched.mail ? "2px solid red" : "none"}
               outline="none"
               fontsize={14}
-              value={values.email}
+              value={values.mail}
               onchange={handleChange}
               onblur={handleBlur}
             />
@@ -126,31 +177,31 @@ const SignUpForm = () => {
 
         {/*----------------------InputS Phone number-------------------------*/}
 
-        <FormControls title=" Telephone Number" paddingTop={4}>
+        <FormControls title="Kullanıcı Adı" paddingTop={4}>
           <InputGroup>
             <Inputs
               type="tel"
-              name="phone_number"
+              name="username"
               placeholder={
-                errors.phone_number && touched.phone_number
-                  ? `${errors.phone_number}`
+                errors.username && touched.username
+                  ? `${errors.username}`
                   : "Enter Phone number"
               }
               background="#ddd"
               color="#000"
               border={
-                errors.phone_number && touched.phone_number
+                errors.username && touched.username
                   ? "2px solid red"
                   : "none"
               }
               outline="none"
               fontsize={14}
-              value={values.phone_number}
+              value={values.username}
               onchange={handleChange}
               onblur={handleBlur}
             />
             <InputRightElement width="4.5rem">
-              <FaPhone color="#000" />
+              <FaUser color="#000" />
             </InputRightElement>
           </InputGroup>
         </FormControls>
