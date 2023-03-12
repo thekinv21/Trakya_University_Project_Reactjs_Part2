@@ -29,7 +29,7 @@ const initialState = {
     },
   ],
 
-  navbarLinks: [
+  navbarLinksLogin: [
     {
       name: "Restoranlar",
       href: "#",
@@ -52,6 +52,30 @@ const initialState = {
     },
     {
       name: "Çikiş",
+      href: "/signin",
+      icon: <FaSignOutAlt fontSize="18px" />,
+    },
+  ],
+
+
+  navbarLinksLogout: [
+    {
+      name: "Restoranlar",
+      href: "#",
+      icon: <BiRestaurant fontSize="18px" />,
+    },
+    {
+      name: "Favori Restoranlar",
+      href: "#",
+      icon: <FaHeart fontSize="18px" />,
+    },
+    {
+      name: "Bonus Puanlar",
+      href: "#",
+      icon: <FaStar fontSize="18px" />,
+    },
+    {
+      name: "Giriş",
       href: "/signin",
       icon: <FaSignOutAlt fontSize="18px" />,
     },
