@@ -3,11 +3,13 @@ import { Box, Image, Text, Stack } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 import { StarIcon } from "@chakra-ui/icons";
 import SliderSlick from "../../../../../components/slider/Slider";
+import { useGetRestaurant } from "../../../../../api/restaurant";
 
 const RestaurantList = () => {
   //*----------------------Take Restaurants in state----------------------
 
-  const restaurants = useSelector((state) => state.Restaurant.restaurants);
+  const { data: restaurants } = useGetRestaurant()
+  // const restaurants = useSelector((state) => state.Restaurant.restaurants);
 
   const navigate = (title) => {
     console.log(title);
@@ -16,7 +18,7 @@ const RestaurantList = () => {
   return (
     <React.Fragment>
       <SliderSlick>
-        {restaurants.map((restaurant) => (
+        {restaurants?.map((restaurant) => (
           <Box
             key={restaurant.id}
             w="200px"
@@ -28,17 +30,18 @@ const RestaurantList = () => {
             overflow="hidden"
             cursor="pointer"
             bg="blackAlpha.100"
-            onClick={() => navigate(restaurant.title)}
+            onClick={() => navigate(restaurant.restaurantName)}
             _hover={{ background: "orange.100" }}
           >
             {/*--------------------Restaurant Image----------------- */}
 
             <Image
+              draggable={false}
               w={250}
               maxW="100%"
               h={180}
               maxH="100%"
-              src={restaurant.imgURL}
+              src={restaurant.restaurantImage}
               alt={restaurant.title}
             />
 
@@ -83,7 +86,7 @@ const RestaurantList = () => {
                       <StarIcon
                         key={index}
                         color={
-                          index < restaurant.star ? "teal.500" : "gray.300"
+                          index < restaurant.starCount ? "teal.500" : "gray.300"
                         }
                       />
                     ))}

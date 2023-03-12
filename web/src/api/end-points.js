@@ -1,8 +1,9 @@
-const REZZTORAN_AUTH_SERVICE = "http://192.168.68.104:8082/api/auth" // cmd ipconfig yazıp kendi ip adresini yapıştır
-const REZZTORAN_USER_SERVICE = "http://192.168.68.104:8082/api/user"
-const REZZTORAN_RESTAURANT_SERVICE = "http://192.168.68.104:8082/api/restaurant"
-const REZZTORAN_MENU_SERVICE = "http://192.168.68.104:8082/api/menu"
-const REZZTORAN_CATEGORY_SERVICE = "http://192.168.68.104:8082/api/category"
+const BASE_URL = "http://192.168.68.104:8082"
+const REZZTORAN_AUTH_SERVICE = BASE_URL + "/api/auth" // cmd ipconfig yazıp kendi ip adresini yapıştır
+const REZZTORAN_USER_SERVICE = BASE_URL + "/api/user"
+const REZZTORAN_RESTAURANT_SERVICE = BASE_URL + "/api/restaurant"
+const REZZTORAN_MENU_SERVICE = BASE_URL + "/api/menu"
+const REZZTORAN_CATEGORY_SERVICE = BASE_URL + "/api/category"
 
 export const END_POINTS = {
     USER_CONTROLLER: {

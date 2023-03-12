@@ -9,7 +9,7 @@ const SliderSlick = ({ children }) => {
 
   const sliderSettings = {
     infinite: true,
-    slidesToShow: 6,
+    slidesToShow: 4,
     speed: 500,
     responsive: [
       {
@@ -46,9 +46,9 @@ const SliderSlick = ({ children }) => {
     ],
   };
   return (
-    <React.Fragment>
+    <>
       <Slider {...sliderSettings}>{children}</Slider>
-    </React.Fragment>
+    </>
   );
 };
 
