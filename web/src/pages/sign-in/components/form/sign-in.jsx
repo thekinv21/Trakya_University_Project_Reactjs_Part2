@@ -1,5 +1,5 @@
 import React from "react";
-import FormContainer from "../components/FormContainer";
+import FormContainer from "../FormContainer";
 import {
   Stack,
   Heading,
@@ -8,11 +8,11 @@ import {
   InputRightElement,
   Link,
 } from "@chakra-ui/react";
-import FormControls from "../components/FormControl";
-import Inputs from "../../../shared/Input/Inputs";
-import Buttons from "../../../shared/button/Button";
+import FormControls from "../FormControl";
+import Inputs from "../../../../components/shared/Input/Inputs";
+import Buttons from "../../../../components/shared/button/Button";
 import { EmailIcon, ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
-import SignWith from "../components/FormSignWith";
+import SignWith from "../FormSignWith";
 import { useFormik } from "formik";
 import signInSchema from "../validation/sign-in";
 import { useDispatch } from "react-redux";

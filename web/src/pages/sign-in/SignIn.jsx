@@ -3,8 +3,8 @@ import { Stack, Image, Text, Link, Flex } from "@chakra-ui/react";
 import LoginContainer from "../../components/containers/login-container/Login-containers";
 import Karikatur from "../../assets/images/ourPn.png";
 import Logo from "../../assets/brand/Logo.svg";
-import SignInForm from "./../../components/forms/login-forms/sign-in/sign-in";
 import { ToastContainer } from "react-toastify";
+import SignInForm from "./components/form/sign-in";
 
 const SignIn = () => {
   return (

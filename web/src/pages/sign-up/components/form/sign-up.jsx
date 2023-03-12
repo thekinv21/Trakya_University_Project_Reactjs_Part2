@@ -1,5 +1,5 @@
 import React from "react";
-import FormContainer from "./../components/FormContainer";
+import FormContainer from "../../../sign-in/components/FormContainer";
 import {
   Heading,
   InputGroup,
@@ -7,23 +7,28 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
-import FormControls from "./../components/FormControl";
-import Inputs from "./../../../shared/Input/Inputs";
-import Buttons from "./../../../shared/button/Button";
+import FormControls from "../../../sign-in/components/FormControl";
+import Inputs from "../../../../components/shared/Input/Inputs";
+import Buttons from "../../../../components/shared/button/Button";
 import { FaUser } from "react-icons/fa";
 import { EmailIcon, ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
-import SignWith from "./../components/FormSignWith";
+import SignWith from "../../../sign-in/components/FormSignWith";
 import { useFormik } from "formik";
 import signUpSchema from "../validation/sign-up";
 import { useRegister } from "../../../../api/auth";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const SignUpForm = () => {
   //?-------------Show Passsword when Click eye-------------
 
   const [show, setShow] = React.useState(false);
-  const { mutate: register } = useRegister()
-  const navigate = useNavigate()
+
+  //?-----------------------Kullanici oluşturma--------------
+  const { mutate: register } = useRegister();
+
+  //?---------------------------Navigator--------------------
+  const navigate = useNavigate();
 
   //? -----------------Submiting Input values----------------
 
@@ -39,21 +44,27 @@ const SignUpForm = () => {
 
       onSubmit: async (values, action) => {
         new Promise((resolve, reject) => {
+          //*----------------Eğer kullanıcı oluşturma başarılı ise----------------
           register(values, {
             //data.content olacak sonradan
             onSuccess: () => {
-              resolve(undefined)
-              console.log('başarılı')
-              navigate('/signin')
+              resolve(undefined);
+              navigate("/signin");
+
+              toast.success("Yeni hesap oluşturuldu!", {
+                position: "top-center",
+                autoClose: 1500,
+              });
+
               action.resetForm();
             },
+
+            //*----------------Eğer kullanıcı oluşturma başarılı değilse-----------
             onError: () => {
-              reject()
-              console.log('başarısız');
-            }
-          })
-        })
-        console.log(values);
+              reject();
+            },
+          });
+        });
 
         //?----------Clear inputs after submit---------
         action.resetForm();
@@ -69,7 +80,7 @@ const SignUpForm = () => {
         {/*----------------------Title-------------------------*/}
         <Heading
           w="100%"
-          fontSize={["5xl", "7xl", "7xl", "7xl"]}
+          fontSize={["5xl", "5xl", "5xl", "7xl"]}
           fontFamily="VALORANT"
           textAlign="center"
           mb="10px"
@@ -95,15 +106,11 @@ const SignUpForm = () => {
               type="text"
               name="name"
               placeholder={
-                errors.name && touched.name
-                  ? `${errors.name}`
-                  : "Enter name.."
+                errors.name && touched.name ? `${errors.name}` : "Enter name.."
               }
               background="#ddd"
               color="#000"
-              border={
-                errors.name && touched.name ? "2px solid red" : "none"
-              }
+              border={errors.name && touched.name ? "2px solid red" : "none"}
               outline="none"
               fontsize={14}
               value={values.name}
@@ -187,9 +194,7 @@ const SignUpForm = () => {
               background="#ddd"
               color="#000"
               border={
-                errors.username && touched.username
-                  ? "2px solid red"
-                  : "none"
+                errors.username && touched.username ? "2px solid red" : "none"
               }
               outline="none"
               fontsize={14}

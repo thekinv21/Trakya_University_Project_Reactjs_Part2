@@ -2,8 +2,8 @@ import React from "react";
 import EditContentCard from "./edit-card";
 import EditContainer from "./edit-container";
 import EditTitle from "./edit-title";
-import EditForm from "../../../../components/forms/profile-forms/edit-form";
-import EditPassword from "../../../../components/forms/profile-forms/edit-password";
+import EditForm from "./edit-form";
+import EditPassword from "./edit-password";
 
 const UserEditCard = () => {
   return (

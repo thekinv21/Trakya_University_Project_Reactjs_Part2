@@ -1,15 +1,36 @@
 import React from "react";
 import { Stack, Heading, Text } from "@chakra-ui/react";
 import BannerBackground from "../../../../assets/images/banner.jpg";
-import Buttons from "../../../../components/shared/button/Button";
+import Inputs from "../../../../components/shared/Input/Inputs";
+import { InputGroup, InputRightElement } from "@chakra-ui/react";
+import { BsSearch } from "react-icons/bs";
+import { ToastContainer, toast } from "react-toastify";
 
 const Banner = () => {
+  //*-----------------Filtreleme state------------------
+  const [filter, setFilter] = React.useState("");
+
+  const onSearch = () => {
+    //*-------------------Eğer inputbar boş ise-------------
+    if (filter === "")
+      return toast.warn("Arama Kismi Boş olamaz", {
+        position: "top-center",
+        autoClose: 1500,
+      });
+
+    //*----------------Eğer inputbar Boşd eğil ise----------
+
+    // todo : yapilacak işlemler
+
+    //*--------------After submit clear input----------------
+    setFilter("");
+  };
+
   return (
     <React.Fragment>
       <Stack maxW="100vw" h="80vh">
         {/*----------------------------------Banner Container------------------*/}
         <Stack
-          display="table"
           w="100%"
           h="100%"
           bgImage={BannerBackground}
@@ -43,15 +64,36 @@ const Banner = () => {
 
               {/*--------------------Banner discover button ------------------*/}
 
-              <Buttons
-                title=" Restoranlari Bizimle Keşfedin"
-                background="green"
-                fontweight="regular"
-                fontsize={["12px", "12px", "14px", "14"]}
-                color="#ddd"
-                width={["200px", "200px", "230px", "370px"]}
-              />
+              <Stack
+                direction={["column", "column", "column", "row"]}
+                alignItems="center"
+                justifyContent="center"
+              >
+                <InputGroup>
+                  <Inputs
+                    height={50}
+                    width={["250px", "250px", "350px", "450px"]}
+                    placeholder="Restaurant Ara"
+                    color="#000"
+                    background="#fff"
+                    value={filter}
+                    onchange={(e) => setFilter(e.target.value)}
+                  />
+
+                  <InputRightElement w="3.5rem" height={50}>
+                    <BsSearch
+                      color="#000"
+                      cursor="pointer"
+                      fontSize={20}
+                      onClick={onSearch}
+                    />
+                  </InputRightElement>
+                </InputGroup>
+              </Stack>
             </Stack>
+
+            {/*-----------------------Alert container------------------- */}
+            <ToastContainer />
           </Stack>
         </Stack>
       </Stack>

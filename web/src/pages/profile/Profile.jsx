@@ -1,10 +1,10 @@
 import React from "react";
 import ProfileContainer from "../../components/containers/profile-container/profile-container";
 import Navbar from "../../components/navbar/Navbar";
-import UserEditCard from "./components/edit-card/UserEditCard";
 import Usercard from "./components/user-card/Usercard";
 import Footer from "../../components/footer/Footer";
 import { Stack } from "@chakra-ui/react";
+import UserEditCard from "./components/edit-card/UserEditCard";
 
 const Profile = () => {
   return (

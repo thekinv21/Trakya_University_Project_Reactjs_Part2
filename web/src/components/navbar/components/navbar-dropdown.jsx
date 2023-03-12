@@ -14,9 +14,8 @@ import Avatar from "../../../assets/images/user1.png";
 import { useSelector } from "react-redux";
 
 const NavbarDropdown = ({ username, puan }) => {
-    
   //*-----------------take navbarlinks on global state----------------
-  const navbarLinks = useSelector((state) => state.Link.navbarLinks);
+  const navbarLinksLogin = useSelector((state) => state.Link.navbarLinksLogin);
 
   return (
     <React.Fragment>
@@ -41,7 +40,7 @@ const NavbarDropdown = ({ username, puan }) => {
 
           {/*-----------------------Dropdown links---------------- */}
 
-          {navbarLinks.map((link, index) => (
+          {navbarLinksLogin.map((link, index) => (
             <Link key={index} href={link.href} fontSize={13}>
               <MenuItem p="10px 20px" icon={link.icon}>
                 {link.name}

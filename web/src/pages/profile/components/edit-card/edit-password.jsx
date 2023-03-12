@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, Stack, VStack } from "@chakra-ui/react";
-import Inputs from "../../shared/Input/Inputs";
-import Buttons from "../../shared/button/Button";
+import Inputs from "../../../../components/shared/Input/Inputs";
+import Buttons from "../../../../components/shared/button/Button";
 import { useFormik } from "formik";
 
 const EditPassword = () => {
