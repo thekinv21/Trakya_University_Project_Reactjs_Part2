@@ -15,11 +15,17 @@ import { EmailIcon, ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import SignWith from "../components/FormSignWith";
 import { useFormik } from "formik";
 import signInSchema from "../validation/sign-in";
+import { useDispatch } from "react-redux";
+import { setAuth } from "../../../../redux/AuthSlicer";
+import { useLogin } from "../../../../api/auth";
+import { useNavigate } from "react-router-dom";
 
 const SignInForm = () => {
   //*--------------Password show eye setups----------------
   const [show, setShow] = React.useState(false);
-
+  const { mutate: login } = useLogin()
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
   //*----------------SignIn input values-------------------
 
   const { values, handleChange, handleBlur, handleSubmit, errors, touched } =
@@ -28,13 +34,29 @@ const SignInForm = () => {
         username: "",
         password: "",
       },
-
-      onSubmit: (values, action) => {
-
+      onSubmit: async (values, action) => {
+        new Promise((resolve, reject) => {
+          login(values, {
+            onSuccess: data => {
+              resolve(undefined)
+              dispatch(
+                setAuth({
+                  myToken: data.accesToken,
+                  myDetails: data.user,
+                })
+              )
+              navigate('/main')
+              console.log('başarılı')
+            },
+            onError: () => {
+              reject()
+              console.log('başarısız');
+            }
+          })
+        })
         //todo : yapilacak işlemler gelecek
-        
+
         console.log(values);
-        
         //*------------Clear Inputs after submit------------
         action.resetForm();
       },
