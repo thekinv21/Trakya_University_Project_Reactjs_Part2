@@ -5,6 +5,7 @@ import SignUp from "./../pages/sign-up/SignUp";
 import Main from "../pages/main/Main";
 import Notfound from "./../pages/notfound/Notfound";
 import Profile from "./../pages/profile/Profile";
+import Reset from "../pages/resetPassword/Reset";
 
 const Routers = () => {
   return (
@@ -17,6 +18,7 @@ const Routers = () => {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/main" element={<Main />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/reset" element={<Reset />} />
         </Routes>
       </BrowserRouter>
     </React.Fragment>
