@@ -1,12 +1,6 @@
 import React from "react";
 import FormContainer from "../../../sign-in/components/FormContainer";
-import {
-  Heading,
-  InputGroup,
-  InputRightElement,
-  Stack,
-  Text,
-} from "@chakra-ui/react";
+import { Heading, InputGroup, InputRightElement } from "@chakra-ui/react";
 import FormControls from "../../../sign-in/components/FormControl";
 import Inputs from "../../../../components/shared/Input/Inputs";
 import Buttons from "../../../../components/shared/button/Button";
@@ -76,7 +70,12 @@ const SignUpForm = () => {
 
   return (
     <React.Fragment>
-      <FormContainer width="100%" md="450" onSubmit={handleSubmit}>
+      <FormContainer
+        position="center"
+        width="100%"
+        md="450"
+        onSubmit={handleSubmit}
+      >
         {/*----------------------Title-------------------------*/}
         <Heading
           w="100%"
@@ -87,16 +86,6 @@ const SignUpForm = () => {
         >
           REZZTORAN
         </Heading>
-
-        {/*----------------------SubTitle-------------------------*/}
-
-        <Stack w="full" align="start" pb={5}>
-          <Text fontSize="2xl">Sign Up</Text>
-
-          <Text fontSize="12px" color="gray.400">
-            Create a new account...
-          </Text>
-        </Stack>
 
         {/*----------------------InputS name-------------------------*/}
 

@@ -78,7 +78,12 @@ const SignInForm = () => {
 
   return (
     <React.Fragment>
-      <FormContainer width="100%" md="450" onSubmit={handleSubmit}>
+      <FormContainer
+        position="center"
+        width="100%"
+        md={400}
+        onSubmit={handleSubmit}
+      >
         {/*----------------- Form Title -----------------*/}
 
         <Stack align="center" pb={50}>
@@ -160,7 +165,7 @@ const SignInForm = () => {
           {/*----------------- Forgot Password-----------------*/}
 
           <Stack w="full" pt={4} fontSize={12} color="gray.500">
-            <Link display="flex" justifyContent="flex-end">
+            <Link display="flex" justifyContent="flex-end" href="/reset">
               Forgot Password ?
             </Link>
           </Stack>

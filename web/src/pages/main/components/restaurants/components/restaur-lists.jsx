@@ -6,7 +6,6 @@ import { useGetRestaurant } from "../../../../../api/restaurant";
 
 const RestaurantList = () => {
   //*----------------------Take Restaurants in state----------------------
-
   const { data: restaurants } = useGetRestaurant();
 
   const navigate = (title) => {

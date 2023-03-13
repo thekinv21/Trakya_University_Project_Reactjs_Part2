@@ -17,7 +17,7 @@ const LoginContainer = ({ children }) => {
           h="100%"
           alignItems="center"
           justifyContent={["center", "center", "center", "space-between"]}
-          p="0px 40px"
+          p="0px 20px"
         >
           {children}
         </Flex>

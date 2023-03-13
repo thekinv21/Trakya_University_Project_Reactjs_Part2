@@ -25,7 +25,7 @@ const SignUp = () => {
                 Sign In
               </Text>
 
-              <Stack textAlign="end" fontSize={"sm"} pl={10}>
+              <Stack textAlign="end" fontSize={"sm"} pl={5}>
                 <Text>if You have Account.....</Text>
 
                 <Link href="/signin" color="#4462f2">
