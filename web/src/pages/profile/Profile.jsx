@@ -1,5 +1,5 @@
 import React from "react";
-import ProfileContainer from "../../components/containers/profile-container/profile-container";
+import ProfileContainer from "./components/profile-container/profile-container";
 import Navbar from "../../components/navbar/Navbar";
 import Usercard from "./components/user-card/Usercard";
 import Footer from "../../components/footer/Footer";
