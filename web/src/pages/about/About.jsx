@@ -1,5 +1,5 @@
 import React from "react";
-import AboutContainer from "./../../components/containers/about-container/About-container";
+import AboutContainer from "./components/About-container";
 import Title from "./../main/components/title/title";
 import AboutCard from "./components/about-card";
 import {
