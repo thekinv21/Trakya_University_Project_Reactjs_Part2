@@ -30,6 +30,7 @@ const Navbar = () => {
         {/*-------------------Navbar Rezztoran Logo------------------ */}
 
         <Image
+          h="60px"
           w={["130px", "160px", "160px", "220px"]}
           src={RezztoranLogo}
           draggable="false"

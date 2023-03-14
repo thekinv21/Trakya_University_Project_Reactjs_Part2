@@ -7,7 +7,8 @@ const NavbarContainer = ({ children }) => {
       <Flex
         alignItems="center"
         justifyContent="space-between"
-        h="10vh"
+        h="100px"
+        maxH='100%'
         p={35}
         w="100%"
         position="fixed"

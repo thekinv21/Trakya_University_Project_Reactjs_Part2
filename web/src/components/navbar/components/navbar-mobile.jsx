@@ -20,7 +20,7 @@ const NavbarMobile = ({ openMobile, closeMobile }) => {
 
   //*---------------------Take navbar links on global state--------------
 
-  const navbarLinks = useSelector((state) => state.Link.navbarLinks);
+  const navbarLinksLogin = useSelector((state) => state.Link.navbarLinksLogin);
 
   return (
     <React.Fragment>
@@ -64,7 +64,7 @@ const NavbarMobile = ({ openMobile, closeMobile }) => {
                   spacing={8}
                 >
                   {/*-----------------------------Sidebar links---------------------- */}
-                  {navbarLinks.map((link, index) => (
+                  {navbarLinksLogin.map((link, index) => (
                     <HStack
                       key={index}
                       color="#fff"
