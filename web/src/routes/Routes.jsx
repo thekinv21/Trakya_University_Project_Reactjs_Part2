@@ -6,6 +6,7 @@ import Main from "../pages/main/Main";
 import Notfound from "./../pages/notfound/Notfound";
 import Profile from "./../pages/profile/Profile";
 import Reset from "../pages/resetPassword/Reset";
+import Restaurant from "../pages/restaurant/Restaurant";
 
 const Routers = () => {
   return (
@@ -19,6 +20,7 @@ const Routers = () => {
           <Route path="/main" element={<Main />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/reset" element={<Reset />} />
+          <Route path="/restaurant" element={<Restaurant />} />
         </Routes>
       </BrowserRouter>
     </React.Fragment>
