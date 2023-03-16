@@ -1,8 +1,8 @@
 import React from "react";
-import MainContainer from './components/main-container/Main-containers';
+import MainContainer from "./components/main-container/Main-containers";
 import Header from "./components/header/Header";
 import Banner from "./components/banner/Banner";
-import About from "./../about/About";
+import Aminities from "./components/amenities/Aminities";
 import Restaurants from "./components/restaurants/Restaurants";
 import Category from "./components/category/Category";
 import Quetions from "./components/questions/Quetions";
@@ -19,14 +19,14 @@ const Main = () => {
         <Banner />
         {/*--------------------RestaurantsList-------------------- */}
         <Restaurants />
-        {/*--------------------AboutUs-------------------- */}
-        <About />
+        {/*--------------------Aminities-------------------- */}
+        <Aminities />
         {/*--------------------Menus Category-------------------- */}
         <Category />
         {/*--------------------User Quetions-------------------- */}
         <Quetions />
         {/*--------------------Landing Footer-------------------- */}
-        <Footer/>
+        <Footer />
       </MainContainer>
     </React.Fragment>
   );

@@ -4,7 +4,6 @@ import { Box, Image, Text } from "@chakra-ui/react";
 import { useGetCategory } from "./../../../../../api/category";
 
 const CategoryList = () => {
-
   //*-------------------------Take Restau category------------------
   const { data: MenuCategory } = useGetCategory();
 
@@ -14,22 +13,21 @@ const CategoryList = () => {
         {MenuCategory?.map((category) => (
           <Box
             key={category.id}
-            w="200px"
-            maxW="250px"
-            h={240}
+            w="250px"
+            maxW="320px"
+            h={260}
             maxH="100%"
             borderRadius={5}
             border="none"
             overflow="hidden"
             cursor="pointer"
-            bg="blackAlpha.100"
-            _hover={{ background: "orange.100" }}
+            bg="#fff"
           >
             {/*--------------------Category Image----------------- */}
 
             <Image
               draggable={false}
-              w={250}
+              w="100%"
               maxW="100%"
               h={180}
               maxH="100%"
@@ -37,10 +35,9 @@ const CategoryList = () => {
               alt={category.categoryName}
             />
 
-            <Box p={3}>
+            <Box pt={5}>
               {/*------------------Category title------------------- */}
               <Text
-                color="grey.500"
                 fontWeight="semibold"
                 fontSize={14}
                 textTransform="uppercase"

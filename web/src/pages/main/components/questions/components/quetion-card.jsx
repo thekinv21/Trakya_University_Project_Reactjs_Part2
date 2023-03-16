@@ -14,7 +14,7 @@ const QuestionCard = ({ quetion, reply }) => {
     <React.Fragment>
       <Accordion
         allowToggle
-        bg="blackAlpha.100"
+        bg='#fff'
         w={["350px", "400px", "500px", "800px"]}
       >
         <AccordionItem>

@@ -3,14 +3,14 @@ import { Box, Image, Text, Stack, Card } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
 import SliderSlick from "../../../../../components/slider/Slider";
 import { useGetRestaurant } from "../../../../../api/restaurant";
+import { useNavigate } from "react-router-dom";
 
 const RestaurantList = () => {
   //*----------------------Take Restaurants in state----------------------
   const { data: restaurants } = useGetRestaurant();
 
-  const navigate = (title) => {
-    console.log(title);
-  };
+  //?-------------------Navigate to Restaurant Page----------------------
+  const navigate = useNavigate();
 
   return (
     <React.Fragment>
@@ -19,16 +19,15 @@ const RestaurantList = () => {
           <Card
             key={restaurant.id}
             w="250px"
-            maxW="290px"
-            h={330}
+            maxW="320px"
+            h={350}
             maxH="100%"
             borderRadius={5}
             border="none"
             overflow="hidden"
             cursor="pointer"
-            bg="blackAlpha.100"
-            onClick={() => navigate(restaurant.restaurantName)}
-            _hover={{ background: "orange.100" }}
+            bg="#fff"
+            onClick={() => navigate(`/restaurant/${restaurant.id}`)}
           >
             {/*--------------------Restaurant Image and Location----------------- */}
 
