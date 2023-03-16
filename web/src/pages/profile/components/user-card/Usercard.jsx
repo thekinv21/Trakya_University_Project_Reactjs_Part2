@@ -14,7 +14,7 @@ const Usercard = ({ user }) => {
         <Image pt={5} src={User} draggable="false" />
 
         {/*---------------------User name----------------------- */}
-        <Text p={5} fontSize={14} color="#ddd">
+        <Text p={5} fontSize={14}>
           Tekrar Hoşgeldin : {user}
         </Text>
 

@@ -1,75 +1,37 @@
 import React from "react";
-import { Card, Stack, VStack } from "@chakra-ui/react";
-import Inputs from "../../../../components/shared/Input/Inputs";
+import { Card, Stack, Text } from "@chakra-ui/react";
 import Buttons from "../../../../components/shared/button/Button";
-import { useFormik } from "formik";
+import { useNavigate } from "react-router-dom";
 
 const EditPassword = () => {
-  //*-----------------Take input values------------
-
-  const { values, handleChange, handleBlur, handleSubmit } = useFormik({
-    initialValues: {
-      password: "",
-      confirmPassword: "",
-    },
-
-    onSubmit: (values) => {
-      console.log(values);
-    },
-  });
+  //?-----------------Navigation setup-------------
+  const navigate = useNavigate();
 
   return (
     <React.Fragment>
-      <VStack as='form' onSubmit={handleSubmit}>
-        {/*------------------------Change Password Container------------------ */}
-        <Card
-          color="#000"
-          h="200px"
-          overflow="hidden"
-          alignItems="center"
-          justifyContent="center"
-          bg="#ddd"
-          w='100%'
-        >
-          <Stack direction="column" w="80%" spacing={5}>
-            {/*------------------------Change Password Inputs------------------ */}
+      {/*------------------------Change Password Container------------------ */}
+      <Card
+        color="#000"
+        h="100px"
+        alignItems="center"
+        justifyContent="center"
+        w="100%"
+      >
+        <Stack direction="column" w="80%" spacing={5} pb={5}>
+          <Text pt={2}>Mevcut Şifreyi sifirla</Text>
 
-            <Inputs
-              height={8}
-              type="password"
-              placeholder="Yeni şifre"
-              border="1px solid #777"
-              fontsize={14}
-              name="password"
-              value={values.password}
-              onchange={handleChange}
-              onblur={handleBlur}
-            />
-            <Inputs
-              height={8}
-              type="password"
-              placeholder="Şifre Onayi"
-              border="1px solid #777"
-              fontsize={14}
-              name="confirmPassword"
-              value={values.confirmPassword}
-              onchange={handleChange}
-              onblur={handleBlur}
-            />
-
-            {/*------------------------Change Password Button------------------ */}
-            <Buttons
-              height={8}
-              title="Şifreyi Değiştir"
-              fontsize={12}
-              background="orange"
-              color="#ddd"
-              fontweight={100}
-              type="submit"
-            />
-          </Stack>
-        </Card>
-      </VStack>
+          {/*------------------------Change Password Button------------------ */}
+          <Buttons
+            height={8}
+            title="Değiştir"
+            fontsize={12}
+            background="orange"
+            color="#ddd"
+            fontweight={100}
+            onclick={() => navigate("/reset")}
+          />
+        </Stack>
+      </Card>
     </React.Fragment>
   );
 };

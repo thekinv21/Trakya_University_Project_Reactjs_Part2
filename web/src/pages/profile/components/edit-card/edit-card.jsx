@@ -5,7 +5,6 @@ const EditContentCard = ({ children }) => {
   return (
     <React.Fragment>
       <Card
-        bg="#ddd"
         color="#000"
         boxShadow="rgb(51 51 51 / 10%) 0px 1px 4px"
         minW={["320px", "495px", "440px", "570px"]}

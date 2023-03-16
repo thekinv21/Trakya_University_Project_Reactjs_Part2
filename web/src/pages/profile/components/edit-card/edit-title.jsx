@@ -6,7 +6,7 @@ const EditTitle = ({ title }) => {
     <React.Fragment>
       <Text
         textAlign="start"
-        fontSize={["15px", "16px", "16px", "25px"]}
+        fontSize={["18px", "22px", "24px", "30px"]}
         fontFamily="revert"
       >
         {title}
