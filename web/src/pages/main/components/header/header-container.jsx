@@ -12,7 +12,7 @@ const HeaderContainer = ({ children, active }) => {
       w="100%"
       top="0px"
       left="0px"
-      bg={active ? "transparent" : "rgba(21, 21, 21, 1)"}
+      bg={active ? "transparent" : "rgb(35,40,51)"}
       boxShadow="0 -1px 6px -1px rgba(0, 0, 0, 0.1)"
       zIndex="999"
     >

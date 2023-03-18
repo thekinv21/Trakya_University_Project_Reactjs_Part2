@@ -7,7 +7,6 @@ import RestForm from "./components/RestForm";
 import RestAbout from "./components/RestAbout";
 import { useParams } from "react-router-dom";
 import { useGetRestaurantById } from "../../api/restaurant";
-import RestComment from "./components/RestCommenT";
 
 const Restaurant = () => {
   //?-------------------Seçtiğimiz Restoranin id'si----------------
@@ -38,8 +37,6 @@ const Restaurant = () => {
 
         <RestAbout restaurantInfo={restaurantInfo} />
 
-        {/*-------------------Restaurant Comment------------------ */}
-        <RestComment />
       </Container>
 
       {/*-------------------Footer------------------ */}

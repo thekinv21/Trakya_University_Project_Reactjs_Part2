@@ -72,8 +72,8 @@ const Banner = () => {
                 <InputGroup>
                   <Inputs
                     height={50}
-                    width={["250px", "250px", "350px", "450px"]}
-                    placeholder="Restaurant Ara"
+                    width={["250px", "250px", "350px", "550px"]}
+                    placeholder="Restaurant / Yemek Categorine / göre Arayiniz"
                     color="#000"
                     background="#fff"
                     value={filter}

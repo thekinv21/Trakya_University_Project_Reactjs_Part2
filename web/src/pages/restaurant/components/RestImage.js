@@ -3,8 +3,7 @@ import React from "react";
 import SlideImage from "../../../components/slider/SlideImage";
 
 const RestaurantImage = ({ restaurantInfo }) => {
-  console.log(restaurantInfo);
-
+  
   //*-----------------Buraya Tikladiğimiz Restoranin fotolari gelmesi lazim-------------
   const images = [
     "https://images.pexels.com/photos/735869/pexels-photo-735869.jpeg?auto=compress&cs=tinysrgb&w=1600",

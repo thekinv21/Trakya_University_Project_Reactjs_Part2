@@ -4,7 +4,7 @@ import { Stack, SimpleGrid, Container } from "@chakra-ui/react";
 const FooterContainer = ({ children }) => {
   return (
     <React.Fragment>
-      <Stack bg="rgba(21, 21, 21, 1)" color="#fff" fontSize={14}>
+      <Stack bg="rgb(35,40,51)" color="#fff" fontSize={14}>
         <Container as={Stack} maxW="6xl" py={10}>
           <SimpleGrid
             columns={{ base: 1, sm: 2, md: 4 }}

@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes} from "react-router-dom";
 import SignIn from "./../pages/sign-in/SignIn";
 import SignUp from "./../pages/sign-up/SignUp";
 import Main from "../pages/main/Main";
@@ -20,7 +20,7 @@ const Routers = () => {
           <Route path="/main" element={<Main />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/reset" element={<Reset />} />
-          <Route path="/restaurant" element={<Restaurant />} />
+          <Route path="/restaurant/:id" element={<Restaurant />} />
         </Routes>
       </BrowserRouter>
     </React.Fragment>

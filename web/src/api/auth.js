@@ -1,5 +1,5 @@
 import { END_POINTS } from "./end-points";
-import { useMutation, useQuery } from '@tanstack/react-query'
+import { useMutation  } from '@tanstack/react-query'
 import axios from 'axios'
 
 //=============== LOGIN =======================

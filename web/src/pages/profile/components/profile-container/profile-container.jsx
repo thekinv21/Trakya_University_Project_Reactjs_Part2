@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Stack } from "@chakra-ui/react";
+import Background from "../../../../assets/images/Background.png";
 
 const ProfileContainer = ({ children }) => {
   return (
@@ -10,7 +11,8 @@ const ProfileContainer = ({ children }) => {
         maxW="100%"
         h="100vh"
         maxH="auto"
-        bg="beige"
+        bgColor="gray.200"
+        bgImage={Background}
         position="relative"
         zIndex="0"
       >

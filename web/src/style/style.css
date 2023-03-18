@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Poppins:wght@400;500&family=Roboto+Slab&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Poppins:wght@400;500&family=Roboto+Slab&display=swap");
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Roboto Slab', serif;
+  font-family: "Roboto Slab", serif;
   user-select: none;
 }
 
@@ -27,11 +27,10 @@
 .date-peeker {
   width: 100%;
   height: 40px;
-  background-color: #ddd;
+  background-color: #fff;
   border-radius: 5px;
   border: none;
   outline: none;
   padding-left: 10px;
   font-size: 16px;
-  
 }
