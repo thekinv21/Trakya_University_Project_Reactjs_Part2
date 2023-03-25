@@ -73,7 +73,7 @@ const Banner = () => {
                   <Inputs
                     height={50}
                     width={["250px", "250px", "350px", "550px"]}
-                    placeholder="Restaurant / Yemek Categorine / göre Arayiniz"
+                    placeholder="Restaurant / Category / Arayiniz"
                     color="#000"
                     background="#fff"
                     value={filter}

@@ -13,9 +13,8 @@ const CategoryList = () => {
         {MenuCategory?.map((category) => (
           <Box
             key={category.id}
-            w="250px"
-            maxW="320px"
-            h={260}
+            maxW={260}
+            h={280}
             maxH="100%"
             borderRadius={5}
             border="none"

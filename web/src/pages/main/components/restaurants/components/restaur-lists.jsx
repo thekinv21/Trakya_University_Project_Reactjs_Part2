@@ -1,15 +1,26 @@
 import React from "react";
-import { Box, Image, Text, Stack, Card } from "@chakra-ui/react";
+import {
+  Box,
+  Image,
+  Text,
+  Stack,
+  Card,
+  Button,
+  IconButton,
+} from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
 import SliderSlick from "../../../../../components/slider/Slider";
 import { useGetRestaurant } from "../../../../../api/restaurant";
 import { useNavigate } from "react-router-dom";
+import { AiOutlineHeart } from "react-icons/ai";
 
 const RestaurantList = () => {
-  //*----------------------Take Restaurants in state----------------------
+  //?=====================Take Restaurants in state=======================
+
   const { data: restaurants } = useGetRestaurant();
 
-  //?-------------------Navigate to Restaurant Page----------------------
+  //?=====================Navigate to Restaurant Page=====================
+
   const navigate = useNavigate();
 
   return (
@@ -18,19 +29,14 @@ const RestaurantList = () => {
         {restaurants?.map((restaurant) => (
           <Card
             key={restaurant.id}
-            w="250px"
-            maxW="320px"
-            h={350}
-            maxH="100%"
+            maxW={300}
             borderRadius={5}
             border="none"
             overflow="hidden"
             cursor="pointer"
             bg="#fff"
-            onClick={() => navigate(`/restaurant/${restaurant.id}`)}
           >
-            {/*--------------------Restaurant Image and Location----------------- */}
-
+            {/*====================REST IMAGE==================== */}
             <Box w="full">
               <Image
                 draggable={false}
@@ -41,8 +47,21 @@ const RestaurantList = () => {
                 src={restaurant.restaurantImage}
                 alt={restaurant.title}
               />
+              {/*=================REST ADD TO FAVORİ===============*/}
+              <IconButton
+                position="absolute"
+                top={2}
+                right={2}
+                rounded="100%"
+                bg="none"
+                aria-label="Add to Favori"
+                icon={<AiOutlineHeart color="orange.100" fontSize={20} />}
+                _hover={{ bg: "#ddd" }}
+              />
 
-              <Stack pt={2} direction="row" justifyContent="center">
+              {/*====================REST LOCATİON==================== */}
+
+              <Stack direction="row" justifyContent="center" py={2}>
                 <Text
                   color="gray.500"
                   fontWeight="semibold"
@@ -63,22 +82,21 @@ const RestaurantList = () => {
               </Stack>
             </Box>
 
-            {/*------------------Restaurant title------------------- */}
+            {/*====================REST TİTLE==================== */}
 
-            <Stack pt={2}>
+            <Stack alignItems="center" p={5}>
               <Text fontWeight="semibold" lineHeight="tight" noOfLines={1}>
                 {restaurant.restaurantName}
               </Text>
 
-              {/*------------------Restaurant Adress------------------- */}
-              <Text fontSize="xs" p={3}>
+              {/*====================REST ADDRESS==================== */}
+
+              <Text fontSize={10} maxH={30} overflow="hidden">
                 Address :&nbsp; {restaurant.detailedAddress}
               </Text>
-            </Stack>
 
-            {/*------------------Restaurant Start------------------- */}
+              {/*====================REST STARS==================== */}
 
-            <Stack direction="row" alignItems="center" justifyContent="center">
               <Box display="flex" alignItems="center">
                 {Array(5)
                   .fill("")
@@ -92,6 +110,23 @@ const RestaurantList = () => {
                   ))}
               </Box>
             </Stack>
+            
+            {/*====================REST RESERVE BUTTON==================== */}
+
+            <Button
+              size="sm"
+              bg="orange.300"
+              w="90%"
+              fontSize={12}
+              fontWeight={200}
+              my={5}
+              px={5}
+              color="#fff"
+              _hover={{ bg: "orange" }}
+              onClick={() => navigate(`/restaurant/${restaurant.id}`)}
+            >
+              Rezervasyon Yap
+            </Button>
           </Card>
         ))}
       </SliderSlick>
