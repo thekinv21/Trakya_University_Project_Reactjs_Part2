@@ -22,7 +22,7 @@ const NavbarDropdown = ({ username, puan }) => {
       <Menu>
         {/*-----------------------Dropdown Button---------------- */}
         <MenuButton>
-          <Image src={Avatar} cursor="pointer" rounded={100} w="50px" />
+          <Image src={Avatar} cursor="pointer" rounded={100} maxW="45px" />
         </MenuButton>
 
         {/*-----------------------Dropdown list---------------- */}
