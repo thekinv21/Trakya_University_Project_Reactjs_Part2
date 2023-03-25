@@ -17,6 +17,9 @@ const Inputs = ({
   outline,
   onblur,
   variant,
+  focusBorderColor,
+  borderLeftRadius,
+  borderRightRadius,
 }) => {
   return (
     <Input
@@ -38,6 +41,9 @@ const Inputs = ({
       onBlur={onblur}
       variant={variant}
       id={id}
+      focusBorderColor={focusBorderColor}
+      borderLeftRadius={borderLeftRadius}
+      borderRightRadius={borderRightRadius}
     />
   );
 };
