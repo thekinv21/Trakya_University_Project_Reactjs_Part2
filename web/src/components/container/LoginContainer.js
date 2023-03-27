@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Flex} from "@chakra-ui/react";
-import Background from "../../../assets/images/Background.png";
+import Background from "../../assets/images/Background.png";
 
 const LoginContainer = ({ children }) => {
   return (

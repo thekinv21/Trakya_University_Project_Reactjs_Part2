@@ -1,9 +1,9 @@
 import React from "react";
-import LoginContainer from "../../components/containers/login-container/Login-containers";
 import { Stack, Image, Text, Link, Flex } from "@chakra-ui/react";
 import Karikatur from "../../assets/images/ourPn.png";
 import Logo from "../../assets/brand/Logo.svg";
 import SignUpForm from "./components/form/sign-up";
+import LoginContainer from './../../components/container/LoginContainer';
 
 const SignUp = () => {
   return (

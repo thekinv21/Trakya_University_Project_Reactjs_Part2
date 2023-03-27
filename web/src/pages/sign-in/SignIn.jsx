@@ -1,6 +1,6 @@
 import React from "react";
 import { Stack, Image, Text, Link, Flex } from "@chakra-ui/react";
-import LoginContainer from "../../components/containers/login-container/Login-containers";
+import LoginContainer from './../../components/container/LoginContainer';
 import Karikatur from "../../assets/images/ourPn.png";
 import Logo from "../../assets/brand/Logo.svg";
 import { ToastContainer } from "react-toastify";

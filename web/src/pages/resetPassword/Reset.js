@@ -1,5 +1,5 @@
 import React from "react";
-import LoginContainer from "../../components/containers/login-container/Login-containers";
+import LoginContainer from './../../components/container/LoginContainer';
 import { Stack } from "@chakra-ui/react";
 import ResetForm from "./components/form/reset-form";
 
