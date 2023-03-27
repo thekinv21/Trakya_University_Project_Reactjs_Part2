@@ -42,7 +42,7 @@ const NavbarDropdown = ({ username, puan }) => {
 
           {navbarLinksLogin.map((link, index) => (
             <Link key={index} href={link.href} fontSize={13}>
-              <MenuItem p="10px 20px" icon={link.icon}>
+              <MenuItem p="10px 20px" icon={link.icon} _hover={{color : '#000'}}>
                 {link.name}
               </MenuItem>
             </Link>
