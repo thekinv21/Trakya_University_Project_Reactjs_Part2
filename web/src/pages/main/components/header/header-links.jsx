@@ -33,6 +33,7 @@ const HeaderLink = () => {
                 href={link.href}
                 _hover={{
                   textDecoration: "none",
+                  color: "#fff",
                 }}
               >
                 {link.name}
