@@ -55,8 +55,11 @@ const RestaurantList = () => {
                 rounded="100%"
                 bg="none"
                 aria-label="Add to Favori"
-                icon={<AiOutlineHeart color="orange.100" fontSize={20} />}
-                _hover={{ bg: "#ddd" }}
+                color="orange"
+                fontWeight={900}
+                fontSize={25}
+                icon={<AiOutlineHeart />}
+                _hover={{ bg: "orange.100" }}
               />
 
               {/*====================REST LOCATİON==================== */}
@@ -110,7 +113,7 @@ const RestaurantList = () => {
                   ))}
               </Box>
             </Stack>
-            
+
             {/*====================REST RESERVE BUTTON==================== */}
 
             <Button
