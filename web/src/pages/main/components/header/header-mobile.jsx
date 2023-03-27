@@ -81,6 +81,7 @@ const HeaderMobile = ({ isOpen, onClose }) => {
                         href={link.href}
                         _hover={{
                           textDecoration: "none",
+                          color : '#fff'
                         }}
                       >
                         {link.name}
