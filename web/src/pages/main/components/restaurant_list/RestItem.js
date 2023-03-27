@@ -9,12 +9,12 @@ import {
   IconButton,
 } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
-import SliderSlick from "../../../../../components/slider/Slider";
-import { useGetRestaurant } from "../../../../../api/restaurant";
+import SliderSlick from "../../../../components/slider/Slider";
+import { useGetRestaurant } from "../../../../api/restaurant";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineHeart } from "react-icons/ai";
 
-const RestaurantList = () => {
+const RestItem = () => {
   //?=====================Take Restaurants in state=======================
 
   const { data: restaurants } = useGetRestaurant();
@@ -137,4 +137,4 @@ const RestaurantList = () => {
   );
 };
 
-export default RestaurantList;
+export default RestItem;

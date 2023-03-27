@@ -1,7 +1,5 @@
 import React from "react";
-import Navbar from "./../../components/navbar/Navbar";
 import Container from "./components/RestContainer";
-import Footer from "../../components/footer/Footer";
 import RestImage from "./components/RestImage";
 import RestForm from "./components/RestForm";
 import RestAbout from "./components/RestAbout";
@@ -9,38 +7,32 @@ import { useParams } from "react-router-dom";
 import { useGetRestaurantById } from "../../api/restaurant";
 
 const Restaurant = () => {
-  //?-------------------Seçtiğimiz Restoranin id'si----------------
+  
+  //?====================Seçtiğimiz Restoranin id'si==================
   const { id } = useParams();
 
-  //?-------------------Restoranin id'sine istek atıldi-------------
+  //?====================Restoranin id'sine istek atıldi===============
 
   const { data: restaurantInfo, isLoading } = useGetRestaurantById(id);
 
   if (isLoading) {
-    return restaurantInfo
+    return restaurantInfo;
   }
 
   return (
     <React.Fragment>
-      {/*------------------- Navbar------------------ */}
-      <Navbar />
-
       <Container>
-        {/*-------------------Restaurant Fotolari------------------ */}
+        {/*=================Restaurant Fotolari================= */}
 
         <RestImage restaurantInfo={restaurantInfo} />
 
-        {/*-------------------Restaurant Form------------------ */}
+        {/*====================Restaurant Form=================== */}
         <RestForm />
 
-        {/*-------------------Restaurant About------------------ */}
+        {/*=====================Restaurant About==================*/}
 
         <RestAbout restaurantInfo={restaurantInfo} />
-
       </Container>
-
-      {/*-------------------Footer------------------ */}
-      <Footer />
     </React.Fragment>
   );
 };

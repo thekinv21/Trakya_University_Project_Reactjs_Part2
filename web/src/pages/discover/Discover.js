@@ -1,5 +1,5 @@
 import React from "react";
-import Container from "./components/Container";
+import Container from '../../components/container/Container'
 import SeacrhCard from "./components/SeacrhCard";
 import FilterCard from "./components/FilterCard";
 import Map from "../../components/map/Map";
@@ -14,6 +14,8 @@ const Discover = () => {
           className="container"
           display={["block", "block", "block", "flex"]}
           gap={5}
+          p="130px 0px 100px 0px"
+          overflow="hidden"
         >
           {/*===============DISCOVER SEARCH AND MAP=============== */}
 

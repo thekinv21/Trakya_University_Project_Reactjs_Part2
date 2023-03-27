@@ -1,8 +1,7 @@
 import React from "react";
-import AminitiesContainer from "./components/Container";
 import Title from "../title/title";
-import AminitiesContent from "./components/Content";
 import AminitiesCard from "./components/Card";
+import { Box } from "@chakra-ui/react";
 import {
   FcAssistant,
   FcDonate,
@@ -14,16 +13,20 @@ const Aminities = () => {
   return (
     <React.Fragment>
       {/*==================CONTAİNER==================== */}
-      <AminitiesContainer>
+      <Box className="container-fluid pt-5">
         {/*==================TİTLE==================== */}
 
         <Title title="Sağladiğimiz Kolayliklar" />
 
-        {/*==================CONTENT==================== */}
+        {/*==================Aminities==================== */}
 
-        <AminitiesContent>
-          {/*==================Aminities==================== */}
-
+        <Box
+          className="container d-flex pt-5"
+          justifyContent="space-evenly"
+          flexWrap="wrap"
+          textAlign="center"
+          gap={5}
+        >
           <AminitiesCard
             icon={<FcAssistant />}
             title="Canli Destek"
@@ -47,8 +50,8 @@ const Aminities = () => {
             title="Canli İzle"
             text="Siparişiniz hazir olup olmadiğini uygulama üzerinden izleyebilirsiniz"
           />
-        </AminitiesContent>
-      </AminitiesContainer>
+        </Box>
+      </Box>
     </React.Fragment>
   );
 };

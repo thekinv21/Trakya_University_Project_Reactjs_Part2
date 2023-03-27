@@ -17,7 +17,7 @@ const FilterCard = () => {
       <Stack
         direction="column"
         spacing={5}
-        display={["none", "none", "block", "block"]}
+        display={["none", "none", "none", "block"]}
         maxW={300}
       >
         {/*==================MAP PNG================ */}

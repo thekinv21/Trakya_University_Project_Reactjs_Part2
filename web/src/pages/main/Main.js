@@ -3,10 +3,11 @@ import MainContainer from "./components/main-container/Main-containers";
 import Header from "./components/header/Header";
 import Banner from "./components/banner/Banner";
 import Aminities from "./components/amenities/Aminities";
-import Restaurants from "./components/restaurants/Restaurants";
-import Category from "./components/category/Category";
+import RestList from "./components/restaurant_list/RestList";
+import CategoryList from '../main/components/category/CategoryList'
 import Quetions from "./components/questions/Quetions";
 import Footer from "../../components/footer/Footer";
+
 
 const Main = () => {
   return (
@@ -18,11 +19,11 @@ const Main = () => {
         {/*--------------------Landing Banner-------------------- */}
         <Banner />
         {/*--------------------RestaurantsList-------------------- */}
-        <Restaurants />
+        <RestList />
         {/*--------------------Aminities-------------------- */}
         <Aminities />
         {/*--------------------Menus Category-------------------- */}
-        <Category />
+        <CategoryList />
         {/*--------------------User Quetions-------------------- */}
         <Quetions />
         {/*--------------------Landing Footer-------------------- */}

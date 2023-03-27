@@ -14,7 +14,7 @@ const initialState = {
   headerLinks: [
     {
       name: "Ana Sayfa",
-      href: "#",
+      href: "/main",
       icon: <FaHome fontSize="16px" />,
     },
     {
@@ -24,7 +24,7 @@ const initialState = {
     },
     {
       name: "Restoranlar",
-      href: "#",
+      href: "/discover",
       icon: <BiRestaurant fontSize="16px" />,
     },
   ],
@@ -32,7 +32,7 @@ const initialState = {
   navbarLinksLogin: [
     {
       name: "Restoranlar",
-      href: "#",
+      href: "/discover",
       icon: <BiRestaurant fontSize="18px" />,
     },
     {

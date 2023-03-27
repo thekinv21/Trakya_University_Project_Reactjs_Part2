@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, Stack, Text } from "@chakra-ui/react";
-import Buttons from "../../../../components/shared/button/Button";
+import Buttons from "../../../shared/button/Button";
 import { useNavigate } from "react-router-dom";
 
 const EditPassword = () => {
@@ -9,7 +9,7 @@ const EditPassword = () => {
 
   return (
     <React.Fragment>
-      {/*------------------------Change Password Container------------------ */}
+      {/*=================Change Password Container=================== */}
       <Card
         color="#000"
         h="100px"
@@ -20,7 +20,7 @@ const EditPassword = () => {
         <Stack direction="column" w="80%" spacing={5} pb={5}>
           <Text pt={2}>Mevcut Şifreyi sifirla</Text>
 
-          {/*------------------------Change Password Button------------------ */}
+          {/*=====================Change Password Button================= */}
           <Buttons
             height={8}
             title="Değiştir"

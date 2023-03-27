@@ -1,7 +1,7 @@
 import React from "react";
 import { Card } from "@chakra-ui/react";
 
-const EditContentCard = ({ children }) => {
+const EditContainer = ({ children }) => {
   return (
     <React.Fragment>
       <Card
@@ -22,4 +22,4 @@ const EditContentCard = ({ children }) => {
   );
 };
 
-export default EditContentCard;
+export default EditContainer;

@@ -1,10 +1,12 @@
 import React from "react";
-import SliderSlick from "../../../../../components/slider/Slider";
+import SliderSlick from "../../../../components/slider/Slider";
 import { Box, Image, Text } from "@chakra-ui/react";
-import { useGetCategory } from "./../../../../../api/category";
+import { useGetCategory } from "../../../../api/category";
 
-const CategoryList = () => {
-  //*-------------------------Take Restau category------------------
+const CategoryItem = () => {
+
+  //*================TAKE REST CATEGORY==============
+
   const { data: MenuCategory } = useGetCategory();
 
   return (
@@ -51,4 +53,4 @@ const CategoryList = () => {
   );
 };
 
-export default CategoryList;
+export default CategoryItem;

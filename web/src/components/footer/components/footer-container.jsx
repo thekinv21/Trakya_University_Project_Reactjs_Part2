@@ -11,6 +11,7 @@ const FooterContainer = ({ children }) => {
             spacing={8}
             fontSize={12}
             color="#c1c1c1"
+            overflow='hidden'
           >
             {children}
           </SimpleGrid>
