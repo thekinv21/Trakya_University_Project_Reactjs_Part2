@@ -1,10 +1,17 @@
 import React from "react";
-import { Box, Stack } from "@chakra-ui/react";
-import Background from "../../../../assets/images/Background.png";
+import Header from "../../pages/main/components/header/Header";
+import Footer from "../footer/Footer";
+import { Stack, Box } from "@chakra-ui/react";
+import Background from '../../assets/images/Background.png'
 
 const MainContainer = ({ children }) => {
   return (
     <React.Fragment>
+      {/*===============MAİN HEADER============== */}
+
+      <Header />
+
+      {/*===============MAİN CONTENT============== */}
       <Box
         maxW="100vw"
         minH="100vh"
@@ -17,6 +24,10 @@ const MainContainer = ({ children }) => {
           {children}
         </Stack>
       </Box>
+
+      {/*===============MAİN FOOTER============== */}
+
+      <Footer />
     </React.Fragment>
   );
 };

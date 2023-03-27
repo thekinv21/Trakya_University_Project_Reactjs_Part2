@@ -1,33 +1,27 @@
 import React from "react";
-import MainContainer from "./components/main-container/Main-containers";
-import Header from "./components/header/Header";
+import MainContainer from "../../components/container/MainContainer";
 import Banner from "./components/banner/Banner";
 import Aminities from "./components/amenities/Aminities";
 import RestList from "./components/restaurant_list/RestList";
-import CategoryList from '../main/components/category/CategoryList'
+import CategoryList from "../main/components/category/CategoryList";
 import Quetions from "./components/questions/Quetions";
-import Footer from "../../components/footer/Footer";
-
 
 const Main = () => {
   return (
     <React.Fragment>
-      {/*--------------------Landing Header-------------------- */}
-      <Header />
-      {/*--------------------Landing Container-------------------- */}
+      {/*========================CONTAİNER===================== */}
       <MainContainer>
-        {/*--------------------Landing Banner-------------------- */}
+        {/*========================BANNER===================== */}
         <Banner />
-        {/*--------------------RestaurantsList-------------------- */}
+        {/*========================RESTAURANTLİST=================*/}
         <RestList />
-        {/*--------------------Aminities-------------------- */}
+
+        {/*========================AMINITIES===================== */}
         <Aminities />
-        {/*--------------------Menus Category-------------------- */}
+        {/*=====================Menus Category===================== */}
         <CategoryList />
-        {/*--------------------User Quetions-------------------- */}
+        {/*=====================User Quetions======================= */}
         <Quetions />
-        {/*--------------------Landing Footer-------------------- */}
-        <Footer />
       </MainContainer>
     </React.Fragment>
   );
