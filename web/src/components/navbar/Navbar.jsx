@@ -1,7 +1,7 @@
 import React from "react";
 import NavbarContainer from "./components/navbar-container";
 import NavbarHamburger from "./components/navbar-hamburger";
-import { useDisclosure, Image } from "@chakra-ui/react";
+import { useDisclosure, Image, Link } from "@chakra-ui/react";
 import Logo from "../../assets/brand/searchLogo.svg";
 import RezztoranLogo from "../../assets/svg/REZZ.svg";
 import NavbarDropdown from "./components/navbar-dropdown";
@@ -19,13 +19,15 @@ const Navbar = () => {
 
         {/*-------------------Navbar Logo------------------ */}
 
-        <Image
-          cursor="pointer"
-          w={["60px", "60px", "80px", "90px"]}
-          src={Logo}
-          draggable="false"
-          display={["none", "none", "none", "block"]}
-        />
+        <Link href="/main">
+          <Image
+            cursor="pointer"
+            w={["60px", "60px", "80px", "90px"]}
+            src={Logo}
+            draggable="false"
+            display={["none", "none", "none", "block"]}
+          />
+        </Link>
 
         {/*-------------------Navbar Rezztoran Logo------------------ */}
 

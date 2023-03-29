@@ -1,10 +1,10 @@
 import React from "react";
-import { BrowserRouter, Route, Routes} from "react-router-dom";
-import SignIn from "./../pages/sign-in/SignIn";
-import SignUp from "./../pages/sign-up/SignUp";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import SignIn from "../pages/sign-in/SignIn";
+import SignUp from "../pages/sign-up/SignUp";
 import Main from "../pages/main/Main";
-import Notfound from "./../pages/notfound/Notfound";
-import Profile from "./../pages/profile/Profile";
+import Notfound from "../pages/notfound/Notfound";
+import Profile from "../pages/profile/Profile";
 import Reset from "../pages/resetPassword/Reset";
 import Restaurant from "../pages/restaurant/Restaurant";
 import Discover from "../pages/discover/Discover";

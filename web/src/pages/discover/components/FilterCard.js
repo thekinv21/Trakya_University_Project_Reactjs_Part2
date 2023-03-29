@@ -7,9 +7,15 @@ import {
   Text,
   CheckboxGroup,
   Checkbox,
+  Slider,
+  SliderTrack,
+  SliderFilledTrack,
+  SliderThumb,
   Button,
+  Box,
 } from "@chakra-ui/react";
 import Map from "../../../assets/images/MAP.png";
+import { FaHandPointUp } from "react-icons/fa";
 
 const FilterCard = () => {
   return (
@@ -56,35 +62,86 @@ const FilterCard = () => {
             Online Rezervasyonalar
           </Text>
 
+          <hr />
+
           {/*==================FİLTER CARD category================ */}
 
-          <Heading fontSize={14} fontWeight={400} py={5}>
+          <Heading fontSize={14} fontWeight={400} py={3}>
             MUTFAKTA MEVCUT OLANLAR
           </Heading>
 
           <CheckboxGroup colorScheme="green" fontSize="small">
-            <Stack mt={5} spacing={[1, 4]} direction="column">
-              <Checkbox value="ciger">Ciger</Checkbox>
-              <Checkbox value="kebap">Kebap</Checkbox>
-              <Checkbox value="alkollu">Alkollü</Checkbox>
-              <Checkbox value="icecek">İçecek</Checkbox>
-              <Checkbox value="pizza">Pizza</Checkbox>
+            <Stack
+              mt={5}
+              spacing={[1, 4]}
+              direction="column"
+              borderColor="rgba(0,0,0,0.3)"
+            >
+              <Checkbox borderColor="rgba(0,0,0,0.3)" value="ciger">
+                Ciger
+              </Checkbox>
+              <Checkbox borderColor="rgba(0,0,0,0.3)" value="kebap">
+                Kebap
+              </Checkbox>
+              <Checkbox borderColor="rgba(0,0,0,0.3)" value="alkollu">
+                Alkollü
+              </Checkbox>
+              <Checkbox borderColor="rgba(0,0,0,0.3)" value="icecek">
+                İçecek
+              </Checkbox>
+              <Checkbox borderColor="rgba(0,0,0,0.3)" value="pizza">
+                Pizza
+              </Checkbox>
             </Stack>
           </CheckboxGroup>
 
           {/*==================FİLTER CARD PUANLAMA================ */}
 
-          <Stack py={3}>
-            <Button
-              bg="orange.300"
-              color="#fff"
-              size="sm"
-              fontSize={12}
-              fontWeight={200}
-              _hover={{ bg: "orange.300" }}
+          <hr />
+
+          <Stack py={3} direction="column" spacing={3}>
+            <Heading fontSize={14} fontWeight={500} pb={3}>
+              DEĞERLENDİRME
+            </Heading>
+
+            {/*==================FİLTER CARD PUANLA SLİDER================ */}
+
+            <Stack
+              direction="row"
+              justifyContent="space-between"
+              color="orange"
             >
-              Category Ara
-            </Button>
+              <Text fontSize="small">1</Text>
+              <Text fontSize="small">2</Text>
+              <Text fontSize="small">3</Text>
+              <Text fontSize="small">4</Text>
+              <Text fontSize="small">5</Text>
+            </Stack>
+
+            <Slider defaultValue={1} min={1} max={5} step={1}>
+              <SliderTrack bg="rgba(0,0,0,0.2)">
+                <Stack position="relative" right={10} />
+                <SliderFilledTrack bg="orange" />
+              </SliderTrack>
+              <SliderThumb>
+                <Box color="orange" as={FaHandPointUp} />
+              </SliderThumb>
+            </Slider>
+
+            {/*================FİLTER CARD PUANLAMA BUTTON=============*/}
+
+            <Stack pt={3}>
+              <Button
+                bg="orange.300"
+                color="#fff"
+                size="sm"
+                fontSize={12}
+                fontWeight={200}
+                _hover={{ bg: "orange.300" }}
+              >
+                Değerlendir
+              </Button>
+            </Stack>
           </Stack>
         </Stack>
       </Stack>

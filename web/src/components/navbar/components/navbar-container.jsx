@@ -11,9 +11,6 @@ const NavbarContainer = ({ children }) => {
         maxH='100%'
         p={35}
         w="100%"
-        position="fixed"
-        top="0"
-        left="0"
         bg="rgb(35,40,51)"
         boxShadow="0 -1px 6px -1px rgba(0, 0, 0, 0.1)"
         zIndex="999"

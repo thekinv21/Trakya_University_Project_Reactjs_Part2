@@ -1,13 +1,14 @@
 import React from "react";
-import Container from "./components/RestContainer";
 import RestImage from "./components/RestImage";
-import RestForm from "./components/RestForm";
 import RestAbout from "./components/RestAbout";
 import { useParams } from "react-router-dom";
 import { useGetRestaurantById } from "../../api/restaurant";
+import Container from "../../components/container/Container";
+import { Box } from "@chakra-ui/react";
+import RestForm from "./components/RestForm";
+import RestPuan from "./components/RestPuan";
 
 const Restaurant = () => {
-  
   //?====================Seçtiğimiz Restoranin id'si==================
   const { id } = useParams();
 
@@ -22,16 +23,41 @@ const Restaurant = () => {
   return (
     <React.Fragment>
       <Container>
-        {/*=================Restaurant Fotolari================= */}
+        {/*==================RESTAURANT MAİN CONTAİNER==========*/}
+        <Box
+          className="container p-5"
+          display="flex"
+          gap={10}
+          flexDirection={["column", "column", "column", "row"]}
+          overflow="hidden"
+          justifyContent="center"
+        >
+          {/*===================RESTAURANT CONTENT============== */}
+          <Box
+            display="flex"
+            flexDirection="column"
+            flexWrap="wrap"
+            alignItems="center"
+            justifyContent="center"
+            gap={5}
+          >
+            {/*=================Restaurant Fotolari================= */}
 
-        <RestImage restaurantInfo={restaurantInfo} />
+            <RestImage restaurantInfo={restaurantInfo} />
 
-        {/*====================Restaurant Form=================== */}
-        <RestForm />
+            {/*=====================Restaurant About==================*/}
 
-        {/*=====================Restaurant About==================*/}
+            <RestAbout restaurantInfo={restaurantInfo} />
 
-        <RestAbout restaurantInfo={restaurantInfo} />
+            {/*=====================Restaurant PUAN CARD==================*/}
+
+            <RestPuan />
+          </Box>
+
+          {/*====================Restaurant Form=================== */}
+
+          <RestForm restaurantInfo={restaurantInfo} />
+        </Box>
       </Container>
     </React.Fragment>
   );

@@ -40,6 +40,7 @@ const Selects = ({
       onBlur={onblur}
       variant={variant}
       id={id}
+      borderLeftRadius="none"
     >
       {options.map((option, index) => (
         <option key={index} value={option.value}>

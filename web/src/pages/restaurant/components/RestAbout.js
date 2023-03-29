@@ -6,61 +6,59 @@ import { MdRestaurant } from "react-icons/md";
 import Maps from "../../../components/map/Map";
 
 const RestAbout = ({ restaurantInfo }) => {
-  //?------------------Title component---------------
+  //?=================TİTLE COMPONENT==================
+
   const Title = ({ icon, title }) => {
     return (
       <Stack direction="row" alignItems="center">
         <Icon fontSize={20} as={icon} />
-        <Text>{title}</Text>
+        <Text fontSize="small">{title}</Text>
       </Stack>
     );
   };
+
   return (
     <React.Fragment>
-      <Box
-        minW={["100%", "100%", "80%", "60%"]}
-        display="flex"
-        flexDirection="column"
-        gap={5}
-        mb={50}
+      <Stack
+        spacing={5}
+        width={650}
+        maxW="100%"
+        bg="blackAlpha.300"
+        borderRadius={10}
+        p={5}
       >
-        {/*-------------------------Restaurant About-------------------- */}
+        {/*======================RESTAURANT HAKKINDA================== */}
         <Box>
-          <Text fontWeight={300} fontSize="2xl">
+          <Text fontWeight={300} fontSize={20}>
             Restaurant Hakkinda
           </Text>
         </Box>
 
-        <Box
-          display="flex"
-          flexDirection="column"
-          justifyContent="center"
-          gap={5}
-        >
-          <Stack
-            direction={["column", "column", "column", "row"]}
-            justifyContent="space-between"
-          >
-            {/*-------------------Restaurant Name-------------------- */}
+        {/*======================RESTAURANT INFORNATİON================== */}
+
+        <Box>
+          <Stack>
+            {/*========================RESTAURANT TİTLE=================== */}
+
             <Title icon={MdRestaurant} title={restaurantInfo.restaurantName} />
 
-            {/*----------------Restaurant Tel Number-------------------- */}
+            {/*=====================RESTAURANT TEL NUMBER================ */}
+
             <Title icon={FaPhone} title={restaurantInfo.phone} />
 
-            {/*----------------Restaurant Address-------------------- */}
+            {/*=====================RESTAURANT ADDRESSS==================*/}
             <Title
               icon={HiLocationMarker}
               title={restaurantInfo.detailedAddress}
             />
           </Stack>
-
-          {/*--------------------Location on GoogleMaps-------------------- */}
-
-          <Stack pt={2}>
-            <Maps width="100%" height={150} restaurantInfo={restaurantInfo} />
-          </Stack>
         </Box>
-      </Box>
+
+        {/*=====================LOCATION ON GOOGLE MAPS===================*/}
+        <Stack py={5}>
+          <Maps width="100%" height={150} restaurantInfo={restaurantInfo} />
+        </Stack>
+      </Stack>
     </React.Fragment>
   );
 };

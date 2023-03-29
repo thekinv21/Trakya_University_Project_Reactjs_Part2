@@ -15,7 +15,6 @@ const Profile = () => {
         <Box
           className="container d-flex flex-row justify-content-center align-items-center p-5 "
           gap={10}
-          my={100}
         >
           {/*==================-Profile User Card================ */}
 

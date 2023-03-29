@@ -1,21 +1,29 @@
 import React from "react";
-import { VStack, FormControl, FormLabel } from "@chakra-ui/react";
+import {
+  VStack,
+  FormControl,
+  FormLabel,
+  InputGroup,
+  InputLeftAddon,
+  Input,
+  useDisclosure,
+} from "@chakra-ui/react";
 import Selects from "../../../components/shared/select/Selects";
 import Buttons from "../../../components/shared/button/Button";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import { FcConferenceCall, FcCalendar, FcClock } from "react-icons/fc";
+import ReserveModal from "./ReserveModal";
+import { toast, ToastContainer } from "react-toastify";
 
-const Form = () => {
+const Form = ({ restaurantInfo }) => {
+  //?===================INPUT VALUES======================
 
-  //*------------------DatePicker için özel state--------------
+  const [form, setForm] = React.useState({
+    kisiSayisi: "",
+    tarih: "",
+    saat: "",
+  });
 
-  const [selectedDate, setSelectedDate] = React.useState(null);
-
-  //*--------------Masa Ayirt butona basildiğinda--------------
-
-  const handleSubmit = () => {};
-
-  //*-------------Buraya kişiler ve saatler statei al----------
+  //*================Buraya kişiler ve saatler statei al==========
   const kisiSayisi = [
     { value: "2", label: "2" },
     { value: "3", label: "3" },
@@ -33,66 +41,108 @@ const Form = () => {
     { value: "15:30", label: "15:30" },
   ];
 
+  //*=======================RESERVE MODAL SETUPS======================
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  //*=======================RESERVE INPUT ONCHANGE====================
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  //*================Masa Ayirt butona basildiğinda===============
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (form.kisiSayisi === "" || form.tarih === "" || form.saat === "")
+      return toast.warn("Alanlar Boş Olamaz!", {
+        position: "top-center",
+        autoClose: 1500,
+      });
+
+    onOpen();
+  };
+
   return (
     <React.Fragment>
-      {/*----------------------Form container----------------- */}
+      {/*=====================FORM CONTAİNER=================*/}
       <VStack
         as="form"
-        w={["90%", "100%", "90%", "30%", "25%"]}
         borderRadius={5}
+        w="100%"
         p={10}
+        h={400}
         justifyContent="center"
         alignItems="center"
+        bg="blackAlpha.300"
       >
-        {/*------------------Kişi sayısı input-----------------*/}
+        {/*=====================KİŞİ SAYISI====================*/}
         <FormControl>
           <FormLabel fontSize={16}>Kişi Sayisi</FormLabel>
-          <Selects
-            name="kisiSayisi"
-            options={kisiSayisi}
-            width="100%"
-            placeholder="Seçiniz"
-            background='#fff'
-            outline="none"
-            border="none"
-            fontsize={16}
-          />
+          <InputGroup>
+            <InputLeftAddon children={<FcConferenceCall />} />
+            <Selects
+              name="kisiSayisi"
+              options={kisiSayisi}
+              value={form.kisiSayisi}
+              onchange={handleChange}
+              width="100%"
+              placeholder="Seçiniz"
+              background="#fff"
+              outline="none"
+              border="none"
+              fontsize={16}
+            />
+          </InputGroup>
         </FormControl>
 
-        {/*------------------------tarih input----------------- */}
+        {/*=====================TARİH INPUT====================*/}
         <FormControl>
           <FormLabel fontSize={16}>Tarih</FormLabel>
 
-          <DatePicker
-            name="tarih"
-            className="date-peeker"
-            placeholderText="Seçiniz"
-            selected={selectedDate}
-            onChange={(date) => setSelectedDate(date)}
-            minDate={new Date()}
-            dateFormat="dd/MM/yyyy"
-          />
+          <InputGroup>
+            <InputLeftAddon children={<FcCalendar />} />
+
+            <Input
+              name="tarih"
+              type="date"
+              value={form.tarih}
+              onChange={handleChange}
+              width="100%"
+              background="#fff"
+              outline="none"
+              border="none"
+              fontSize={16}
+              borderLeftRadius="none"
+            />
+          </InputGroup>
         </FormControl>
 
-        {/*------------------------saat input----------------- */}
+        {/*=====================SAAT INPUT====================*/}
         <FormControl>
           <FormLabel fontSize={16}>Saat</FormLabel>
-          <Selects
-            name="saat"
-            options={saatler}
-            background='#fff'
-            // background="#ddd"
-            outline="none"
-            border="none"
-            placeholder="Seçiniz"
-            fontsize={16}
-          />
+          <InputGroup>
+            <InputLeftAddon children={<FcClock />} />
+            <Selects
+              name="saat"
+              value={form.saat}
+              onchange={handleChange}
+              options={saatler}
+              background="#fff"
+              outline="none"
+              border="none"
+              placeholder="Seçiniz"
+              fontsize={16}
+            />
+          </InputGroup>
         </FormControl>
 
-        {/*---------------------Masa Ayirt Button------------ */}
-        <FormControl pt={10}>
+        {/*==================MASA AYIRT BUTONU==================*/}
+        <FormControl pt={5}>
           <Buttons
-            title="Masa Ayirtmak istiyorum"
+            title="Masa Ayirt"
             width="100%"
             background="#FF5B5B"
             color="#fff"
@@ -101,7 +151,19 @@ const Form = () => {
             onclick={handleSubmit}
           />
         </FormControl>
+
+        <ToastContainer />
       </VStack>
+
+      {/*=====================RESERVE MODAL====================*/}
+
+      <ReserveModal
+        close={onClose}
+        open={isOpen}
+        reserveForm={form}
+        setReserveForm={setForm}
+        restaurantInfo={restaurantInfo}
+      />
     </React.Fragment>
   );
 };

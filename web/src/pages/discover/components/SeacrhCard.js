@@ -20,10 +20,11 @@ import {
   FcSportsMode,
 } from "react-icons/fc";
 import { useFormik } from "formik";
+import { ToastContainer, toast } from "react-toastify";
 
 const SeacrhCard = () => {
-  
-  //?=============TAKE INPUT VALUES===========
+
+  //*=====================INPUT İÇERİĞİNİ AL=====================
 
   const { values, handleSubmit, handleChange } = useFormik({
     initialValues: {
@@ -32,30 +33,34 @@ const SeacrhCard = () => {
       saat: "",
     },
 
-    onSubmit: (values) => {
-      
-      //?============EĞER INPUTLAR BOŞ İSE BİŞEY YAPMA===========
+    //*======================BUTONA BASILDIĞINDA===================
 
-      if (values.kisiSayisi === '' || values.saat === '' || values.tarih === '') return false
+    onSubmit: (values, action) => {
+      //*====================EĞER INPUTLAR BOŞ İSE=================
 
-      console.log(values)
+      if (values.kisiSayisi === "" || values.saat === "" || values.tarih === "")
+        return toast.warn("Alanlari Doldurnuz! ", {
+          position: "top-center",
+          autoClose: 1600,
+        });
 
-
-
-
+      //*====================INPUTLARI TEMZİLE=====================
+      action.resetForm();
     },
   });
 
-  //?=============BUTTON COMPONENTS===========
+  //*=========================BUTTON COMPONENTS====================
 
   const Buttons = ({ icon, title }) => {
     return (
       <Button
-        bg="#ddd"
+        variant="outline"
         size="xs"
         w="100%"
         fontWeight="regular"
         rightIcon={icon}
+        borderRadius={10}
+        borderColor="rgba(0,0,0,0.4)"
       >
         {title}
       </Button>
@@ -64,6 +69,10 @@ const SeacrhCard = () => {
 
   return (
     <React.Fragment>
+      {/*=====================ALERT CONTAİNER==================== */}
+      <ToastContainer />
+
+      {/*=====================SEARCH CARD CONTAİNER==================== */}
       <Box
         bg="#fff"
         boxShadow="rgb(51 51 51 / 10%) 0px 1px 4px"
@@ -72,6 +81,7 @@ const SeacrhCard = () => {
         w={["100%", "100%", "100%", "100%"]}
       >
         {/*=====================SEARCH CARD TITLE==================== */}
+
         <Box mb={5} w="100%">
           <Heading
             fontWeight="semibold"
@@ -87,7 +97,7 @@ const SeacrhCard = () => {
           mb="15px"
           color="orange"
         >
-          Filtrele :
+          Masa Bul :
         </Heading>
 
         {/*=====================SEARCH CARD INPUTS==================== */}
@@ -129,7 +139,7 @@ const SeacrhCard = () => {
             </Select>
           </InputGroup>
 
-          {/*===================TARİH================= */}
+          {/*========================TARİH======================*/}
 
           <InputGroup>
             <InputLeftAddon
@@ -153,7 +163,7 @@ const SeacrhCard = () => {
             />
           </InputGroup>
 
-          {/*===================SAAT================= */}
+          {/*========================SAAT======================*/}
 
           <InputGroup>
             <InputLeftAddon
@@ -189,7 +199,7 @@ const SeacrhCard = () => {
             </Select>
           </InputGroup>
 
-          {/*===================ARAMA BUTONU================= */}
+          {/*========================ARAMA BUTONU======================*/}
 
           <InputGroup>
             <Button
@@ -206,20 +216,23 @@ const SeacrhCard = () => {
           </InputGroup>
         </VStack>
 
-        {/*===================FİLTRELEME BUTONLARI================= */}
+        {/*========================FİLTERELEME BUTONLARI=================*/}
         <Stack
           direction={["column", "column", "column", "row"]}
           alignItems="center"
-          pt={10}
+          py={5}
+          w={["100%", "100%", "100%", "50%"]}
         >
           <Buttons icon={<FcLike />} title="En iyisi" />
           <Buttons icon={<FcSportsMode />} title="En Yakın" />
           <Buttons icon={<FcRating />} title="Aile Dostu" />
         </Stack>
 
-        {/*===================AÇIKLAMA TEXT================= */}
-        <Stack py={10}>
-          <Text px={5} fontSize={13} textAlign="center">
+        <hr />
+
+        {/*========================AÇIKLAMA TEXTİ===================== */}
+        <Stack py={5}>
+          <Text px={6} fontSize={12} textAlign="center">
             Edirne bölgesindeki en iyi restoranlari mi ariyorsun? Kahvalti, öğle
             ve akşam yemeği için dİşarida yiyebileceğin en iyi yerleri senin
             için derledik. İstanbul bölgesindeki en iyi restoranlari keşfetmeye

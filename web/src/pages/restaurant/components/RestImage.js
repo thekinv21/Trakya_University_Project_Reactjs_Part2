@@ -1,10 +1,12 @@
-import { Image, Box } from "@chakra-ui/react";
 import React from "react";
-import SlideImage from "../../../components/slider/SlideImage";
+import { Image, Box } from "@chakra-ui/react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation } from "swiper";
+import "swiper/css";
+import "swiper/css/navigation";
 
 const RestaurantImage = ({ restaurantInfo }) => {
-  
-  //*-----------------Buraya Tikladiğimiz Restoranin fotolari gelmesi lazim-------------
+  //*========================Buraya Tikladiğimiz Restoranin fotolari gelmesi lazim==============
   const images = [
     "https://images.pexels.com/photos/735869/pexels-photo-735869.jpeg?auto=compress&cs=tinysrgb&w=1600",
     "https://images.pexels.com/photos/67468/pexels-photo-67468.jpeg?auto=compress&cs=tinysrgb&w=1600",
@@ -13,20 +15,39 @@ const RestaurantImage = ({ restaurantInfo }) => {
 
   return (
     <React.Fragment>
-      <Box w={["90%", "90%", "80%", "40%", "30%"]}>
-        {/*-------------------Restaurant Images Slider------------------ */}
-        <SlideImage>
-          {images.map((image, index) => (
-            <Image
-              draggable="false"
-              maxW="100%"
-              borderRadius={5}
-              objectFit="contain"
+      <Box w="760px" maxW="100%">
+        {/*================= MAİN SWIPER================ */}
+        <Swiper
+          navigation={true}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
+          modules={[Navigation, Autoplay]}
+        >
+          {/*=================SWIPER IMAGES MAP================ */}
+
+          {images.map((img, index) => (
+            <SwiperSlide
               key={index}
-              src={image}
-            />
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              {/*=================SWIPE IMAGE================ */}
+              <Image
+                draggable="false"
+                maxW="100%"
+                w="630px"
+                borderRadius={5}
+                objectFit="contain"
+                src={img}
+              />
+            </SwiperSlide>
           ))}
-        </SlideImage>
+        </Swiper>
       </Box>
     </React.Fragment>
   );
