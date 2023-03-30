@@ -18,6 +18,8 @@ import Buttons from "../../../components/shared/button/Button";
 import { FcConferenceCall, FcCalendar, FcClock } from "react-icons/fc";
 import { toast, ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addReservation } from "../../../redux/RestaurantSlicer";
 
 const ReserveModal = ({
   close,
@@ -26,21 +28,27 @@ const ReserveModal = ({
   restaurantInfo,
   setReserveForm,
 }) => {
+  //*=======REDUX FONKSYONU KULLANMAK İÇİN===========
+
+  const dispatch = useDispatch();
+
+  //*=================NAVİGATİON SETUP===============
+
   const navigate = useNavigate();
 
   //*===========RESERVE EDEN KİŞİ BİLGİLERİ==========
 
-  const [form, setForm] = React.useState({
+  const [reservedPeople, setReservedPeople] = React.useState({
     firstname: "",
     lastname: "",
     phone_number: "",
-    yer: "",
+    comment: "",
   });
 
   //*==============RESERVE INPUT DEĞİŞİRSE============
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    setReservedPeople({ ...reservedPeople, [e.target.name]: e.target.value });
   };
 
   //*=============RESERVE BUTTONA BASILIRSA===========
@@ -50,10 +58,10 @@ const ReserveModal = ({
 
     //*==========EĞER HERHANGİ INPUT BOŞ İSE==========
     if (
-      form.firstname === "" ||
-      form.lastname === "" ||
-      form.phone_number === "" ||
-      form.yer === ""
+      reservedPeople.firstname === "" ||
+      reservedPeople.lastname === "" ||
+      reservedPeople.phone_number === "" ||
+      reservedPeople.comment === ""
     )
       return toast.warn("Bütün Alanlari Doldurunuz!", {
         position: "top-center",
@@ -63,6 +71,24 @@ const ReserveModal = ({
     //*==============REZERVE MODALI KAPAT=============
     close();
 
+    //*==============REZERVE LİSTESİNE EKLE===========
+
+    dispatch(
+      addReservation({
+        restaurantName: restaurantInfo.restaurantName,
+        restaurantAddress: restaurantInfo.detailedAddress,
+        restaurantImage: restaurantInfo.restaurantImage,
+        reservedPeopleName: reservedPeople.firstname,
+        reservedPeopleSurname: reservedPeople.lastname,
+        reservedPeoplePhone: reservedPeople.phone_number,
+        reservedPeopleComment: reservedPeople.comment,
+        reserveId: reserveForm.reserveId,
+        reserveDate: reserveForm.reserveDate,
+        reserveTime: reserveForm.reserveTime,
+        reservePeoples: reserveForm.reservePeoples,
+      })
+    );
+
     //*==============REZERVE EDİLDİ ALERT=============
 
     toast.success("Rezerve Edildi!", {
@@ -70,18 +96,26 @@ const ReserveModal = ({
       autoClose: 1600,
     });
 
-    console.log(form)
-
-    //*==============NAVİGATE MAİN PAGE=============
+    //*==============REZERVE SAYFASINA GEÇ=============
 
     setTimeout(() => {
-      navigate("/main");
+      navigate("#");
     }, 2500);
 
     //*==============INPUTLARI TEMİZLE==============
 
-    setForm({ firstname: "", lastname: "", phone_number: "" });
-    setReserveForm({ kisiSayisi: "", tarih: "", saat: "" });
+    setReservedPeople({
+      firstname: "",
+      lastname: "",
+      phone_number: "",
+      comment: "",
+    });
+    setReserveForm({
+      reserveId: "",
+      reservePeoples: "",
+      reserveDate: "",
+      reserveTime: "",
+    });
   };
 
   return (
@@ -92,7 +126,7 @@ const ReserveModal = ({
       <Modal isOpen={open} onClose={close} isCentered>
         <ModalOverlay />
 
-        <ModalContent bg="#d0d0d0">
+        <ModalContent>
           {/*=======================RESERVE MODAL TİTLE=================== */}
 
           <ModalHeader textAlign="center" fontSize={15} fontWeight={400}>
@@ -105,10 +139,10 @@ const ReserveModal = ({
 
           {/*=======================RESERVE MODAL CONTENT================== */}
           <ModalBody>
-            <Box bg="whiteAlpha.300" borderRadius={5} p={2}>
+            <Box borderRadius={5} p={2}>
               {/*===================RESERVE RESTAURANT TİTLE================*/}
 
-              <Text fontSize={14} fontWeight={500} color="orange" pl={2}>
+              <Text fontSize={14} fontWeight={500} pl={2}>
                 {restaurantInfo.restaurantName}
               </Text>
 
@@ -126,7 +160,7 @@ const ReserveModal = ({
                   justifyContent="center"
                 >
                   <FcConferenceCall fontSize={20} />
-                  <Text fontSize={14}>{reserveForm.kisiSayisi}</Text>
+                  <Text fontSize={14}>{reserveForm.reservePeoples}</Text>
                 </Stack>
 
                 {/*================RESERVE RESTAURANT TARİH=================*/}
@@ -137,7 +171,7 @@ const ReserveModal = ({
                   justifyContent="center"
                 >
                   <FcCalendar />
-                  <Text fontSize={14}>{reserveForm.tarih}</Text>
+                  <Text fontSize={14}>{reserveForm.reserveDate}</Text>
                 </Stack>
 
                 {/*================RESERVE RESTAURANT SAAT===================*/}
@@ -147,7 +181,7 @@ const ReserveModal = ({
                   justifyContent="center"
                 >
                   <FcClock />
-                  <Text fontSize={14}>{reserveForm.saat}</Text>
+                  <Text fontSize={14}>{reserveForm.reserveTime}</Text>
                 </Stack>
               </Stack>
             </Box>
@@ -158,33 +192,29 @@ const ReserveModal = ({
 
             {/*================RESERVE EDEN KİŞİ BİLGİLERİ===================*/}
 
-            <VStack bg="#ddd" p={10} borderRadius={5} gap={5}>
+            <VStack p={5} borderRadius={5} gap={5}>
               <Stack direction="row" w="full" gap={5}>
                 {/*================RESERVE EDEN KİŞİ ADİ===================*/}
                 <Input
                   name="firstname"
-                  value={form.firstname}
+                  value={reservedPeople.firstname}
                   onChange={handleChange}
                   placeholder="Adiniz"
                   fontSize={14}
-                  size="sm"
                   _placeholder={{ color: "#000", fontSize: "12px" }}
-                  borderColor="orange"
-                  variant="flushed"
+                  borderColor="#c1c1c1"
                   autoComplete="off"
                 />
 
                 {/*================RESERVE EDEN KİŞİ SOYADI===================*/}
                 <Input
                   name="lastname"
-                  value={form.lastname}
+                  value={reservedPeople.lastname}
                   onChange={handleChange}
                   placeholder="Soyadiniz"
                   fontSize={14}
-                  size="sm"
                   _placeholder={{ color: "#000", fontSize: "12px" }}
-                  borderColor="orange"
-                  variant="flushed"
+                  borderColor="#c1c1c1"
                   autoComplete="off"
                 />
               </Stack>
@@ -194,27 +224,23 @@ const ReserveModal = ({
               <Stack w="full" direction="column" gap={5}>
                 <Input
                   name="phone_number"
-                  value={form.phone_number}
+                  value={reservedPeople.phone_number}
                   onChange={handleChange}
                   placeholder="Cep Telefon"
-                  fontSize={14}
-                  borderLeftRadius="none"
-                  size="sm"
+                  fontSize={15}
+                  borderColor="#c1c1c1"
                   _placeholder={{ color: "#000", fontSize: "12px" }}
-                  borderColor="orange"
-                  variant="flushed"
                   autoComplete="off"
                 />
                 {/*================RESERVE EDEN KİŞİ YER SEÇİMİ===================*/}
                 <Select
-                  name="yer"
-                  value={form.yer}
+                  name="comment"
+                  value={reservedPeople.comment}
                   onChange={handleChange}
                   placeholder="Yer Seçiniz"
-                  fontSize={13}
-                  _placeholder={{ color: "#000", fontSize: "12px" }}
-                  borderColor="orange"
-                  variant="flushed"
+                  fontSize={15}
+                  borderColor="#c1c1c1"
+                  _placeholder={{ fontSize: "12px" }}
                 >
                   <option value="Cam Kenari">Cam Kenari</option>
                   <option value="Ortada">Ortada</option>

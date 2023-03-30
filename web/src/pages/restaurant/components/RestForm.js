@@ -15,12 +15,23 @@ import ReserveModal from "./ReserveModal";
 import { toast, ToastContainer } from "react-toastify";
 
 const Form = ({ restaurantInfo }) => {
+  //?==================UNİQUE RESERVE ID=================
+
+  function generateUniqueId() {
+    const randomNumber = Math.random() * 1000000000;
+    const uniqueId = Math.round(randomNumber);
+    return uniqueId;
+  }
+
+  const uniqueId = generateUniqueId();
+
   //?===================INPUT VALUES======================
 
   const [form, setForm] = React.useState({
-    kisiSayisi: "",
-    tarih: "",
-    saat: "",
+    reserveId: uniqueId,
+    reservePeoples: "",
+    reserveDate: "",
+    reserveTime: "",
   });
 
   //*================Buraya kişiler ve saatler statei al==========
@@ -45,18 +56,22 @@ const Form = ({ restaurantInfo }) => {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  //*=======================RESERVE INPUT ONCHANGE====================
+  //*=======================RESERVE INPUT DEĞİŞTİĞİNDE================
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  //*================Masa Ayirt butona basildiğinda===============
+  //*================MASA AYIRT BUTONUNA BASİDİĞİNDA===============
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (form.kisiSayisi === "" || form.tarih === "" || form.saat === "")
+    if (
+      form.reservePeoples === "" ||
+      form.reserveDate === "" ||
+      form.reserveTime === ""
+    )
       return toast.warn("Alanlar Boş Olamaz!", {
         position: "top-center",
         autoClose: 1500,
@@ -84,9 +99,9 @@ const Form = ({ restaurantInfo }) => {
           <InputGroup>
             <InputLeftAddon children={<FcConferenceCall />} />
             <Selects
-              name="kisiSayisi"
+              name="reservePeoples"
               options={kisiSayisi}
-              value={form.kisiSayisi}
+              value={form.reservePeoples}
               onchange={handleChange}
               width="100%"
               placeholder="Seçiniz"
@@ -106,9 +121,9 @@ const Form = ({ restaurantInfo }) => {
             <InputLeftAddon children={<FcCalendar />} />
 
             <Input
-              name="tarih"
+              name="reserveDate"
               type="date"
-              value={form.tarih}
+              value={form.reserveDate}
               onChange={handleChange}
               width="100%"
               background="#fff"
@@ -126,8 +141,8 @@ const Form = ({ restaurantInfo }) => {
           <InputGroup>
             <InputLeftAddon children={<FcClock />} />
             <Selects
-              name="saat"
-              value={form.saat}
+              name="reserveTime"
+              value={form.reserveTime}
               onchange={handleChange}
               options={saatler}
               background="#fff"
