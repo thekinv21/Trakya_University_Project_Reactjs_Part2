@@ -5,7 +5,7 @@ import axios from 'axios'
 //========== GET RESTAURANT ============
 const getRestaurant = async () => {
     const response = await axios.get(END_POINTS.RESTAURANT_CONTROLLER.GET_RESTAURANT)
-    return response.data
+    return response.data.content
 }
 
 export const useGetRestaurant = () => {
@@ -17,7 +17,7 @@ export const useGetRestaurant = () => {
 const getRestaurantById = async (id) => {
     const URL = END_POINTS.RESTAURANT_CONTROLLER.GET_RESTAURANT_BY_ID.replace(':id', id)
     const response = await axios.get(URL)
-    return response.data
+    return response.data.content
 }
 
 export const useGetRestaurantById = (id) => {

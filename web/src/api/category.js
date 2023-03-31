@@ -8,7 +8,7 @@ const Token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2YWRpbSIsImlzcyI6
 //========== GET CATEGORY ============
 const getCategory = async () => {
     const response = await axios.get(END_POINTS.CATEGORY_CONTROLLER.GET_CATEGORY , { headers: {"Authorization" : 'Bearer '  +  Token}})
-    return response.data
+    return response.data.content
 }
 
 export const useGetCategory = () => {
@@ -20,7 +20,7 @@ export const useGetCategory = () => {
 const getCategoryById = async (id) => {
     const URL = END_POINTS.CATEGORY_CONTROLLER.GET_CATEGORY_BY_ID.replace(':id',id)
     const response = await axios.get(URL)
-    return response.data
+    return response.data.content
 }
 
 export const useGetCategoryById = (id) => {
