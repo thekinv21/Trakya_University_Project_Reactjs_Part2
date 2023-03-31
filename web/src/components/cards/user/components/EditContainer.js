@@ -15,6 +15,7 @@ const EditContainer = ({ children }) => {
         flexDirection="column"
         justifyContent="center"
         alignItems="center"
+        bg='blackAlpha.300'
       >
         {children}
       </Card>

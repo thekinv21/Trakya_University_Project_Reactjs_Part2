@@ -13,7 +13,7 @@ const Profile = () => {
         {/*==============RESPONSİVE DEVİCES================*/}
 
         <Box
-          className="container d-flex flex-row justify-content-center align-items-center p-5 "
+          className="container d-flex flex-row justify-content-center p-5 "
           gap={10}
         >
           {/*==================-Profile User Card================ */}
