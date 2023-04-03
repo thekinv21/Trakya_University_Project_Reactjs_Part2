@@ -53,13 +53,13 @@ const RestItem = () => {
                 top={2}
                 right={2}
                 rounded="100%"
-                bg="none"
                 aria-label="Add to Favori"
-                color="orange"
                 fontWeight={900}
                 fontSize={25}
+                bg="orange.300"
+                color="#ddd"
                 icon={<AiOutlineHeart />}
-                _hover={{ bg: "orange.100" }}
+                _hover={{ bg: "orange.400" }}
               />
 
               {/*====================REST LOCATİON==================== */}
@@ -107,7 +107,9 @@ const RestItem = () => {
                     <StarIcon
                       key={index}
                       color={
-                        index < restaurant.starCount ? "teal.500" : "gray.300"
+                        parseFloat(index) > restaurant.starCount
+                          ? "teal.500"
+                          : "gray.300"
                       }
                     />
                   ))}
