@@ -8,6 +8,7 @@ import Profile from "../pages/profile/Profile";
 import Reset from "../pages/resetPassword/Reset";
 import Restaurant from "../pages/restaurant/Restaurant";
 import Discover from "../pages/discover/Discover";
+import Reservations from '../pages/reservations/Reservations';
 
 const Routers = () => {
   return (
@@ -23,6 +24,7 @@ const Routers = () => {
           <Route path="/reset" element={<Reset />} />
           <Route path="/restaurant/:id" element={<Restaurant />} />
           <Route path="/discover" element={<Discover />} />
+          <Route path='/reservations' element={<Reservations/>}/>
         </Routes>
       </BrowserRouter>
     </React.Fragment>
