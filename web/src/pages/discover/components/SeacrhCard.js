@@ -10,6 +10,7 @@ import {
   Button,
   Stack,
   Text,
+  Card,
 } from "@chakra-ui/react";
 import {
   FcConferenceCall,
@@ -23,7 +24,6 @@ import { useFormik } from "formik";
 import { ToastContainer, toast } from "react-toastify";
 
 const SeacrhCard = () => {
-
   //*=====================INPUT İÇERİĞİNİ AL=====================
 
   const { values, handleSubmit, handleChange } = useFormik({
@@ -55,12 +55,13 @@ const SeacrhCard = () => {
     return (
       <Button
         variant="outline"
-        size="xs"
         w="100%"
+        size="md"
         fontWeight="regular"
+        fontSize={13}
         rightIcon={icon}
-        borderRadius={10}
-        borderColor="rgba(0,0,0,0.4)"
+        borderRadius={18}
+        _hover={{ bg: "gray.200" }}
       >
         {title}
       </Button>
@@ -73,12 +74,15 @@ const SeacrhCard = () => {
       <ToastContainer />
 
       {/*=====================SEARCH CARD CONTAİNER==================== */}
-      <Box
+      <Card
+        w={["100%", "100%", "100%", "880px"]}
+        p={10}
+        overflow="hidden"
         bg="#fff"
         boxShadow="rgb(51 51 51 / 10%) 0px 1px 4px"
-        borderRadius={10}
-        p={5}
-        w={["100%", "100%", "100%", "100%"]}
+        justifyContent="center"
+        borderRadius={18}
+        mb={5}
       >
         {/*=====================SEARCH CARD TITLE==================== */}
 
@@ -220,7 +224,7 @@ const SeacrhCard = () => {
         <Stack
           direction={["column", "column", "column", "row"]}
           alignItems="center"
-          py={5}
+          py={8}
           w={["100%", "100%", "100%", "50%"]}
         >
           <Buttons icon={<FcLike />} title="En iyisi" />
@@ -243,7 +247,7 @@ const SeacrhCard = () => {
         </Stack>
 
         {/*========================FAVORI RESTORANLARI LİSTESİ===================== */}
-      </Box>
+      </Card>
     </React.Fragment>
   );
 };

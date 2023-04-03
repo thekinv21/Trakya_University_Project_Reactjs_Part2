@@ -25,6 +25,7 @@ const FilterCard = () => {
         spacing={5}
         display={["none", "none", "none", "block"]}
         maxW={300}
+        boxShadow="rgb(51 51 51 / 10%) 0px 1px 4px"
       >
         {/*==================MAP PNG================ */}
 
