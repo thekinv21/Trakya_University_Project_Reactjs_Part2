@@ -4,7 +4,6 @@ import {
   ModalOverlay,
   ModalContent,
   ModalHeader,
-  ModalFooter,
   ModalBody,
   ModalCloseButton,
   Stack,
@@ -20,6 +19,7 @@ import { toast, ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addReservation } from "../../../redux/RestaurantSlicer";
+import { useFormik } from "formik";
 
 const ReserveModal = ({
   close,
@@ -36,124 +36,114 @@ const ReserveModal = ({
 
   const navigate = useNavigate();
 
-  //*===========RESERVE EDEN KİŞİ BİLGİLERİ==========
+  //*=================USEFORMİK SETUP===============
 
-  const [reservedPeople, setReservedPeople] = React.useState({
-    firstname: "",
-    lastname: "",
-    phone_number: "",
-    comment: "",
-  });
-
-  //*==============RESERVE INPUT DEĞİŞİRSE============
-
-  const handleChange = (e) => {
-    setReservedPeople({ ...reservedPeople, [e.target.name]: e.target.value });
-  };
-
-  //*=============RESERVE BUTTONA BASILIRSA===========
-
-  const handleClick = (e) => {
-    e.preventDefault();
-
-    //*==========EĞER HERHANGİ INPUT BOŞ İSE==========
-    if (
-      reservedPeople.firstname === "" ||
-      reservedPeople.lastname === "" ||
-      reservedPeople.phone_number === "" ||
-      reservedPeople.comment === ""
-    )
-      return toast.warn("Bütün Alanlari Doldurunuz!", {
-        position: "top-center",
-        autoClose: 1500,
-      });
-
-    //*==============REZERVE MODALI KAPAT=============
-    close();
-
-    //*==============REZERVE LİSTESİNE EKLE===========
-
-    dispatch(
-      addReservation({
-        restaurantName: restaurantInfo.restaurantName,
-        restaurantAddress: restaurantInfo.detailedAddress,
-        restaurantImage: restaurantInfo.restaurantImage,
-        reservedPeopleName: reservedPeople.firstname,
-        reservedPeopleSurname: reservedPeople.lastname,
-        reservedPeoplePhone: reservedPeople.phone_number,
-        reservedPeopleComment: reservedPeople.comment,
-        reserveId: reserveForm.reserveId,
-        reserveDate: reserveForm.reserveDate,
-        reserveTime: reserveForm.reserveTime,
-        reservePeoples: reserveForm.reservePeoples,
-      })
-    );
-
-    //*==============REZERVE EDİLDİ ALERT=============
-
-    toast.success("Rezerve Edildi!", {
-      position: "top-center",
-      autoClose: 1600,
-    });
-
-    //*==============REZERVE SAYFASINA GEÇ=============
-
-    setTimeout(() => {
-      navigate("#");
-    }, 2500);
-
-    //*==============INPUTLARI TEMİZLE==============
-
-    setReservedPeople({
+  const { values, handleChange, handleSubmit } = useFormik({
+    //*===========RESERVE EDEN KİŞİ BİLGİLERİ==========
+    initialValues: {
       firstname: "",
       lastname: "",
       phone_number: "",
       comment: "",
-    });
-    setReserveForm({
-      reserveId: "",
-      reservePeoples: "",
-      reserveDate: "",
-      reserveTime: "",
-    });
-  };
+    },
+
+    //*=============RESERVE BUTTONA BASILIRSA===========
+
+    onSubmit: (values, action) => {
+      //*==========EĞER HERHANGİ INPUT BOŞ İSE==========
+      if (
+        values.firstname === "" ||
+        values.lastname === "" ||
+        values.phone_number === "" ||
+        values.comment === ""
+      )
+        return toast.warn("Bütün Alanlari Doldurunuz!", {
+          position: "top-center",
+          autoClose: 1500,
+        });
+
+      //*==============REZERVE MODALI KAPAT=============
+
+      close();
+
+      //*==============REZERVE LİSTESİNE EKLE===========
+
+      dispatch(
+        addReservation({
+          restaurantName: restaurantInfo.restaurantName,
+          restaurantAddress: restaurantInfo.detailedAddress,
+          restaurantImage: restaurantInfo.restaurantImage,
+          reservedPeopleName: values.firstname,
+          reservedPeopleSurname: values.lastname,
+          reservedPeoplePhone: values.phone_number,
+          reservedPeopleComment: values.comment,
+          reserveId: reserveForm.reserveId,
+          reserveDate: reserveForm.reserveDate,
+          reserveTime: reserveForm.reserveTime,
+          reservePeoples: reserveForm.reservePeoples,
+        })
+      );
+
+      //*==============REZERVE EDİLDİ ALERT=============
+
+      toast.success("Rezerve Edildi!", {
+        position: "top-center",
+        autoClose: 1600,
+      });
+
+      //*==============REZERVE SAYFASINA GEÇ=============
+
+      setTimeout(() => {
+        navigate("/reservations");
+      }, 2500);
+
+      action.resetForm();
+
+      setReserveForm({
+        reserveId: "",
+        reservePeoples: "",
+        reserveDate: "",
+        reserveTime: "",
+      });
+    },
+  });
 
   return (
     <React.Fragment>
       <ToastContainer />
-      {/*======================RESERVE MODAL CONTAİNER==================== */}
+      {/*===================RESERVE MODAL CONTAİNER==============*/}
 
       <Modal isOpen={open} onClose={close} isCentered>
         <ModalOverlay />
 
         <ModalContent>
-          {/*=======================RESERVE MODAL TİTLE=================== */}
+          {/*=================RESERVE MODAL TİTLE==================*/}
 
           <ModalHeader textAlign="center" fontSize={15} fontWeight={400}>
             Rezervasyonu Tamamlayiniz
           </ModalHeader>
 
-          {/*=======================RESERVE MODAL CLOSE=================== */}
+          {/*====================RESERVE MODAL CLOSE================*/}
 
           <ModalCloseButton />
 
-          {/*=======================RESERVE MODAL CONTENT================== */}
+          {/*=================RESERVE MODAL CONTENT=================*/}
           <ModalBody>
             <Box borderRadius={5} p={2}>
-              {/*===================RESERVE RESTAURANT TİTLE================*/}
+              {/*=================RESERVE RESTAURANT TİTLE===========*/}
 
               <Text fontSize={14} fontWeight={500} pl={2}>
                 {restaurantInfo.restaurantName}
               </Text>
 
-              {/*=================RESERVE RESTAURANT INROMATION=============*/}
+              {/*=============RESERVE RESTAURANT INROMATION==========*/}
               <Stack
                 direction="row"
                 w="100%"
                 justifyContent="space-around"
                 py={5}
               >
-                {/*================RESERVE RESTAURANT KİŞİ SAYISI===========*/}
+                {/*============RESERVE RESTAURANT KİŞİ SAYISI=======*/}
                 <Stack
                   direction="row"
                   alignItems="center"
@@ -163,7 +153,7 @@ const ReserveModal = ({
                   <Text fontSize={14}>{reserveForm.reservePeoples}</Text>
                 </Stack>
 
-                {/*================RESERVE RESTAURANT TARİH=================*/}
+                {/*===========RESERVE RESTAURANT TARİH=============*/}
 
                 <Stack
                   direction="row"
@@ -174,7 +164,7 @@ const ReserveModal = ({
                   <Text fontSize={14}>{reserveForm.reserveDate}</Text>
                 </Stack>
 
-                {/*================RESERVE RESTAURANT SAAT===================*/}
+                {/*=============RESERVE RESTAURANT SAAT=============*/}
                 <Stack
                   direction="row"
                   alignItems="center"
@@ -190,78 +180,83 @@ const ReserveModal = ({
               Şununla Devam Et
             </ModalHeader>
 
-            {/*================RESERVE EDEN KİŞİ BİLGİLERİ===================*/}
+            {/*=============RESERVE EDEN KİŞİ BİLGİLERİ===============*/}
 
-            <VStack p={5} borderRadius={5} gap={5}>
+            <VStack
+              as="form"
+              p={5}
+              borderRadius={5}
+              gap={5}
+              onSubmit={handleSubmit}
+            >
               <Stack direction="row" w="full" gap={5}>
-                {/*================RESERVE EDEN KİŞİ ADİ===================*/}
+                {/*===============RESERVE EDEN KİŞİ ADİ================*/}
                 <Input
                   name="firstname"
-                  value={reservedPeople.firstname}
+                  value={values.firstname}
                   onChange={handleChange}
                   placeholder="Adiniz"
                   fontSize={14}
-                  _placeholder={{ color: "#000", fontSize: "12px" }}
-                  borderColor="#c1c1c1"
+                  borderColor="#c2c2c2"
+                  _placeholder={{ color: "#000", fontSize: "13px" }}
                   autoComplete="off"
                 />
 
-                {/*================RESERVE EDEN KİŞİ SOYADI===================*/}
+                {/*================RESERVE EDEN KİŞİ SOYADI===============*/}
                 <Input
                   name="lastname"
-                  value={reservedPeople.lastname}
+                  value={values.lastname}
                   onChange={handleChange}
                   placeholder="Soyadiniz"
+                  borderColor="#c2c2c2"
                   fontSize={14}
-                  _placeholder={{ color: "#000", fontSize: "12px" }}
-                  borderColor="#c1c1c1"
+                  _placeholder={{ color: "#000", fontSize: "13px" }}
                   autoComplete="off"
                 />
               </Stack>
 
-              {/*================RESERVE EDEN KİŞİ NUMARASI===================*/}
+              {/*================RESERVE EDEN KİŞİ NUMARASI================*/}
 
               <Stack w="full" direction="column" gap={5}>
                 <Input
+                  type="tel"
                   name="phone_number"
-                  value={reservedPeople.phone_number}
+                  value={values.phone_number}
                   onChange={handleChange}
                   placeholder="Cep Telefon"
+                  borderColor="#c2c2c2"
                   fontSize={15}
-                  borderColor="#c1c1c1"
-                  _placeholder={{ color: "#000", fontSize: "12px" }}
+                  _placeholder={{ color: "#000", fontSize: "13px" }}
                   autoComplete="off"
                 />
-                {/*================RESERVE EDEN KİŞİ YER SEÇİMİ===================*/}
+                {/*================RESERVE EDEN KİŞİ YER SEÇİMİ==============*/}
                 <Select
                   name="comment"
-                  value={reservedPeople.comment}
+                  value={values.comment}
                   onChange={handleChange}
                   placeholder="Yer Seçiniz"
-                  fontSize={15}
-                  borderColor="#c1c1c1"
-                  _placeholder={{ fontSize: "12px" }}
+                  fontSize={13}
+                  borderColor="#c2c2c2"
+                  _placeholder={{ color: "#000", fontSize: "13px" }}
                 >
                   <option value="Cam Kenari">Cam Kenari</option>
                   <option value="Ortada">Ortada</option>
                   <option value="Kapiya Yakin">Kapiya Yakin</option>
                 </Select>
               </Stack>
+              {/*========================RESERVE ETME BUTTON===================*/}
+
+              <Buttons
+                title="Şimdi Rezervasyon Yap"
+                background="#FF6571"
+                color="#fff"
+                fontweight={100}
+                fontsize={13}
+                width="100%"
+                type="submit"
+              />
             </VStack>
           </ModalBody>
-
-          {/*===========================RESERVE ETME BUTTON=======================*/}
-          <ModalFooter>
-            <Buttons
-              title="Şimdi Rezervasyon Yap"
-              background="#FF6571"
-              color="#fff"
-              fontweight={100}
-              fontsize={13}
-              width="100%"
-              onclick={handleClick}
-            />
-          </ModalFooter>
         </ModalContent>
       </Modal>
     </React.Fragment>

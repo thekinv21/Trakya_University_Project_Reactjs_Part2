@@ -91,7 +91,7 @@ const Form = ({ restaurantInfo }) => {
         h={400}
         justifyContent="center"
         alignItems="center"
-        bg="blackAlpha.300"
+        bg='blackAlpha.300'
       >
         {/*=====================KİŞİ SAYISI====================*/}
         <FormControl>

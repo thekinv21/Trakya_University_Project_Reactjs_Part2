@@ -1,12 +1,11 @@
 import React from "react";
-import RestImage from "./components/RestImage";
-import RestAbout from "./components/RestAbout";
 import { useParams } from "react-router-dom";
 import { useGetRestaurantById } from "../../api/restaurant";
 import Container from "../../components/container/Container";
-import { Box } from "@chakra-ui/react";
+import { Box, Image } from "@chakra-ui/react";
 import RestForm from "./components/RestForm";
-import RestPuan from "./components/RestPuan";
+
+import RestTab from "./components/RestTab";
 
 const Restaurant = () => {
   //?====================Seçtiğimiz Restoranin id'si==================
@@ -41,17 +40,26 @@ const Restaurant = () => {
             justifyContent="center"
             gap={5}
           >
-            {/*=================Restaurant Fotolari================= */}
+            {/*=================Restaurant FOTO================= */}
 
-            <RestImage restaurantInfo={restaurantInfo} />
+            <Box
+              width={750}
+              maxW="100%"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Image
+                draggable={false}
+                maxW="100%"
+                objectFit="contain"
+                src={restaurantInfo.restaurantImage}
+              />
+            </Box>
 
-            {/*=====================Restaurant About==================*/}
+            {/*=================Restaurant Tab Header================= */}
 
-            <RestAbout restaurantInfo={restaurantInfo} />
-
-            {/*=====================Restaurant PUAN CARD==================*/}
-
-            <RestPuan />
+            <RestTab restaurantInfo={restaurantInfo} />
           </Box>
 
           {/*====================Restaurant Form=================== */}

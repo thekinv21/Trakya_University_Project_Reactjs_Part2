@@ -6,10 +6,9 @@ const RestPuan = () => {
   return (
     <Box
       spacing={5}
-      width={650}
       maxW="100%"
-      bg="blackAlpha.300"
       borderRadius={10}
+      bg="gray.200"
       p={5}
     >
       <Stack textAlign="start" spacing={5}>
