@@ -16,7 +16,7 @@ const EditPassword = () => {
         alignItems="center"
         justifyContent="center"
         w="100%"
-        bg="blackAlpha.300"
+        boxShadow="rgb(51 51 51 / 10%) 0px 1px 4px"
       >
         <Stack direction="column" w="80%" spacing={5} pb={5}>
           <Text pt={2}>Mevcut Şifreyi sifirla</Text>

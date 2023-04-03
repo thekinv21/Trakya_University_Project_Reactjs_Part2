@@ -26,7 +26,7 @@ const UserCard = ({ user }) => {
         maxW="300px"
         h="480px"
         display={["none", "none", "block", "block"]}
-        bg='blackAlpha.300'
+        boxShadow="rgb(51 51 51 / 10%) 0px 1px 4px"
       >
         <Stack h="100%" w="100%" justifyContent="center" alignItems="center">
           {/*================USER LOGO=============== */}
@@ -54,7 +54,7 @@ const UserCard = ({ user }) => {
                   fontSize="14px"
                   _hover={{
                     borderLeft: "8px solid rgb(248, 179, 51)",
-                    color: "#ddd",
+                    color: "orange",
                   }}
                 >
                   <ListItem pr={5}>{link.icon}</ListItem>
