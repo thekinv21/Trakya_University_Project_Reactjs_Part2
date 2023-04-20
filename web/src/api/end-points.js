@@ -1,4 +1,4 @@
-const BASE_URL = "http://192.168.1.25:8082"
+const BASE_URL = "http://192.168.0.186:8082"
 const REZZTORAN_AUTH_SERVICE = BASE_URL + "/api/auth" // cmd ipconfig yazıp kendi ip adresini yapıştır
 const REZZTORAN_USER_SERVICE = BASE_URL + "/api/user"
 const REZZTORAN_RESTAURANT_SERVICE = BASE_URL + "/api/restaurant"

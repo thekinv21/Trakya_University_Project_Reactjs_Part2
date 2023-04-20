@@ -9,8 +9,15 @@ import {
   Text,
   Button,
 } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
 const ReserveNotFound = () => {
+
+  //*================NAVİGATİON SETUP================
+  
+  const navigate = useNavigate()
+
+
   return (
     <React.Fragment>
       {/*=========================CARD CONTAİNER=======================*/}
@@ -47,6 +54,7 @@ const ReserveNotFound = () => {
               fontWeight="regular"
               fontSize="small"
               _hover={{ bg: "orange" }}
+              onClick={() => navigate('/discover')}
             >
               Restoranlari Keşfet
             </Button>

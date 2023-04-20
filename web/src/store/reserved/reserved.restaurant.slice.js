@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  reservedRestaurants: [
+  reserveds: [
     {
       restaurantName: "Yeni Bostanci",
       restaurantAddress: "Yeni Mahale Bostancida",
@@ -53,18 +53,17 @@ const initialState = {
       reservedPeopleComment: "Cam Kenari",
     },
   ],
-  favoriteRestaurants: [],
 };
 
-export const Restaurants = createSlice({
-  name: "Restaurants",
+export const reservedRestaurants = createSlice({
+  name: "ReservedRestaurants",
   initialState,
 
   reducers: {
     //*===================CREATE RESERVATİONS====================
 
     addReservation: (state, action) => {
-      state.reservedRestaurants = [
+      state.reserveds = [
         {
           restaurantName: action.payload.restaurantName,
           restaurantAddress: action.payload.restaurantAddress,
@@ -78,12 +77,20 @@ export const Restaurants = createSlice({
           reserveTime: action.payload.reserveTime,
           reservePeoples: action.payload.reservePeoples,
         },
-        ...state.reservedRestaurants,
+        ...state.reserveds,
       ];
+    },
+
+    //*===================DELETE RESERVATİONS====================
+
+    deleteReservation: (state, action) => {
+      state.reserveds = state.reserveds.filter(
+        (remove) => remove.reserveId !== action.payload
+      );
     },
   },
 });
 
-export const { addReservation } = Restaurants.actions;
-
-export default Restaurants.reducer
+export const { addReservation, deleteReservation } =
+  reservedRestaurants.actions;
+export default reservedRestaurants.reducer;

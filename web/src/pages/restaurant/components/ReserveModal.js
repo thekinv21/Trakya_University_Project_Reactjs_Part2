@@ -18,7 +18,7 @@ import { FcConferenceCall, FcCalendar, FcClock } from "react-icons/fc";
 import { toast, ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addReservation } from "../../../redux/RestaurantSlicer";
+import { addReservation } from "../../../store/reserved/reserved.restaurant.slice";
 import { useFormik } from "formik";
 
 const ReserveModal = ({

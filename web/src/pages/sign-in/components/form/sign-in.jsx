@@ -16,7 +16,7 @@ import SignWith from "../FormSignWith";
 import { useFormik } from "formik";
 import signInSchema from "../validation/sign-in";
 import { useDispatch } from "react-redux";
-import { setAuth } from "../../../../redux/AuthSlicer";
+import { setAuth } from "../../../../store/auth/auth.slice";
 import { useLogin } from "../../../../api/auth";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";

@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, Image, Stack, Heading, Text, Button } from "@chakra-ui/react";
-
+import { useDispatch } from "react-redux";
+import { deleteReservation } from "../../../store/reserved/reserved.restaurant.slice";
 const ReserveCard = ({
   reserveId,
   restaurantImage,
@@ -11,6 +12,10 @@ const ReserveCard = ({
   reservedPeoples,
   reservedPeopleComment,
 }) => {
+  //*==============USING REDUX FUNCT=================
+
+  const dispatch = useDispatch();
+
   return (
     <React.Fragment>
       {/*=====================CARD CONTAİNER======================*/}
@@ -86,6 +91,7 @@ const ReserveCard = ({
                 fontSize="small"
                 fontWeight={200}
                 size="sm"
+                onClick={() => dispatch(deleteReservation(reserveId))}
               >
                 İptal Et
               </Button>

@@ -11,7 +11,7 @@ const Reservations = () => {
   //*==================REZERVE EDİLEN RESTORANLARI LİSTESİ===================
 
   const reservedRestaurants = useSelector(
-    (state) => state.Restaurant.reservedRestaurants
+    (state) => state.Reserved.reserveds
   );
 
   return (
