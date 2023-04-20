@@ -27,4 +27,4 @@ const Maps = ({ width, height, restaurantInfo }) => {
   );
 };
 
-export default Maps;
+export default React.memo(Maps);

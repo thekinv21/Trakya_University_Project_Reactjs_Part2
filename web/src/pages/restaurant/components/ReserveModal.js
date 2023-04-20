@@ -94,7 +94,7 @@ const ReserveModal = ({
       //*==============REZERVE SAYFASINA GEÇ=============
 
       setTimeout(() => {
-        navigate("/reservations");
+        navigate("/main");
       }, 2500);
 
       action.resetForm();

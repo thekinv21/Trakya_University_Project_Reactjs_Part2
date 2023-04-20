@@ -1,7 +1,7 @@
 import React from "react";
 import Title from "../title/title";
 import { Box } from "@chakra-ui/react";
-import RestItem from './RestItem';
+import RestItem from "./RestItem";
 
 const Restaurants = () => {
   return (
@@ -9,7 +9,6 @@ const Restaurants = () => {
       {/*====================RESTAURANTSLİST MAİN CONTAİNER=============*/}
 
       <Box className="container-fluid" textAlign="center" w="100%">
-
         {/*====================RESTAURANTSLİST TİTLE=================== */}
 
         <Title title="Populer Restoranlar" />
@@ -17,7 +16,6 @@ const Restaurants = () => {
         {/*====================RESTAURANTSLİST CONTENT=================*/}
 
         <Box className="container pt-5">
-          
           {/*====================RESTAURANTSLİST SLİDER===============*/}
 
           <RestItem />

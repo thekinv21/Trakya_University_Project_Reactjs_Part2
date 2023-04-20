@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { BiRestaurant } from "react-icons/bi";
+import { GiNotebook } from "react-icons/gi";
 import {
   FaHome,
   FaAddressCard,
@@ -7,7 +8,7 @@ import {
   FaUser,
   FaHeart,
   FaSignOutAlt,
-  FaComment
+  FaComment,
 } from "react-icons/fa";
 
 const initialState = {
@@ -31,9 +32,9 @@ const initialState = {
 
   navbarLinksLogin: [
     {
-      name: "Restoranlar",
-      href: "/discover",
-      icon: <BiRestaurant fontSize="18px" />,
+      name: "Rezervasyonlar",
+      href: "/reservations",
+      icon: <GiNotebook fontSize="18px" />,
     },
     {
       name: "Favori Restoranlar",
@@ -57,11 +58,10 @@ const initialState = {
     },
   ],
 
-
   navbarLinksLogout: [
     {
       name: "Restoranlar",
-      href: "#",
+      href: "/discover",
       icon: <BiRestaurant fontSize="18px" />,
     },
     {
@@ -85,7 +85,7 @@ const initialState = {
     {
       name: "Rezervasyonlar",
       href: "#",
-      icon: <BiRestaurant fontSize="18px" />,
+      icon: <GiNotebook fontSize="18px" />,
     },
     {
       name: "Favori Restoranlar",
