@@ -149,7 +149,7 @@ const EditForm = () => {
             fontsize={12}
             fontweight={100}
             background="orange"
-            color="#ddd"
+            color="#fff"
             type="submit"
           />
         </Stack>

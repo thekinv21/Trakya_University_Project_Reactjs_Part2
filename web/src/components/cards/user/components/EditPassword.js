@@ -27,9 +27,9 @@ const EditPassword = () => {
             title="Değiştir"
             fontsize={12}
             background="orange"
-            color="#ddd"
+            color="#fff"
             fontweight={100}
-            onclick={() => navigate("/reset")}
+            onclick={() => navigate("/reset_password")}
           />
         </Stack>
       </Card>
