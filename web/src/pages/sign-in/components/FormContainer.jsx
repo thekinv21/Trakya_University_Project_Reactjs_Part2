@@ -1,7 +1,7 @@
 import React from "react";
 import { VStack } from "@chakra-ui/react";
 
-const FormContainer = ({ children, width, md, onSubmit, position }) => {
+const FormContainer = ({ children, width, md, onSubmit, position , bg }) => {
   return (
     <React.Fragment>
       <VStack
@@ -11,6 +11,7 @@ const FormContainer = ({ children, width, md, onSubmit, position }) => {
         w={{ base: width, md: md }}
         justifyContent={position}
         onSubmit={onSubmit}
+        bg={bg}
       >
         {children}
       </VStack>
