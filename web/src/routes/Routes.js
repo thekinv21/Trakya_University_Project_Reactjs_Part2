@@ -10,6 +10,7 @@ import Discover from "../pages/discover/Discover";
 import Reservations from "../pages/reservations/Reservations";
 import ResetPassword from "./../pages/resetPassword/ResetPassword";
 import NewPasswordForm from "../pages/resetPassword/components/NewPasswordForm";
+import Favorites from "../pages/favorites/Favorites";
 
 const Routers = () => {
   return (
@@ -27,6 +28,7 @@ const Routers = () => {
           <Route path="/reservations" element={<Reservations />} />
           <Route path="/reset_password" element={<ResetPassword />} />
           <Route path="/new_password" element={<NewPasswordForm />} />
+          <Route path="/favorites" element={<Favorites />} />
         </Routes>
       </BrowserRouter>
     </React.Fragment>
