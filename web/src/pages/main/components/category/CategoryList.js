@@ -14,7 +14,7 @@ const CategoryList = () => {
         <Title title="Mevcut Yemek Categorileri" />
 
         <Box className="container pt-5">
-          {/*========================CATEGORY SLİDER================*/}
+          {/*========================CATEGORY ITEM================*/}
 
           <CategoryItem />
         </Box>
