@@ -66,7 +66,7 @@ const initialState = {
     },
     {
       name: "Favori Restoranlar",
-      href: "#",
+      href: "/favorites",
       icon: <FaHeart fontSize="18px" />,
     },
     {
@@ -84,12 +84,12 @@ const initialState = {
   profileLinks: [
     {
       name: "Rezervasyonlar",
-      href: "#",
+      href: "/reservations",
       icon: <GiNotebook fontSize="18px" />,
     },
     {
       name: "Favori Restoranlar",
-      href: "#",
+      href: "/favorites",
       icon: <FaHeart fontSize="18px" />,
     },
     {
