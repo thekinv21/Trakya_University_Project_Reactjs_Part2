@@ -11,6 +11,7 @@ import Reservations from "../pages/reservations/Reservations";
 import ResetPassword from "./../pages/resetPassword/ResetPassword";
 import NewPasswordForm from "../pages/resetPassword/components/NewPasswordForm";
 import Favorites from "../pages/favorites/Favorites";
+import { PrivateRoute } from "./Privates";
 
 const Routers = () => {
   return (
@@ -21,14 +22,17 @@ const Routers = () => {
           <Route path="/" element={<Main />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/main" element={<Main />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/restaurant/:id" element={<Restaurant />} />
           <Route path="/discover" element={<Discover />} />
-          <Route path="/reservations" element={<Reservations />} />
           <Route path="/reset_password" element={<ResetPassword />} />
           <Route path="/new_password" element={<NewPasswordForm />} />
-          <Route path="/favorites" element={<Favorites />} />
+
+          <Route path="/" element={<PrivateRoute />}>
+            <Route path="/main" element={<Main />} />
+            <Route path="/favorites" element={<Favorites />} />
+            <Route path="/reservations" element={<Reservations />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/restaurant/:id" element={<Restaurant />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </React.Fragment>
