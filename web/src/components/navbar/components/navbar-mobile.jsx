@@ -17,10 +17,9 @@ import Logo from "../../../assets/brand/searchLogo.svg";
 import { useSelector } from "react-redux";
 
 const NavbarMobile = ({ openMobile, closeMobile }) => {
-
   //*---------------------Take navbar links on global state--------------
 
-  const navbarLinksLogin = useSelector((state) => state.Link.navbarLinksLogin);
+  const LoggedLinks = useSelector((state) => state.Link.LoginLinks);
 
   return (
     <React.Fragment>
@@ -64,7 +63,7 @@ const NavbarMobile = ({ openMobile, closeMobile }) => {
                   spacing={8}
                 >
                   {/*-----------------------------Sidebar links---------------------- */}
-                  {navbarLinksLogin.map((link, index) => (
+                  {LoggedLinks.map((link, index) => (
                     <HStack
                       key={index}
                       color="#fff"

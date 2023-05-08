@@ -2,8 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 import { BiRestaurant } from "react-icons/bi";
 import { GiNotebook } from "react-icons/gi";
 import {
-  FaHome,
-  FaAddressCard,
   FaStar,
   FaUser,
   FaHeart,
@@ -12,25 +10,7 @@ import {
 } from "react-icons/fa";
 
 const initialState = {
-  headerLinks: [
-    {
-      name: "Ana Sayfa",
-      href: "/main",
-      icon: <FaHome fontSize="16px" />,
-    },
-    {
-      name: "Hakkimizda",
-      href: "#",
-      icon: <FaAddressCard fontSize="16px" />,
-    },
-    {
-      name: "Restoranlar",
-      href: "/discover",
-      icon: <BiRestaurant fontSize="16px" />,
-    },
-  ],
-
-  navbarLinksLogin: [
+  LoginLinks: [
     {
       name: "Rezervasyonlar",
       href: "/reservations",
@@ -38,7 +18,7 @@ const initialState = {
     },
     {
       name: "Favori Restoranlar",
-      href: "#",
+      href: "/favorites",
       icon: <FaHeart fontSize="18px" />,
     },
     {
@@ -51,14 +31,9 @@ const initialState = {
       href: "/profile",
       icon: <FaUser fontSize="18px" />,
     },
-    {
-      name: "Çikiş",
-      href: "/signin",
-      icon: <FaSignOutAlt fontSize="18px" />,
-    },
   ],
 
-  navbarLinksLogout: [
+  LogoutLinks: [
     {
       name: "Restoranlar",
       href: "/discover",
@@ -73,11 +48,6 @@ const initialState = {
       name: "Bonus Puanlar",
       href: "#",
       icon: <FaStar fontSize="18px" />,
-    },
-    {
-      name: "Giriş",
-      href: "/signin",
-      icon: <FaSignOutAlt fontSize="18px" />,
     },
   ],
 
