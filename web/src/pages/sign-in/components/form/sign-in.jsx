@@ -47,6 +47,8 @@ const SignInForm = () => {
         new Promise((resolve, reject) => {
           login(values, {
             onSuccess: (data) => {
+              sessionStorage.setItem("token", data?.content?.accessToken);
+
               resolve(undefined);
               dispatch(
                 setAuth({
@@ -55,8 +57,8 @@ const SignInForm = () => {
                 })
               );
 
-              //*------------------Eğer giriş başarılı ise-----------------
-              navigate("/");
+              // //*------------------Eğer giriş başarılı ise-----------------
+              navigate("/main");
             },
 
             //*------------------Eğer giriş başarılı değil ise-----------------
@@ -165,7 +167,11 @@ const SignInForm = () => {
           {/*----------------- Forgot Password-----------------*/}
 
           <Stack w="full" pt={4} fontSize={12} color="gray.500">
-            <Link display="flex" justifyContent="flex-end" href="/reset_password">
+            <Link
+              display="flex"
+              justifyContent="flex-end"
+              href="/reset_password"
+            >
               Forgot Password ?
             </Link>
           </Stack>
