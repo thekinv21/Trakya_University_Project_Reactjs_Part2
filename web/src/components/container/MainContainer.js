@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../../pages/main/components/header/Header";
+import Header from "../header/Header";
 import Footer from "../footer/Footer";
 import { Stack, Box } from "@chakra-ui/react";
 import Background from '../../assets/images/Background.png'
