@@ -15,7 +15,7 @@ const Restaurants = () => {
 
         {/*====================RESTAURANTSLİST CONTENT=================*/}
 
-        <Box className="container pt-5">
+        <Box className="container pt-5" h="50vh">
           {/*====================RESTAURANTSLİST SLİDER===============*/}
 
           <RestItem />

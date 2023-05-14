@@ -32,6 +32,7 @@ const RestCard = ({ restaurant }) => {
   return (
     <Card
       maxW={300}
+      h={390}
       borderRadius={5}
       border="none"
       overflow="hidden"
@@ -67,28 +68,6 @@ const RestCard = ({ restaurant }) => {
           }
           onClick={() => dispatch(toogleFavorites(restaurant))}
         />
-
-        {/*====================REST LOCATİON==================== */}
-
-        <Stack direction="row" justifyContent="center" py={2}>
-          <Text
-            color="gray.500"
-            fontWeight="semibold"
-            fontSize={10}
-            textTransform="uppercase"
-          >
-            Location : {restaurant.city}
-          </Text>
-
-          <Text
-            color="gray.500"
-            fontWeight="semibold"
-            fontSize={10}
-            textTransform="uppercase"
-          >
-            District : {restaurant.district}
-          </Text>
-        </Stack>
       </Box>
 
       {/*====================REST TİTLE==================== */}
@@ -100,9 +79,25 @@ const RestCard = ({ restaurant }) => {
 
         {/*====================REST ADDRESS==================== */}
 
-        <Text fontSize={10} maxH={30} overflow="hidden">
-          Address :&nbsp; {restaurant.detailedAddress}
-        </Text>
+        <Stack direction="column" justifyContent="center" h={30} py={5}>
+          <Text
+            color="gray.500"
+            fontWeight="semibold"
+            fontSize={10}
+            textTransform="uppercase"
+          >
+            {restaurant.city}
+          </Text>
+
+          <Text
+            color="gray.500"
+            fontWeight="semibold"
+            fontSize={10}
+            textTransform="uppercase"
+          >
+            {restaurant.district}
+          </Text>
+        </Stack>
 
         {/*====================REST STARS==================== */}
 
@@ -112,7 +107,11 @@ const RestCard = ({ restaurant }) => {
             .map((_, index) => (
               <StarIcon
                 key={index}
-                color={index < restaurant.starCount ? "teal.500" : "gray.300"}
+                color={
+                  index < parseFloat(restaurant.starCount)
+                    ? "teal.500"
+                    : "gray.300"
+                }
               />
             ))}
         </Box>
@@ -121,7 +120,7 @@ const RestCard = ({ restaurant }) => {
       {/*====================REST RESERVE BUTTON==================== */}
 
       <Button
-        size="sm"
+        size="lg"
         bg="orange.300"
         w="90%"
         fontSize={12}

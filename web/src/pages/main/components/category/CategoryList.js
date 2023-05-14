@@ -13,7 +13,7 @@ const CategoryList = () => {
 
         <Title title="Mevcut Yemek Categorileri" />
 
-        <Box className="container pt-5">
+        <Box className="container pt-5" h="35vh">
           {/*========================CATEGORY ITEM================*/}
 
           <CategoryItem />

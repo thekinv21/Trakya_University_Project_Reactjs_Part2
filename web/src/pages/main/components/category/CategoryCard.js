@@ -6,8 +6,8 @@ const CategoryCard = ({ category }) => {
     <React.Fragment>
       <Box
         key={category.id}
-        maxW={260}
-        h={280}
+        w={250}
+        h={250}
         maxH="100%"
         borderRadius={5}
         border="none"
