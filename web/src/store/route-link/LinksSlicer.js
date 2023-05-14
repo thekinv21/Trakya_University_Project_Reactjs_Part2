@@ -17,6 +17,11 @@ const initialState = {
       icon: <GiNotebook fontSize="18px" />,
     },
     {
+      name: "Restoranlar",
+      href: "/discover",
+      icon: <BiRestaurant fontSize="18px" />,
+    },
+    {
       name: "Favori Restoranlar",
       href: "/favorites",
       icon: <FaHeart fontSize="18px" />,
