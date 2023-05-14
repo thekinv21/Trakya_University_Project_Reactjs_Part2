@@ -6,13 +6,12 @@ const HeaderHamburger = ({ isOpen, onClose, onOpen }) => {
   return (
     <IconButton
       size="lg"
-      icon={isOpen ? <CloseIcon /> : <HamburgerIcon fontSize="22px" />}
+      icon={isOpen ? <CloseIcon /> : <HamburgerIcon fontSize={25} />}
       display={{ md: "none" }}
       onClick={isOpen ? onClose : onOpen}
       color="#ddd"
       bg="transparent"
       fontWeight={700}
-      borderRadius="50%"
       _hover={{ bg: "gray.700" }}
     />
   );
