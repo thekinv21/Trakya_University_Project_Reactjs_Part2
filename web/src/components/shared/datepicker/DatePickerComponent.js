@@ -2,7 +2,6 @@ import { DatePicker } from "antd";
 import moment from "moment";
 
 const DatePickerComponent = ({ onChange, name, busyDates }) => {
-
   //*==============DATEPİCKER STYLES================
   const style = {
     width: "100%",
@@ -12,8 +11,8 @@ const DatePickerComponent = ({ onChange, name, busyDates }) => {
   const disabledDates = busyDates.map((date) => moment(date));
 
   function disabledDate(current) {
-    // Disable all Sundays
-    if (current.day() === 0) {
+    // Disable all Sundays and past Dates
+    if (current.day() === 0 || current < moment().add(-1, "day")) {
       return true;
     }
 
