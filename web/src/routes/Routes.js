@@ -5,13 +5,13 @@ import SignUp from "../pages/sign-up/SignUp";
 import Main from "../pages/main/Main";
 import Notfound from "../pages/notfound/Notfound";
 import Profile from "../pages/profile/Profile";
-import Restaurant from "../pages/restaurant/Restaurant";
 import Discover from "../pages/discover/Discover";
 import Reservations from "../pages/reservations/Reservations";
 import ResetPassword from "./../pages/resetPassword/ResetPassword";
 import NewPasswordForm from "../pages/resetPassword/components/NewPasswordForm";
 import Favorites from "../pages/favorites/Favorites";
 import { PrivateRoute } from "./Privates";
+import RestaurantDetail from "../pages/restaurant_detail/RestaurantDetail";
 
 const Routers = () => {
   return (
@@ -31,7 +31,7 @@ const Routers = () => {
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/reservations" element={<Reservations />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/restaurant/:id" element={<Restaurant />} />
+            <Route path="/restaurant/:id" element={<RestaurantDetail />} />
           </Route>
         </Routes>
       </BrowserRouter>
