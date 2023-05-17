@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useCreateFavorite } from "../../../../../api/restaurant";
+import { toast } from "react-toastify";
 
 export const useRestaurantCard = ({ restaurant, onClick }) => {
   const navigate = useNavigate();
@@ -9,7 +10,6 @@ export const useRestaurantCard = ({ restaurant, onClick }) => {
   const { mutate: createFav } = useCreateFavorite();
 
   const handleFavoriteToggle = async () => {
-    console.log(userId.user.id, restaurant.id);
     if (onClick !== undefined) {
       onClick(restaurant.id);
     }
@@ -18,11 +18,17 @@ export const useRestaurantCard = ({ restaurant, onClick }) => {
         { userId: userId.user.id, restaurantId: restaurant.id },
         {
           onSuccess: () => {
-            console.log("oluşturuldu");
+            toast.success("Islem basarili", {
+              position: "top-right",
+              autoClose: 1600,
+            });
           },
 
-          onError: () => {
-            console.log("hata oldu");
+          onError: (err) => {
+            toast.error("Bir hata olustu!  " + JSON.stringify(err.error), {
+              position: "top-right",
+              autoClose: 1600,
+            });
           },
         }
       );

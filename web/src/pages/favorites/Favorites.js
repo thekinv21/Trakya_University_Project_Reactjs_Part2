@@ -17,7 +17,7 @@ const Favorites = () => {
         className="container"
         display="flex"
         alignItems="center"
-        justifyContent="start"
+        justifyContent="center"
         gap={5}
       >
         {/*================FAVORİ RESTAURANT VARSA============ */}

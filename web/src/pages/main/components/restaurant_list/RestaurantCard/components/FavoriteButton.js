@@ -1,17 +1,25 @@
 import { IconButton } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import { AiOutlineHeart } from "react-icons/ai";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
 const FavoriteButton = ({ onClick, restaurant }) => {
-  const [color, setColor] = useState("orange.400");
+  const [favoriteState, setFavoriteState] = useState(false);
 
   useEffect(() => {
-    restaurant?.isFavorite ? setColor("green") : setColor("orange.400");
+    setFavoriteState(restaurant?.isFavorite);
   }, [restaurant]);
 
   const _onClick = (e) => {
     onClick(e);
-    return color === "green" ? setColor("orange.400") : setColor("green");
+    return setFavoriteState(!favoriteState);
+  };
+
+  const getBgColor = () => {
+    return favoriteState ? "green" : "orange";
+  };
+
+  const getHoverColor = () => {
+    return favoriteState ? "green.800" : "orange.800";
   };
 
   return (
@@ -23,10 +31,10 @@ const FavoriteButton = ({ onClick, restaurant }) => {
       aria-label="Add to Favorites"
       fontWeight={900}
       fontSize={25}
-      bg={color}
-      _hover={{ bg: "orange.400" }}
+      bg={getBgColor}
+      _hover={{ bg: getHoverColor }}
       color="#ddd"
-      icon={<AiOutlineHeart />}
+      icon={favoriteState ? <AiFillHeart /> : <AiOutlineHeart />}
       onClick={_onClick}
     />
   );

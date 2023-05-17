@@ -15,7 +15,6 @@ export const useFavorites = () => {
   }, [isLoading, data]);
 
   const onClick = (e) => {
-    console.log("basildi", e);
     setFilteredData(filteredData.filter((x) => x.id !== e));
   };
 
