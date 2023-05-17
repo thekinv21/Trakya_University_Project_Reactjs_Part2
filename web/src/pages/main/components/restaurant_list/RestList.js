@@ -1,7 +1,7 @@
 import React from "react";
 import Title from "../title/title";
 import { Box } from "@chakra-ui/react";
-import RestItem from "./RestItem";
+import RestItem from "./RestaurantItem/RestItem";
 
 const Restaurants = () => {
   return (
