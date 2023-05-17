@@ -127,16 +127,24 @@ const getToken = () => {
 };
 
 const postFavorite = async ({ userId, restaurantId }) => {
-  const URL = `http://192.168.1.25:8082/api/favorite/toggle`;
+  const URL = `http://localhost:8082/api/favorite/toggle`;
 
   const myToken = getToken();
   const headers = {
     Authorization: `Bearer ${myToken}`,
   };
 
-  const response = await axios.post(URL, { userId, restaurantId }, { headers });
-
-  return response.data;
+  try {
+    const response = await axios.post(
+      URL,
+      { userId, restaurantId },
+      { headers }
+    );
+    return response.data;
+  } catch (error) {
+    const errorMessage = error.response.data;
+    throw errorMessage;
+  }
 };
 
 export const useCreateFavorite = () => {
