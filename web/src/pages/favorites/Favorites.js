@@ -1,28 +1,11 @@
 import Container from "../../components/container/Container";
 import { Box } from "@chakra-ui/react";
-import UserCard from "./../../components/cards/user/UserCard";
 import NotfoundFavorite from "./components/NotfoundFavorite";
-import { useGetFavorites } from "../../api/restaurant";
 import RestaurantCard from "../main/components/restaurant_list/RestaurantCard/RestaurantCard";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useFavorites } from "./useFavorites";
 
 const Favorites = () => {
-  //*==============FAVORİTE RESTAURANTS LİST=============
-  const userId = JSON.parse(sessionStorage.getItem("token"));
-  const { data, isLoading } = useGetFavorites(userId.user.id);
-
-  const [filteredData, setFilteredData] = useState([]);
-
-  useEffect(() => {
-    if (isLoading) return;
-    setFilteredData(data?.content);
-  }, [isLoading, data]);
-
-  const onClick = (e) => {
-    console.log("basildi", e);
-    setFilteredData(filteredData.filter((x) => x.id !== e));
-  };
+  const { onClick, isLoading, filteredData, data } = useFavorites();
 
   if (isLoading) return data;
 
@@ -33,19 +16,15 @@ const Favorites = () => {
         padding={10}
         className="container"
         display="flex"
-        alignItems="start"
-        justifyContent="center"
+        alignItems="center"
+        justifyContent="start"
         gap={5}
       >
-        {/*=================FAVORİTES USERCARD===============*/}
-
-        <UserCard />
-
         {/*================FAVORİ RESTAURANT VARSA============ */}
 
         <Box
           display="flex"
-          justifyContent={["center", "center", "center", "start"]}
+          justifyContent={["center", "center", "center", "center"]}
           alignItems="center"
           flexWrap="wrap"
           gap={5}
