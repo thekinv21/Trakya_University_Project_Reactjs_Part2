@@ -150,3 +150,24 @@ const postFavorite = async ({ userId, restaurantId }) => {
 export const useCreateFavorite = () => {
   return useMutation(postFavorite);
 };
+
+//*========== GET RANDOM RESTAURANTS ============
+
+const getRandom = async (restLength) => {
+  const URL = END_POINTS.RESTAURANT_CONTROLLER.GET_RANDOM_RESTAURANT.replace(
+    ":length",
+    restLength
+  );
+
+  const response = await axios.get(URL);
+
+  return response.data.content;
+};
+
+export const useGetRandom = (restLength) => {
+  const { data, isLoading } = useQuery(["randomRestaurants", restLength], () =>
+    getRandom(restLength)
+  );
+
+  return { data, isLoading };
+};
