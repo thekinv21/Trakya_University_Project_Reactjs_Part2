@@ -1,9 +1,9 @@
 import { useFormik } from "formik";
 import RegisterValidation from "../RegisterValidation/RegisterValidation";
-import { useRegister } from "../../../../api/auth";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useState } from "react";
+import { useRegister } from "../../../../services/authService/auth.service";
 
 export const useAuthRegister = () => {
   const [show, setShow] = useState(false);

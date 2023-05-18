@@ -1,11 +1,11 @@
 import { useFormik } from "formik";
 import { useDispatch } from "react-redux";
 import { setAuth } from "../../../../store/auth/auth.slice";
-import { useLogin } from "../../../../api/auth";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useState } from "react";
 import LoginSchema from "./../LoginValidation/LoginValidation";
+import { useLogin } from "../../../../services/authService/auth.service";
 
 export const useAuth = () => {
   const [show, setShow] = useState(false);
