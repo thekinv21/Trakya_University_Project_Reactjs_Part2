@@ -1,7 +1,5 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import SignIn from "../pages/sign-in/SignIn";
-import SignUp from "../pages/sign-up/SignUp";
 import Main from "../pages/main/Main";
 import Notfound from "../pages/notfound/Notfound";
 import Profile from "../pages/profile/Profile";
@@ -12,6 +10,8 @@ import NewPasswordForm from "../pages/resetPassword/components/NewPasswordForm";
 import Favorites from "../pages/favorites/Favorites";
 import { PrivateRoute } from "./Privates";
 import RestaurantDetail from "../pages/restaurant_detail/RestaurantDetail";
+import LoginPage from "../pages/sign-in/LoginPage";
+import RegisterPage from "./../pages/sign-up/RegisterPage";
 
 const Routers = () => {
   return (
@@ -20,8 +20,8 @@ const Routers = () => {
         <Routes>
           <Route path="*" element={<Notfound />} />
           <Route path="/" element={<Main />} />
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/signup" element={<SignUp />} />
+          <Route path="/signin" element={<LoginPage />} />
+          <Route path="/signup" element={<RegisterPage />} />
           <Route path="/discover" element={<Discover />} />
           <Route path="/reset_password" element={<ResetPassword />} />
           <Route path="/new_password" element={<NewPasswordForm />} />
