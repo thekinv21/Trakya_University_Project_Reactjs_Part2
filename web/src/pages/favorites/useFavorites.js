@@ -1,6 +1,6 @@
-import { useGetFavorites } from "../../api/restaurant";
 import { useState } from "react";
 import { useEffect } from "react";
+import { useGetFavorites } from "../../services/favoriService/favori.service";
 
 export const useFavorites = () => {
   //*==============FAVORİTE RESTAURANTS LİST=============
