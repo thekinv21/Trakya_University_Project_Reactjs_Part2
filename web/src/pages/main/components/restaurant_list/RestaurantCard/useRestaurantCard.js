@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import { useCreateFavorite } from "../../../../../api/restaurant";
 import { toast } from "react-toastify";
+import { useCreateFavorite } from "../../../../../services/favoriService/favori.service";
 
 export const useRestaurantCard = ({ restaurant, onClick }) => {
   const navigate = useNavigate();
