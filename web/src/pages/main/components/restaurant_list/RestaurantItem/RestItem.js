@@ -3,18 +3,22 @@ import { SwiperSlide } from "swiper/react";
 import { Box } from "@chakra-ui/react";
 import RestaurantCard from "./../RestaurantCard/RestaurantCard";
 import {
-  useGetRestaurant,
   useGetRandom,
-} from "./../../../../../api/restaurant";
+  useGetRestaurant,
+} from "../../../../../services/restaurantService/restaurant.service";
 
 const RestItem = () => {
+  const itemsLength = 20;
+
   const { data: restaurants } = useGetRestaurant();
-  const { data: randomRestaurants } = useGetRandom(10);
+  const { data: randomRestaurants } = useGetRandom(itemsLength);
   const token = sessionStorage.getItem("token");
+
+  const renderedRestaurants = token ? restaurants : randomRestaurants;
 
   return (
     <Swipers>
-      {(token ? restaurants : randomRestaurants)?.map((restaurant) => (
+      {renderedRestaurants?.map((restaurant) => (
         <SwiperSlide key={restaurant.id}>
           <Box display="flex" alignItems="center" justifyContent="center">
             <RestaurantCard restaurant={restaurant} />

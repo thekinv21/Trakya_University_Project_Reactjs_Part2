@@ -1,5 +1,5 @@
 import React from "react";
-import { useGetCategory } from "../../../../api/category";
+import { useGetCategory } from "../../../../services/categoryService/category.service";
 import Swipers from "../../../../components/swiper/Swiper";
 import { SwiperSlide } from "swiper/react";
 import { Box } from "@chakra-ui/react";
