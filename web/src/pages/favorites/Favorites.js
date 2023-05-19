@@ -1,8 +1,9 @@
 import Container from "../../components/container/Container";
 import { Box } from "@chakra-ui/react";
-import NotfoundFavorite from "./components/NotfoundFavorite";
 import RestaurantCard from "../main/components/restaurant_list/RestaurantCard/RestaurantCard";
 import { useFavorites } from "./useFavorites";
+import FavoriteNotFound from "./components/FavoriteNotFound";
+import UserCard from "./../../components/cards/user/UserCard";
 
 const Favorites = () => {
   const { onClick, isLoading, filteredData, data } = useFavorites();
@@ -16,15 +17,18 @@ const Favorites = () => {
         padding={10}
         className="container"
         display="flex"
-        alignItems="center"
+        alignItems="flex-start"
         justifyContent="center"
         gap={5}
       >
+        {/*===================FAVORİ USER CARD================= */}
+        <UserCard />
+
         {/*================FAVORİ RESTAURANT VARSA============ */}
 
         <Box
           display="flex"
-          justifyContent={["center", "center", "center", "center"]}
+          justifyContent={["center", "center", "center", "flex-start"]}
           alignItems="center"
           flexWrap="wrap"
           gap={5}
@@ -39,7 +43,7 @@ const Favorites = () => {
               />
             ))
           ) : (
-            <NotfoundFavorite />
+            <FavoriteNotFound />
           )}
         </Box>
       </Box>
