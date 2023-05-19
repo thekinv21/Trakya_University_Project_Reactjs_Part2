@@ -44,3 +44,21 @@ export const useGetReserveByUserId = (userId) => {
   );
   return { data, isLoading };
 };
+
+//*================DELETE RESERVE BY USER ID================
+
+const deleteReserve = async (reserveId) => {
+  const URL = END_POINTS.RESERVE_CONTROLLER.DELETE_RESERVE_BY_ID.replace(
+    ":reserveId",
+    reserveId
+  );
+
+  const token = getToken();
+  const headers = { Authorization: `Bearer ${token}` };
+  const response = await axios.delete(URL, { headers });
+  return response.data.content;
+};
+
+export const useDeleteReserveById = () => {
+  return useMutation(deleteReserve);
+};
