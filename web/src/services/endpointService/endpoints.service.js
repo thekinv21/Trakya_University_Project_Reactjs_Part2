@@ -1,4 +1,4 @@
-const BASE_URL = "http://192.168.1.25:8082";
+const BASE_URL = process.env.REACT_APP_API_ADDRESS;
 
 export const END_POINTS = {
   USER_CONTROLLER: {
