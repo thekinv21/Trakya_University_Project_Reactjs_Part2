@@ -1,15 +1,24 @@
-import React from "react";
-import { MapContainer, TileLayer } from "react-leaflet";
+import React, { useMemo } from "react";
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { Providers } from "./Providers";
+import L from "leaflet";
 
 const Maps = ({ width, height, restaurantInfo }) => {
   //?---------------------Koordinations----------------------
 
-  const center = {
-    lat: restaurantInfo.latitude,
-    lng: restaurantInfo.longitude,
-  };
+  const center = useMemo(
+    () => ({
+      lat: restaurantInfo.latitude,
+      lng: restaurantInfo.longitude,
+    }),
+    [restaurantInfo.latitude, restaurantInfo.longitude]
+  );
+
+  const markerIcon = new L.icon({
+    iconUrl: require("../../assets/images/mapMarker.png"),
+    iconSize: [55, 45],
+  });
 
   return (
     <React.Fragment>
@@ -22,6 +31,15 @@ const Maps = ({ width, height, restaurantInfo }) => {
           attribution={Providers.maptiler.attribution}
           url={Providers.maptiler.url}
         />
+
+        <Marker
+          position={[restaurantInfo.latitude, restaurantInfo.longitude]}
+          icon={markerIcon}
+        >
+          <Popup>
+            <p>Restaurant Koordinate</p>
+          </Popup>
+        </Marker>
       </MapContainer>
     </React.Fragment>
   );
