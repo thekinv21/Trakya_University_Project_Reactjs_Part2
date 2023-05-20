@@ -1,0 +1,13 @@
+.form {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.16);
+  height: auto;
+  max-height: 450px;
+  padding: 30px 20px;
+  border-radius: 10px;
+}
+
+.reserveButton {
+  width: 100%;
+  font-weight: 100;
+}

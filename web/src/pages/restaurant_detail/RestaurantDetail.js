@@ -2,10 +2,10 @@ import { Box, Image } from "@chakra-ui/react";
 import Container from "../../components/container/Container";
 import { styles } from "./RestaurantDetailStyle";
 import { useParams } from "react-router-dom";
-import { useGetRestaurantById } from "../../api/restaurant";
 import RestTabMenu from "./components/RestTabMenu/RestTabMenu";
-import ReserveForm from "./components/ReserveForm/ReserveForm";
 import { ToastContainer } from "react-toastify";
+import { useGetRestaurantById } from "../../services/restaurantService/restaurant.service";
+import ReservedForm from "./components/ReserveForm/ReservedForm";
 
 const RestaurantDetail = () => {
   //?====================Seçtiğimiz Restoranin id'si==================
@@ -37,7 +37,7 @@ const RestaurantDetail = () => {
         </Box>
 
         {/*=================Restaurant RESERVE FORM================= */}
-        <ReserveForm restaurantInfo={restaurantInfo} />
+        <ReservedForm restaurantInfo={restaurantInfo} />
 
         {/*=================ALERT CONTAİNER================= */}
         <ToastContainer />

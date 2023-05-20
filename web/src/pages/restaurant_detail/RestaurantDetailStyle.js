@@ -14,11 +14,12 @@ export const styles = {
     alignItems: "center",
     justifyContent: "center",
     gap: 5,
+    w: ["100%", "100%", "100%", "550px", "750px"],
   },
 
   imageblock: {
-    width: 750,
-    height: 400,
+    w: { base: "100%", md: 750 },
+    h: { base: "300px", md: 400 },
     maxW: "100%",
     display: "flex",
     alignItems: "center",

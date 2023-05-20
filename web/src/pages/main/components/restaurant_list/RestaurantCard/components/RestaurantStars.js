@@ -2,6 +2,8 @@ import { Box } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
 
 const RestaurantStars = ({ starCount }) => {
+  starCount = starCount === undefined || starCount === -1 ? 0 : starCount;
+
   return (
     <Box display="flex" alignItems="center">
       {Array(5)
