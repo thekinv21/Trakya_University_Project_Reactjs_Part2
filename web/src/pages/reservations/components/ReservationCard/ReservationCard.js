@@ -63,6 +63,15 @@ const ReservationCard = ({ reserve }) => {
           >
             <Button
               w={["100%", "100%", "120px", "100px"]}
+              colorScheme="facebook"
+              fontSize="small"
+              fontWeight={200}
+              size="sm"
+            >
+              Görüntüle
+            </Button>
+            <Button
+              w={["100%", "100%", "120px", "100px"]}
               colorScheme="green"
               fontSize="small"
               fontWeight={200}
