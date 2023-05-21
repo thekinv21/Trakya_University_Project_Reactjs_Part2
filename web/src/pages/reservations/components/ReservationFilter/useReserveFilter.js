@@ -4,8 +4,7 @@ export const useReserveFilter = ({ reserveData }) => {
   const filterBy = [
     { key: "1", value: "İptal Edilen Rezervasyonlar" },
     { key: "2", value: "Mevcut Rezervasyonlar" },
-    { key: "3", value: "Güncellenen Rezervasyonlar" },
-    { key: "4", value: "Bütün Rezervasyonlar" },
+    { key: "3", value: "Bütün Rezervasyonlar" },
   ];
 
   const [filteredData, setFilteredData] = useState(reserveData);
@@ -16,8 +15,7 @@ export const useReserveFilter = ({ reserveData }) => {
 
     if (filter === "1") setFilteredData(cancelledReserve);
     else if (filter === "2") setFilteredData(availableReserve);
-    else if (filter === "3") setFilteredData(updatedReserve);
-    else if (filter === "4") setFilteredData(reserveData);
+    else if (filter === "3") setFilteredData(reserveData);
   };
 
   const availableReserve = reserveData.filter(
@@ -27,8 +25,6 @@ export const useReserveFilter = ({ reserveData }) => {
   const cancelledReserve = reserveData.filter(
     (reserve) => reserve.bookingStatus === "CANCELLED"
   );
-
-  const updatedReserve = [];
 
   return {
     filterBy,
