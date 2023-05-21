@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { END_POINTS } from "../endpointService/endpoints.service";
 
@@ -82,4 +82,52 @@ const getEmptyHours = async (id, date) => {
 
 export const useGetEmptyHours = (id, date) => {
   return useQuery(["getEmptyHours", id, date], () => getEmptyHours(id, date));
+};
+
+//*====================GET RESTAURANT REVİEWS=================
+
+const getReviews = async (restId) => {
+  const URL = END_POINTS.RESTAURANT_CONTROLLER.GET_RESTAURANT_REVİEWS.replace(
+    ":restId",
+    restId
+  );
+
+  const myToken = getToken();
+  const headers = {
+    Authorization: `Bearer ${myToken}`,
+  };
+
+  const response = await axios.get(URL, restId, { headers });
+  return response.data.content;
+};
+
+export const useGetReviews = (restId) => {
+  const { data, isLoading, refetch } = useQuery(["getReviews", restId], () =>
+    getReviews(restId)
+  );
+
+  return { data, isLoading, refetch };
+};
+
+//*====================POST RESTAURANT REVİEW=================
+
+const postReview = async ({ userId, restaurantId, star, content }) => {
+  const URL = END_POINTS.RESTAURANT_CONTROLLER.POST_RESTAURANT_REVİEW;
+
+  const myToken = getToken();
+  const headers = {
+    Authorization: `Bearer ${myToken}`,
+  };
+
+  const response = await axios.post(
+    URL,
+    { userId, restaurantId, star, content },
+    { headers }
+  );
+
+  return response.data.content;
+};
+
+export const usePostReview = () => {
+  return useMutation(postReview);
 };
