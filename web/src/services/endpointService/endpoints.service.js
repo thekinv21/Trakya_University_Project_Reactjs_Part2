@@ -17,13 +17,15 @@ export const END_POINTS = {
     GET_RESTAURANT_EMPTY_HOURS: `${BASE_URL}/api/restaurant/:id/book/slots?localDate=:date`,
     GET_RESTAURANT_WITH_PARAMS: `${BASE_URL}/api/restaurant?page=:page&size=:size`,
     GET_RESTAURANT_FILTERED: `${BASE_URL}/api/restaurant`,
+    GET_RESTAURANT_REVİEWS : `${BASE_URL}/api/review/restaurant/:restId`
   },
   FAVORITE_CONTROLLER: {
     POST_FAVORITE_RESTAURANT: `${BASE_URL}/api/favorite/toggle`,
     GET_FAVORITE_RESTAURANTS: `${BASE_URL}/api/favorite/user/:userId`,
   },
   MENU_CONTROLLER: {
-    GET_MENU_BY_ID: `${BASE_URL}/api/menu/:id`,
+    GET_MENU: `${BASE_URL}/api/food/:id`,
+    GET_MENU_BY_RESTAURANT_ID: `${BASE_URL}/api/food/restaurant/:restId?page=:page&size=3`,
   },
   CATEGORY_CONTROLLER: {
     GET_CATEGORY: `${BASE_URL}/api/category`,
@@ -36,3 +38,4 @@ export const END_POINTS = {
     DELETE_RESERVE_BY_ID: `${BASE_URL}/api/book/:reserveId`,
   },
 };
+
