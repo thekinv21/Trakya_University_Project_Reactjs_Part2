@@ -1,10 +1,10 @@
 import React from "react";
 import { Box, Heading, Text, Stack } from "@chakra-ui/react";
-import Buttons from './../../../../../../components/shared/button/Button';
+import Buttons from "./../../../../../../components/shared/button/Button";
 
 const RestPoints = () => {
   return (
-    <Box spacing={5} maxW="100%" borderRadius={10} bg="gray.200" p={5}>
+    <Box spacing={5} maxW="100%" borderRadius={10} bg="whiteAlpha.300" p={5}>
       <Stack textAlign="start" spacing={5}>
         {/*===================TİTLE================ */}
         <Heading fontSize={20} fontWeight={500}>
@@ -12,8 +12,7 @@ const RestPoints = () => {
         </Heading>
         {/*===================SUBTİTLE================ */}
         <Text fontSize={12}>
-          Masanizi online reserve edin ve Rezztoran Bonus Puanlari ile nakit
-          iadesi kazanin! <br /> Kazanilan her 1000 puan 25TL değerindedir
+          Masanizi online reserve edin ve Rezztoranin Yemeklerini tadını çıkarın
         </Text>
 
         {/*===================DAHA FAZLA BİLGİ================ */}

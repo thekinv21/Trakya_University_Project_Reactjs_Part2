@@ -3,40 +3,33 @@ import { styles } from "./RestTabMenuStyle";
 import RestImages from "./components/RestImages/RestImages";
 import RestMenu from "./components/RestMenu/RestMenu";
 import RestAbout from "./components/RestAbout/RestAbout";
-import RestReviews from "./components/RestReviews/RestReviews"
+import RestReviews from "./components/RestReviews/RestReviews";
 
 const RestTabMenu = ({ restaurantInfo }) => {
   return (
     <Tabs sx={styles.tabs}>
-      {/*=====================REST HEADER================== */}
-      <TabList sx={styles.tablist}>
-        <Tab>Hakkinda</Tab>
-        <Tab>Menulari</Tab>
+      <TabList sx={styles.tablist} fontFamily="heading">
+        <Tab>Hakkında</Tab>
+        <Tab>Yemekleri</Tab>
         <Tab>Resimleri</Tab>
         <Tab>Yorumlar</Tab>
       </TabList>
 
-      {/*=====================REST TABS================== */}
-
       <TabPanels>
-        {/*=====================REST ABOUT================== */}
         <TabPanel>
           <RestAbout restaurantInfo={restaurantInfo} />
         </TabPanel>
 
-        {/*=====================REST MeNU================== */}
         <TabPanel>
-          <RestMenu />
+          <RestMenu restaurantId={restaurantInfo.id} />
         </TabPanel>
 
-        {/*=====================REST IMAGES================== */}
         <TabPanel>
           <RestImages restaurantImages={restaurantInfo.restaurantImageList} />
         </TabPanel>
 
-        {/*=====================REST REVİEWS================== */}
         <TabPanel>
-          <RestReviews />
+          <RestReviews restaurantId={restaurantInfo.id} />
         </TabPanel>
       </TabPanels>
     </Tabs>

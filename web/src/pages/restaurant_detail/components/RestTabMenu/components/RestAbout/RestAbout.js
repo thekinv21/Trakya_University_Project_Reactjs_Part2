@@ -5,8 +5,6 @@ import Maps from "../../../../../../components/map/Map";
 import RestPoints from "../RestPoints/RestPoints";
 
 const RestAbout = ({ restaurantInfo }) => {
-  //?=================TİTLE COMPONENT==================
-
   const Title = ({ icon, title }) => {
     return (
       <Stack direction="row" alignItems="center">
@@ -17,12 +15,11 @@ const RestAbout = ({ restaurantInfo }) => {
   };
 
   return (
-    <React.Fragment>
+    <>
       <Stack spacing={5} maxW="100%" pt={10}>
-        {/*======================RESTAURANT HAKKINDA================== */}
         <Box>
           <Text fontWeight={300} fontSize={20}>
-            Restaurant Hakkinda
+            Restaurant Hakkında
           </Text>
           <Divider
             orientation="horizontal"
@@ -31,12 +28,8 @@ const RestAbout = ({ restaurantInfo }) => {
           />
         </Box>
 
-        {/*======================RESTAURANT INFORNATİON================== */}
-
         <Box>
           <Stack>
-            {/*========================RESTAURANT TİTLE=================== */}
-
             <Title
               icon={FcHome}
               title={
@@ -46,14 +39,11 @@ const RestAbout = ({ restaurantInfo }) => {
               }
             />
 
-            {/*=====================RESTAURANT TEL NUMBER================ */}
-
             <Title
               icon={FcCallback}
               title={restaurantInfo.phone ? restaurantInfo.phone : "Yok"}
             />
 
-            {/*=====================RESTAURANT ADDRESSS==================*/}
             <Title
               icon={FcInfo}
               title={
@@ -65,15 +55,13 @@ const RestAbout = ({ restaurantInfo }) => {
           </Stack>
         </Box>
 
-        {/*=====================LOCATION ON GOOGLE MAPS===================*/}
         <Stack>
-          <Maps width="100%" height={150} restaurantInfo={restaurantInfo} />
+          <Maps width="100%" height={250} restaurantInfo={restaurantInfo} />
         </Stack>
 
-        {/*=====================RESTaurant PUANLAR================== */}
         <RestPoints />
       </Stack>
-    </React.Fragment>
+    </>
   );
 };
 

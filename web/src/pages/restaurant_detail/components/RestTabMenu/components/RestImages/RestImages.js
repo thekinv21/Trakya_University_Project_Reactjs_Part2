@@ -1,13 +1,24 @@
 import React from "react";
-import { Image, Box } from "@chakra-ui/react";
+import { Image, Heading } from "@chakra-ui/react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import { Navigation } from "swiper";
 
 const RestImages = ({ restaurantImages }) => {
+  if (!restaurantImages.length) {
+    return (
+      <Heading fontWeight={100} textAlign="center" pt={5} fontSize={22}>
+        Restoranın Herhangi Fotoğrafı Bulunamadı
+      </Heading>
+    );
+  }
+
   return (
-    <>
-      {restaurantImages.length ? (
-        restaurantImages?.map((img, index) => (
+    <Swiper navigation={true} modules={[Navigation]}>
+      {restaurantImages.map((img, index) => (
+        <SwiperSlide key={index}>
           <Image
-            key={index}
             w="100%"
             height={400}
             borderRadius={5}
@@ -16,11 +27,9 @@ const RestImages = ({ restaurantImages }) => {
             src={img}
             pb={5}
           />
-        ))
-      ) : (
-        <Box>Herhangi Bir Fotosu Yok</Box>
-      )}
-    </>
+        </SwiperSlide>
+      ))}
+    </Swiper>
   );
 };
 

@@ -1,9 +1,32 @@
-import React from 'react'
+import { useGetReviews } from "./../../../../../../services/restaurantService/restaurant.service";
+import { Heading } from "@chakra-ui/react";
+import ReviewCard from "./components/ReviewCard/ReviewCard";
+import ReviewForm from "./components/ReviewForm/ReviewForm";
 
-const RestReviews = () => {
+const RestReviews = ({ restaurantId }) => {
+  const { data, isLoading, refetch } = useGetReviews(restaurantId);
+
+  if (isLoading) return <p>Yükleniyor...</p>;
+
   return (
-    <div>RestReviews</div>
-  )
-}
+    <>
+      {data.length ? (
+        data.map((review, index) => <ReviewCard key={index} review={review} />)
+      ) : (
+        <Heading
+          fontWeight={100}
+          textAlign="center"
+          pt={5}
+          fontSize={22}
+          mb={10}
+        >
+          Restoran Hakkında Yorum Bulunamadı!
+        </Heading>
+      )}
 
-export default RestReviews
+      <ReviewForm restaurantId={restaurantId} refetch={refetch} />
+    </>
+  );
+};
+
+export default RestReviews;

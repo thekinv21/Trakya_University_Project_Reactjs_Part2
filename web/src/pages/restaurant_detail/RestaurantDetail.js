@@ -20,26 +20,26 @@ const RestaurantDetail = () => {
 
   return (
     <Container>
-      {/*==================RESTAURANT MAİN CONTAİNER==========*/}
+      {/*==================???RESTAURANT MAİN CONTAİNER========???==*/}
       <Box className="container p-5" sx={styles.container}>
-        {/*===================RESTAURANT CONTENT============== */}
+        {/*========================RESTAURANT CONTENT===============*/}
         <Box sx={styles.content}>
           <Box sx={styles.imageblock}>
-            {/*=================Restaurant FOTO================= */}
+            {/*====================Restaurant FOTO==================*/}
             <Image
               draggable={false}
               src={restaurantInfo.restaurantImage}
               sx={styles.image}
             />
           </Box>
-          {/*=================Restaurant Tab Header================= */}
+          {/*=================Restaurant Tab Header=================*/}
           <RestTabMenu restaurantInfo={restaurantInfo} />
         </Box>
 
-        {/*=================Restaurant RESERVE FORM================= */}
+        {/*=================Restaurant RESERVE FORM=================*/}
         <ReservedForm restaurantInfo={restaurantInfo} />
 
-        {/*=================ALERT CONTAİNER================= */}
+        {/*=====================ALERT CONTAİNER=====================*/}
         <ToastContainer />
       </Box>
     </Container>
