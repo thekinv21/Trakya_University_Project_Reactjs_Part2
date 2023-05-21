@@ -20,7 +20,7 @@ export const useReservedForm = ({ restaurantInfo }) => {
   const [reserveData, setReserveData] = useState({
     name: "",
     phone: "",
-    dateTime: "",
+    reserveDate: "",
     reserveTime: "",
     peopleCount: "",
     note: "",
@@ -33,10 +33,20 @@ export const useReservedForm = ({ restaurantInfo }) => {
   const handleClick = async (e) => {
     e.preventDefault();
 
+    if (
+      reserveData.name === "" ||
+      reserveData.phone === "" ||
+      reserveData.peopleCount === "" ||
+      reserveData.reserveDate === "" ||
+      reserveData.reserveTime === ""
+    )
+      return toast.warn("Zorunlu Alanlari Doldurunuz!");
+
     const requestData = {
       userId: userData.user.id,
+      phone: reserveData.phone,
       restaurantId: restaurantInfo.id,
-      reservationDate: reserveData.dateTime,
+      reservationDate: reserveData.reserveDate,
       reservationTime: reserveData.reserveTime,
       personCount: reserveData.peopleCount,
       note: reserveData.note,
@@ -55,7 +65,7 @@ export const useReservedForm = ({ restaurantInfo }) => {
           );
         },
         onError: () => {
-          toast.error("Hata oluştu", { autoClose: 1600 });
+          toast.error("İşlem Başarisiz!");
         },
       });
     });

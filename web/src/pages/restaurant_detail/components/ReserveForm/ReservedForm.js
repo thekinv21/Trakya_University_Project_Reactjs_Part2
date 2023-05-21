@@ -19,24 +19,29 @@ const ReservedForm = ({ restaurantInfo }) => {
 
   return (
     <Form layout="vertical" className={styles.form}>
+      <Form.Item>
+        <h1 className={styles.title}>Rezervasyon Formu</h1>
+      </Form.Item>
       {/*=======================NAME=====================*/}
-      <Form.Item hasFeedback>
+      <Form.Item>
         <Input
           name="name"
           placeholder="Adinizi giriniz"
           value={reserveData.name}
           onChange={handleChange}
+          autoComplete="off"
         />
       </Form.Item>
 
       {/*=======================PHONE=====================*/}
-      <Form.Item hasFeedback>
+      <Form.Item>
         <Input
           type="tel"
           name="phone"
           placeholder="Numaranizi giriniz"
           value={reserveData.phone}
           onChange={handleChange}
+          autoComplete="off"
         />
       </Form.Item>
       {/*=======================TARİH======================*/}
@@ -45,7 +50,7 @@ const ReservedForm = ({ restaurantInfo }) => {
           name={"reserveDate"}
           busyDates={restaurantInfo.busyDates}
           onChange={(value) => {
-            reserveData.dateTime = value ? value.format("YYYY-MM-DD") : null;
+            reserveData.reserveDate = value ? value.format("YYYY-MM-DD") : null;
           }}
         />
       </Form.Item>
