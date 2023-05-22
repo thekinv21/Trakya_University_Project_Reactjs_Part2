@@ -1,7 +1,8 @@
 import React from "react";
-import ResetForm from "./components/ResetForm";
 import { Box } from "@chakra-ui/react";
 import LoginContainer from "./../../components/container/LoginContainer";
+import PasswordReset from "./components/PasswordReset/PasswordReset";
+import { ToastContainer } from "react-toastify";
 
 const ResetPassword = () => {
   return (
@@ -18,9 +19,11 @@ const ResetPassword = () => {
           alignItems="center"
         >
           {/*==================RESET FORM==================== */}
-          <ResetForm />
-              
+          <PasswordReset />
         </Box>
+
+        {/*=======================ALERT CONTAİNER====================*/}
+        <ToastContainer />
       </LoginContainer>
     </React.Fragment>
   );

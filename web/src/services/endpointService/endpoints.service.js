@@ -17,8 +17,8 @@ export const END_POINTS = {
     GET_RESTAURANT_EMPTY_HOURS: `${BASE_URL}/api/restaurant/:id/book/slots?localDate=:date`,
     GET_RESTAURANT_WITH_PARAMS: `${BASE_URL}/api/restaurant?page=:page&size=:size`,
     GET_RESTAURANT_FILTERED: `${BASE_URL}/api/restaurant`,
-    GET_RESTAURANT_REVİEWS : `${BASE_URL}/api/review/restaurant/:restId`,
-    POST_RESTAURANT_REVİEW : `${BASE_URL}/api/review`
+    GET_RESTAURANT_REVİEWS: `${BASE_URL}/api/review/restaurant/:restId`,
+    POST_RESTAURANT_REVİEW: `${BASE_URL}/api/review`,
   },
   FAVORITE_CONTROLLER: {
     POST_FAVORITE_RESTAURANT: `${BASE_URL}/api/favorite/toggle`,
@@ -38,5 +38,8 @@ export const END_POINTS = {
     PUT_RESERVE: `${BASE_URL}/api/book`,
     DELETE_RESERVE_BY_ID: `${BASE_URL}/api/book/:reserveId`,
   },
+  RESET_CONTROLLER: {
+    POST_RESET_PASSWORD: `${BASE_URL}/api/auth/reset-request`,
+    POST_NEW_PASSWORD: `${BASE_URL}/api/auth/reset-password?lang=tr`,
+  },
 };
-

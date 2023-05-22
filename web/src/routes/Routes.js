@@ -5,7 +5,7 @@ import Profile from "../pages/profile/Profile";
 import Discover from "../pages/discover/Discover";
 import Reservations from "../pages/reservations/Reservations";
 import ResetPassword from "./../pages/resetPassword/ResetPassword";
-import NewPasswordForm from "../pages/resetPassword/components/NewPasswordForm";
+import NewPassword from "../pages/resetPassword/components/NewPassword/NewPassword";
 import Favorites from "../pages/favorites/Favorites";
 import RestaurantDetail from "../pages/restaurant_detail/RestaurantDetail";
 import LoginPage from "../pages/sign-in/LoginPage";
@@ -22,7 +22,7 @@ const Routers = () => {
         <Route path="/signup" element={<RegisterPage />} />
         <Route path="/discover" element={<Discover />} />
         <Route path="/reset_password" element={<ResetPassword />} />
-        <Route path="/new_password" element={<NewPasswordForm />} />
+        <Route path="/new_password" element={<NewPassword />} />
         <Route path="/" element={<PrivateRoute />}>
           <Route path="/main" element={<Main />} />
           <Route path="/favorites" element={<Favorites />} />
