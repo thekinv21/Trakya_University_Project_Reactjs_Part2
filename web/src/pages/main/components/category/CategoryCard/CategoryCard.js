@@ -1,9 +1,11 @@
-import React from "react";
 import { Box, Image, Text } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
 const CategoryCard = ({ category }) => {
+  const navigate = useNavigate();
+
   return (
-    <React.Fragment>
+    <>
       <Box
         key={category.id}
         w={250}
@@ -14,6 +16,7 @@ const CategoryCard = ({ category }) => {
         overflow="hidden"
         cursor="pointer"
         bg="#fff"
+        onClick={() => navigate("/discover")}
       >
         {/*--------------------Category Image----------------- */}
 
@@ -34,7 +37,7 @@ const CategoryCard = ({ category }) => {
           </Text>
         </Box>
       </Box>
-    </React.Fragment>
+    </>
   );
 };
 
