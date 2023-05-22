@@ -1,0 +1,16 @@
+.tabs {
+  width: 100%;
+}
+
+@media only screen and (min-device-width: 321px) and (max-device-width: 768px) {
+  .tablist {
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .tabs {
+    width: 100%;
+  }
+}

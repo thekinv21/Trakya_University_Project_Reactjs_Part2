@@ -14,7 +14,7 @@ export const styles = {
     alignItems: "center",
     justifyContent: "center",
     gap: 5,
-    w: ["100%", "100%", "100%", "550px", "750px"],
+    w: ["100%", "100%", "100%", "500px", "750px"],
   },
 
   imageblock: {
