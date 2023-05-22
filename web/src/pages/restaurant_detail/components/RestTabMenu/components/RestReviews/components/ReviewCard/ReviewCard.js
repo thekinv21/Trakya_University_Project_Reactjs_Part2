@@ -1,34 +1,34 @@
-import { Box, Text, Flex } from "@chakra-ui/react";
+import { Box, Text, Image } from "@chakra-ui/react";
 import { Rate } from "antd";
+import styles from "./ReviewCard.module.css";
 
 const ReviewCard = ({ review }) => {
   return (
-    <Box
-      borderWidth="1px"
-      borderRadius="md"
-      overflow="hidden"
-      width="100%"
-      bg="whiteAlpha.300"
-      p={3}
-      mb={3}
-    >
-      <Box ml={4}>
-        <Flex justifyContent="space-between" alignItems="center">
-          <Text fontWeight="bold" fontSize="lg">
-            {review.username}
-          </Text>
-          <Rate
-            disabled
-            allowHalf
-            value={review.star}
-            style={{ fontSize: "16px" }}
-          />
-        </Flex>
+    <Box className={styles.testimonials}>
+      <Box className={styles.card}>
+        <Box className={styles.card_top}>
+          <Box className={styles.profile}>
+            <Box className={styles.profileImage}>
+              <Image
+                src="https://cdn-icons-png.flaticon.com/512/8090/8090406.png"
+                alt="user"
+              />
+            </Box>
 
-        <Box pt={2}>
-          <Text color="gray.500" fontSize="xs">
-            {review.content}
-          </Text>
+            <Box className={styles.userInfo}>
+              <Text as={"strong"}> {review.username}</Text>
+              <Text color="gray.500" fontSize={12}>
+                gizlidir@gmail.com
+              </Text>
+            </Box>
+          </Box>
+          <Box className="reviews">
+            <Rate disabled value={review.star} style={{ fontSize: "16px" }} />
+          </Box>
+        </Box>
+
+        <Box className={styles.comment}>
+          <Text px={5}>{review.content}</Text>
         </Box>
       </Box>
     </Box>
