@@ -1,53 +1,55 @@
-import { Image, Stack, Text } from "@chakra-ui/react";
 import React from "react";
-import NotfoundContainer from "./components/notfound-container";
-import Buttons from "../../components/shared/button/Button";
+import { Stack, Text, Image, Button } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
-const Notfound = () => {
-
-  //*--------------------------React navigate------------------------
+const NotFound = () => {
   const navigate = useNavigate();
 
+  const handleGoHome = () => {
+    const token = JSON.parse(sessionStorage.getItem("token"));
+
+    navigate(token ? "/main" : "/");
+  };
+
   return (
-    <React.Fragment>
-      <NotfoundContainer>
-        {/*---------------------Notfound title--------------------------- */}
-        <Text fontSize={["20px", "30px", "30px", "40px"]} mt={20}>
-          This page wasn't found
-        </Text>
+    <Stack
+      w="100vw"
+      h="100vh"
+      padding="20px 0px"
+      alignItems="center"
+      direction="column"
+      spacing={5}
+    >
+      <Text fontSize={["20px", "30px", "30px", "40px"]} mt={20}>
+        Maalesef Bu Sayfa Bulunamadi!
+      </Text>
 
-        {/*---------------------Notfound gif ımage----------------------- */}
-        <Image
-          w={800}
-          h={500}
-          src="https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif"
-        />
+      <Image
+        src="https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif"
+        alt="Not Found GIF"
+        w={{ base: "100%", md: 800 }}
+        h={{ base: "100%", md: 500 }}
+      />
 
-        <Stack direction="column" textAlign="center" spacing={5}>
-          {/*---------------------Notfound subtitle-----------------------*/}
-          <Text fontSize={["20px", "30px", "30px", "30px"]}>
-            Look like you're lost
-          </Text>
+      <Text fontSize={["20px", "30px", "30px", "30px"]}>
+        Görünüşe Göre Kayboldunuz!
+      </Text>
 
-          {/*---------------------Notfound subtitle-----------------------*/}
-          <Text fontSize={["15px", "15px", "15px", "20px"]}>
-            the page you are looking for not avaible!
-          </Text>
+      <Text fontSize={["15px", "15px", "15px", "20px"]}>
+        Aradiğiniz sayfa Mevcut Değil!
+      </Text>
 
-          {/*---------------------Notfound button----------------------- -*/}
-          <Buttons
-            title="Go home"
-            fontsize={13}
-            fontweight={100}
-            background="green"
-            color="#fff"
-            onclick={() => navigate("/")}
-          />
-        </Stack>
-      </NotfoundContainer>
-    </React.Fragment>
+      <Button
+        onClick={handleGoHome}
+        colorScheme="green"
+        w={{ base: "100%", md: 350 }}
+        fontWeight={100}
+        fontSize={14}
+      >
+        Ana Sayfaya git
+      </Button>
+    </Stack>
   );
 };
 
-export default Notfound;
+export default NotFound;
