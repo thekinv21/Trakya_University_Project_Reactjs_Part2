@@ -20,9 +20,12 @@ const Inputs = ({
   focusBorderColor,
   borderLeftRadius,
   borderRightRadius,
+  size,
+  maxLength,
 }) => {
   return (
     <Input
+      size={size}
       type={type}
       name={name}
       w={width}
@@ -44,6 +47,7 @@ const Inputs = ({
       focusBorderColor={focusBorderColor}
       borderLeftRadius={borderLeftRadius}
       borderRightRadius={borderRightRadius}
+      maxLength={maxLength}
     />
   );
 };
