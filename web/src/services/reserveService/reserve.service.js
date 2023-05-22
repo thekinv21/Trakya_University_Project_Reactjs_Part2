@@ -39,10 +39,11 @@ const getReserve = async (userId) => {
 };
 
 export const useGetReserveByUserId = (userId) => {
-  const { data, isLoading } = useQuery(["getReserveByUserId", userId], () =>
-    getReserve(userId)
+  const { data, isLoading, refetch } = useQuery(
+    ["getReserveByUserId", userId],
+    () => getReserve(userId)
   );
-  return { data, isLoading };
+  return { data, isLoading, refetch };
 };
 
 //*================DELETE RESERVE BY USER ID================

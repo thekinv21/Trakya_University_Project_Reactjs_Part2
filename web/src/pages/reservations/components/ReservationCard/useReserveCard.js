@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
 import { useDeleteReserveById } from "../../../../services/reserveService/reserve.service";
 
-export const useReseveCard = ({ reserve }) => {
+export const useReseveCard = ({ reserve, refetch }) => {
   const { mutate: DeleteReserve } = useDeleteReserveById();
 
   const handleUpdate = () => {
@@ -12,10 +12,10 @@ export const useReseveCard = ({ reserve }) => {
     new Promise(() => {
       DeleteReserve(reserve.id, {
         onSuccess: () => {
-          toast.success("Rezervasyon İptal Edildi!", { autoClose: 1600 });
+          toast.success("Rezervasyon İptal Edildi!");
 
           setTimeout(() => {
-            window.location.reload();
+            refetch();
           }, 2500);
         },
 

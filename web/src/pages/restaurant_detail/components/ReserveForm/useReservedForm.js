@@ -56,12 +56,10 @@ export const useReservedForm = ({ restaurantInfo }) => {
       CreateBook(requestData, {
         onSuccess: () => {
           return (
-            toast.success("Rezervasyon Oluşturuldu!", {
-              autoClose: 1600,
-            }),
+            toast.success("Rezervasyon Oluşturuldu!"),
             setTimeout(() => {
               navigate("/main");
-            }, [2500])
+            }, [3500])
           );
         },
         onError: () => {

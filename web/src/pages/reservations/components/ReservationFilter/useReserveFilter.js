@@ -7,7 +7,7 @@ export const useReserveFilter = ({ reserveData }) => {
     { key: "3", value: "Bütün Rezervasyonlar" },
   ];
 
-  const [filteredData, setFilteredData] = useState(reserveData);
+  const [filteredData, setFilteredData] = useState([]);
   const [filter, setFilter] = useState("");
 
   const handleFilter = (e) => {

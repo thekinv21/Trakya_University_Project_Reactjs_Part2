@@ -5,10 +5,11 @@ export const useResevation = () => {
   const userData = JSON.parse(sessionStorage.getItem("token"));
 
   //*=============TAKE USER RESERVATİONS===============
-  const { data, isLoading } = useGetReserveByUserId(userData.user.id);
+  const { data, isLoading, refetch } = useGetReserveByUserId(userData.user.id);
 
   return {
     data,
     isLoading,
+    refetch,
   };
 };

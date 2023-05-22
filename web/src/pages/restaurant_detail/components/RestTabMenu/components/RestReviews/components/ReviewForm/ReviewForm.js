@@ -13,7 +13,7 @@ const ReviewForm = ({ restaurantId, refetch }) => {
           <h1 className={styles.header_title}>Restorana Yorum Birakiniz!</h1>
         </Form.Item>
         <Form.Item name="rating" required>
-          <Rate allowHalf defaultValue={1} />
+          <Rate allowHalf  />
         </Form.Item>
       </div>
 

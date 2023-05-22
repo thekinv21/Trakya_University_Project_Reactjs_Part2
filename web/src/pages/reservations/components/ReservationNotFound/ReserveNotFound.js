@@ -16,17 +16,16 @@ const ReserveNotFound = () => {
         >
           Yaklaşan Rezervasyonlariniz Bulunmamaktadir
         </Heading>
-        <Text fontSize="small" p={4}>
-          Restoranlari Keşfederek Bonus Puanlar Kazanın
+        <Text p={4} fontSize={14}>
+          Restoranlari Keşfederek Rezervasyonlar Yapabilirsiniz!
         </Text>
         <Button
           size="sm"
           width="100%"
-          bg="rgb(248, 179, 51)"
+          colorScheme="messenger"
           color="#fff"
           fontWeight="regular"
           fontSize="small"
-          _hover={{ bg: "orange" }}
           onClick={() => navigate("/discover")}
         >
           Restoranlari Keşfet
