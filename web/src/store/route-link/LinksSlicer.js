@@ -1,13 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { BiRestaurant } from "react-icons/bi";
 import { GiNotebook } from "react-icons/gi";
-import {
-  FaStar,
-  FaUser,
-  FaHeart,
-  FaSignOutAlt,
-  FaComment,
-} from "react-icons/fa";
+import { FaStar, FaUser, FaHeart, FaComment } from "react-icons/fa";
 
 const initialState = {
   LoginLinks: [
@@ -27,7 +21,7 @@ const initialState = {
       icon: <FaHeart fontSize="18px" />,
     },
     {
-      name: "Bonus Puanlar",
+      name: "Categoriler",
       href: "#",
       icon: <FaStar fontSize="18px" />,
     },
@@ -50,7 +44,7 @@ const initialState = {
       icon: <FaHeart fontSize="18px" />,
     },
     {
-      name: "Bonus Puanlar",
+      name: "Categoriler",
       href: "#",
       icon: <FaStar fontSize="18px" />,
     },
@@ -68,7 +62,7 @@ const initialState = {
       icon: <FaHeart fontSize="18px" />,
     },
     {
-      name: "Bonus Puanlar",
+      name: "Categoriler",
       href: "#",
       icon: <FaStar fontSize="18px" />,
     },
@@ -82,12 +76,6 @@ const initialState = {
       name: "Yorumlar",
       href: "#",
       icon: <FaComment fontSize="18px" />,
-    },
-
-    {
-      name: "Çikiş",
-      href: "/signin",
-      icon: <FaSignOutAlt fontSize="18px" />,
     },
   ],
 };
