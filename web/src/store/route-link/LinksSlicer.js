@@ -22,7 +22,7 @@ const initialState = {
     },
     {
       name: "Categoriler",
-      href: "#",
+      href: "/discover",
       icon: <FaStar fontSize="18px" />,
     },
     {
