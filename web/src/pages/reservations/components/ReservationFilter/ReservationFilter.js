@@ -19,7 +19,12 @@ const ReservationFilter = ({ reserveData }) => {
       >
         {/*=====================FİLTER SUBTITLE==================*/}
 
-        <Heading fontWeight="semibold" fontSize="small" mb={5} color="orange">
+        <Heading
+          fontWeight="semibold"
+          fontSize="small"
+          mb={5}
+          colorScheme="messenger"
+        >
           Rezervaysonlari Filtrele :
         </Heading>
 
@@ -37,6 +42,7 @@ const ReservationFilter = ({ reserveData }) => {
             <SelectSortBy
               name="filterReserve"
               options={filterBy}
+              placeholder="Rezervasyonlarimi Filtrele"
               getValue={(selectedValue) => {
                 setFilter(selectedValue);
               }}
@@ -46,11 +52,10 @@ const ReservationFilter = ({ reserveData }) => {
 
           <Button
             w={{ base: "100%", md: "50%" }}
-            bg="rgb(248, 179, 51)"
+            colorScheme="messenger"
             color="#fff"
             fontWeight="regular"
             fontSize="small"
-            _hover={{ bg: "orange" }}
             size="sm"
             onClick={handleFilter}
           >

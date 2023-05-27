@@ -6,7 +6,7 @@ import ReservationFilter from "./components/ReservationFilter/ReservationFilter"
 import { ToastContainer } from "react-toastify";
 
 const Reservations = () => {
-  const { data, isLoading, refetch } = useResevation();
+  const { data, isLoading } = useResevation();
   if (isLoading) return data;
 
   return (
@@ -24,7 +24,7 @@ const Reservations = () => {
         >
           {/*==================RESERVATİON FİLTER CARD=============*/}
 
-          <ReservationFilter reserveData={data} refetch={refetch} />
+          <ReservationFilter reserveData={data} />
           <ToastContainer />
         </Box>
       </Box>
