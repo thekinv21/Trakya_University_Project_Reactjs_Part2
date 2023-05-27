@@ -11,6 +11,7 @@ import RestaurantDetail from "../pages/restaurant_detail/RestaurantDetail";
 import LoginPage from "../pages/sign-in/LoginPage";
 import RegisterPage from "./../pages/sign-up/RegisterPage";
 import { PrivateRoute } from "./Privates";
+import ReservationDetail from "../pages/reservation_detail/ReservationDetail";
 
 const Routers = () => {
   return (
@@ -29,6 +30,10 @@ const Routers = () => {
           <Route path="/reservations" element={<Reservations />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/restaurant/:id" element={<RestaurantDetail />} />
+          <Route
+            path="/reservation/:reserveId"
+            element={<ReservationDetail />}
+          />
         </Route>
       </Routes>
     </BrowserRouter>
