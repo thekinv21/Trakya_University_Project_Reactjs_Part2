@@ -63,3 +63,38 @@ const deleteReserve = async (reserveId) => {
 export const useDeleteReserveById = () => {
   return useMutation(deleteReserve);
 };
+
+//*=================GET RESERVE BY ID===================
+
+const getReserveById = async (reserveId) => {
+  const URL = END_POINTS.RESERVE_CONTROLLER.GET_RESERVE_BY_ID.replace(
+    ":reserveId",
+    reserveId
+  );
+  const token = getToken();
+  const headers = { Authorization: `Bearer ${token}` };
+  const response = await axios.get(URL, { headers });
+  return response.data;
+};
+
+export const useGetReserveById = (reserveId) => {
+  const { data, isLoading } = useQuery(["getReserveById", reserveId], () =>
+    getReserveById(reserveId)
+  );
+  return { data, isLoading };
+};
+
+//*=================PUT RESERVE BY ID===================
+
+const putReserve = async ( requestData ) => {
+  const URL = END_POINTS.RESERVE_CONTROLLER.PUT_RESERVE;
+
+  const token = getToken();
+  const headers = { Authorization: `Bearer ${token}` };
+  const response = await axios.put(URL, requestData, { headers });
+  return response.data;
+};
+
+export const useReserveUpdate = () => {
+  return useMutation(putReserve);
+};

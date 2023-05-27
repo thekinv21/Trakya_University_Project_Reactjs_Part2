@@ -37,6 +37,7 @@ export const END_POINTS = {
     GET_RESERVE_BY_USER_ID: `${BASE_URL}/api/book/user/:userId`,
     PUT_RESERVE: `${BASE_URL}/api/book`,
     DELETE_RESERVE_BY_ID: `${BASE_URL}/api/book/:reserveId`,
+    GET_RESERVE_BY_ID : `${BASE_URL}/api/book/:reserveId`
   },
   RESET_CONTROLLER: {
     POST_RESET_PASSWORD: `${BASE_URL}/api/auth/reset-request`,

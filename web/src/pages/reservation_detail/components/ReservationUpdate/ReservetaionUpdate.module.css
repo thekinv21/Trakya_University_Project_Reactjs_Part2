@@ -1,0 +1,26 @@
+.form {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.4);
+  height: auto;
+  max-height: 500px;
+  padding: 30px 20px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.reserveButton {
+  width: 100%;
+  font-weight: 100;
+}
+
+.title {
+  text-align: center;
+  font-size: 24px;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+@media (min-width: 320px) and (max-width: 768px) {
+  .title {
+    font-size: 18px;
+  }
+}
