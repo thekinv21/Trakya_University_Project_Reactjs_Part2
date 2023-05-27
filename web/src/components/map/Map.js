@@ -17,7 +17,7 @@ const Maps = ({ width, height, restaurantInfo }) => {
 
   const markerIcon = new L.icon({
     iconUrl: require("../../assets/images/mapMarker.png"),
-    iconSize: [55, 45],
+    iconSize: [35, 35],
   });
 
   return (
@@ -25,6 +25,7 @@ const Maps = ({ width, height, restaurantInfo }) => {
       <MapContainer
         center={center}
         zoom={10}
+        scrollWheelZoom={false}
         style={{ width: width, height: height, borderRadius: "5px" }}
       >
         <TileLayer
