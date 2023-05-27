@@ -1,12 +1,12 @@
 import { Select } from "antd";
 
-const SelectSortBy = ({ options, getValue, name }) => {
+const SelectSortBy = ({ options, getValue, name, placeholder }) => {
   return (
     <Select
       name={name}
       style={{ width: "100%" }}
       onChange={getValue}
-      placeholder="Siralamayi Seçiniz"
+      placeholder={placeholder}
     >
       {options.map((option) => {
         return (
