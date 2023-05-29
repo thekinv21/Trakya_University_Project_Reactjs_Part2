@@ -1,35 +1,35 @@
-import { useState } from "react";
+import { useState } from 'react'
 
 export const useReserveFilter = ({ reserveData }) => {
-  const filterBy = [
-    { key: "1", value: "İptal Edilen Rezervasyonlar" },
-    { key: "2", value: "Mevcut Rezervasyonlar" },
-    { key: "3", value: "Bütün Rezervasyonlar" },
-  ];
+	const filterBy = [
+		{ key: '1', value: 'İptal Edilen Rezervasyonlar' },
+		{ key: '2', value: 'Mevcut Rezervasyonlar' },
+		{ key: '3', value: 'Bütün Rezervasyonlar' },
+	]
 
-  const [filteredData, setFilteredData] = useState([]);
-  const [filter, setFilter] = useState("");
+	const availables = reserveData.filter(
+		reserve => reserve.bookingStatus === 'PENDING'
+	)
 
-  const handleFilter = (e) => {
-    e.preventDefault();
+	const cancelled = reserveData.filter(
+		reserve => reserve.bookingStatus === 'CANCELLED'
+	)
 
-    if (filter === "1") setFilteredData(cancelledReserve);
-    else if (filter === "2") setFilteredData(availableReserve);
-    else if (filter === "3") setFilteredData(reserveData);
-  };
+	const [filteredData, setFilteredData] = useState(availables)
+	const [filter, setFilter] = useState('')
 
-  const availableReserve = reserveData.filter(
-    (reserve) => reserve.bookingStatus === "PENDING"
-  );
+	const handleFilter = e => {
+		e.preventDefault()
 
-  const cancelledReserve = reserveData.filter(
-    (reserve) => reserve.bookingStatus === "CANCELLED"
-  );
+		if (filter === '1') setFilteredData(cancelled)
+		else if (filter === '2') setFilteredData(availables)
+		else if (filter === '3') setFilteredData(reserveData)
+	}
 
-  return {
-    filterBy,
-    setFilter,
-    handleFilter,
-    filteredData,
-  };
-};
+	return {
+		filterBy,
+		setFilter,
+		handleFilter,
+		filteredData,
+	}
+}
