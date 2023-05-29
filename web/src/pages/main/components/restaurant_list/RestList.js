@@ -11,7 +11,7 @@ const Restaurants = () => {
       <Box className="container-fluid" textAlign="center" w="100%">
         {/*====================RESTAURANTSLİST TİTLE=================== */}
 
-        <Title title="Populer Restoranlar" />
+        <Title title="Popüler Restoranlar" />
 
         {/*====================RESTAURANTSLİST CONTENT=================*/}
 

@@ -8,7 +8,7 @@ const Categories = () => {
     <Box className="container-fluid" textAlign="center" w="100%">
       {/*===================CATEGORYLİST TİTLE================== */}
 
-      <Title title="Mevcut Yemek Categorileri" />
+      <Title title="Mevcut Yemek Kategorileri" />
 
       <Box className="container pt-5" h="35vh">
         {/*========================CATEGORY ITEM================*/}
