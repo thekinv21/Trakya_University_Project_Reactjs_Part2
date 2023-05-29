@@ -21,7 +21,7 @@ const initialState = {
       icon: <FaHeart fontSize="18px" />,
     },
     {
-      name: "Categoriler",
+      name: "Kategoriler",
       href: "/discover",
       icon: <FaStar fontSize="18px" />,
     },
