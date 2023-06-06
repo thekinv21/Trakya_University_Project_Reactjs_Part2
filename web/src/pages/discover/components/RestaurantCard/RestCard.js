@@ -9,7 +9,7 @@ const RestCard = ({ res }) => {
     <Card
       direction={{ base: "column", sm: "row" }}
       overflow="hidden"
-      bg="whiteAlpha.200"
+      bg="whiteAlpha.500"
       mb={5}
       cursor="pointer"
       onClick={() => navigate(`/restaurant/${res.id}`)}

@@ -1,134 +1,125 @@
-import { Box, Heading, Card, Button } from "@chakra-ui/react";
-import { Input } from "antd";
-import RestaurantItems from "./../RestaurantItems/RestaurantItems";
-import { useFormik } from "formik";
-import SelectSortBy from "./../../../../components/shared/selects/SelectSort";
+import SelectSortBy from './../../../../components/shared/selects/SelectSort'
+import RestaurantItems from './../RestaurantItems/RestaurantItems'
+import { useRestSearch } from './useRestSearch'
+import { Box, Heading, Card, Button } from '@chakra-ui/react'
+import { Input } from 'antd'
 
 const RestSearch = ({
-  cityRef,
-  restaurantNameRef,
-  initialValues,
-  handleClick,
-  page,
-  setCurrentPage,
-  setSelectedSortOption,
-  rest,
+	cityRef,
+	restaurantNameRef,
+	initialValues,
+	handleClick,
+	page,
+	setCurrentPage,
+	setSelectedSortOption,
+	rest,
 }) => {
-  const { values, handleChange, handleSubmit } = useFormik({
-    initialValues: initialValues,
+	const { values, handleChange, handleSubmit, sortOptions } = useRestSearch({
+		initialValues,
+		handleClick,
+	})
 
-    onSubmit: () => {
-      handleClick();
-    },
-  });
+	return (
+		<>
+			<Card
+				p={5}
+				overflow='hidden'
+				bg='whiteAlpha.500'
+				boxShadow='rgb(51 51 51 / 10%) 0px 1px 4px'
+				mb={5}
+			>
+				{/*=====================SEARCH CARD TITLE==================== */}
 
-  const sortOptions = [
-    { key: "restaurantName", value: "Restoran Adina Göre" },
-    { key: "reviewsCount", value: "Popülerliğine Göre" },
-    { key: "averageReviewStar", value: "Yildiz Sayisina Göre" },
-  ];
+				<Box mb={5} w='100%'>
+					<Heading
+						fontWeight='semibold'
+						fontSize={['14px', '16px', '18px', '20px']}
+					>
+						EDİRNEDEKİ RESTORANLAR
+					</Heading>
+				</Box>
 
-  return (
-    <>
-      <Card
-        p={5}
-        overflow="hidden"
-        bg="whiteAlpha.200"
-        boxShadow="rgb(51 51 51 / 10%) 0px 1px 4px"
-        mb={5}
-      >
-        {/*=====================SEARCH CARD TITLE==================== */}
+				{/*=====================SEARCH CARD SUBTITLE==================*/}
 
-        <Box mb={5} w="100%">
-          <Heading
-            fontWeight="semibold"
-            fontSize={["14px", "16px", "18px", "20px"]}
-          >
-            EDİRNEDEKİ RESTORANLAR
-          </Heading>
-        </Box>
+				<Heading fontWeight='semibold' fontSize='small' mb={5} color='orange'>
+					Masa Bul :
+				</Heading>
 
-        {/*=====================SEARCH CARD SUBTITLE==================*/}
+				{/*=====================SEARCH RESTAURANTS===================*/}
 
-        <Heading fontWeight="semibold" fontSize="small" mb={5} color="orange">
-          Masa Bul :
-        </Heading>
+				<Box
+					as='form'
+					display='flex'
+					flexDirection={{ base: 'column', md: 'row' }}
+					alignItems='center'
+					justifyContent='center'
+					gap={5}
+				>
+					{/*======================ŞEHİRE GÖRE==================*/}
 
-        {/*=====================SEARCH RESTAURANTS===================*/}
+					<Box w='100%'>
+						<Input
+							ref={cityRef}
+							name='city'
+							value={values.city}
+							onChange={handleChange}
+							placeholder='Şehire Göre'
+							autoComplete='off'
+						/>
+					</Box>
 
-        <Box
-          as="form"
-          display="flex"
-          flexDirection={["column", "column", "column", "row"]}
-          alignItems="center"
-          justifyContent="center"
-          gap={5}
-        >
-          {/*======================ŞEHİRE GÖRE==================*/}
+					{/*========================NAME GÖRE======================*/}
 
-          <Box w="100%">
-            <Input
-              ref={cityRef}
-              name="city"
-              value={values.city}
-              onChange={handleChange}
-              placeholder="Şehire Göre"
-              autoComplete="off"
-            />
-          </Box>
+					<Box w='100%'>
+						<Input
+							name='restaurantName'
+							ref={restaurantNameRef}
+							value={values.restaurantName}
+							onChange={handleChange}
+							placeholder='Restoran İsmi'
+							autoComplete='off'
+						/>
+					</Box>
 
-          {/*========================NAME GÖRE======================*/}
+					{/*========================SIRALA======================*/}
 
-          <Box w="100%">
-            <Input
-              name="restaurantName"
-              ref={restaurantNameRef}
-              value={values.restaurantName}
-              onChange={handleChange}
-              placeholder="Restoran İsmi"
-              autoComplete="off"
-            />
-          </Box>
+					<Box w='100%'>
+						<SelectSortBy
+							name={'sortBy'}
+							options={sortOptions}
+							placeholder='Siralamayi Seçiniz'
+							getValue={selectedValue => {
+								setSelectedSortOption(selectedValue)
+								values.sortField = selectedValue
+							}}
+						/>
+					</Box>
 
-          {/*========================SIRALA======================*/}
+					{/*=====================ARAMA BUTONU===================*/}
 
-          <Box w="100%">
-            <SelectSortBy
-              name={"sortBy"}
-              options={sortOptions}
-              getValue={(selectedValue) => {
-                setSelectedSortOption(selectedValue);
-                values.sortField = selectedValue;
-              }}
-            />
-          </Box>
+					<Button
+						type='submit'
+						w='100%'
+						colorScheme='messenger'
+						color='#fff'
+						fontWeight='regular'
+						fontSize='small'
+						size='sm'
+						onClick={handleSubmit}
+					>
+						Filtrele
+					</Button>
+				</Box>
+			</Card>
 
-          {/*=====================ARAMA BUTONU===================*/}
+			{/*=====================RESTAURANTS LİST==================*/}
 
-          <Button
-            type="submit"
-            w="100%"
-            bg="rgb(248, 179, 51)"
-            color="#fff"
-            fontWeight="regular"
-            fontSize="small"
-            _hover={{ bg: "orange" }}
-            size="sm"
-            onClick={handleSubmit}
-          >
-            Filtrele
-          </Button>
-        </Box>
-      </Card>
-
-      {/*=====================RESTAURANTS LİST==================*/}
-
-      <RestaurantItems
-        currentPage={page}
-        setCurrentPage={setCurrentPage}
-        rest={rest}
-      />
-    </>
-  );
-};
-export default RestSearch;
+			<RestaurantItems
+				currentPage={page}
+				setCurrentPage={setCurrentPage}
+				rest={rest}
+			/>
+		</>
+	)
+}
+export default RestSearch
