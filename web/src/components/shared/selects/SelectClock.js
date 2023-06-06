@@ -1,12 +1,14 @@
 import { Select } from "antd";
 
-const SelectClock = ({ options = [], placeholder, getValue, name }) => {
+const SelectClock = ({ options = [], placeholder, getValue, name , status , onBlur }) => {
   return (
     <Select
       name={name}
       style={{ width: "100%" }}
       onChange={getValue}
       placeholder={placeholder}
+      status={status}
+      onBlur={onBlur}
     >
       {options.map((option, index) => {
         const [time, isAvailable] = Object.entries(option)[0];
