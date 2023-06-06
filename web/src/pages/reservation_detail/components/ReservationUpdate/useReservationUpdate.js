@@ -1,90 +1,83 @@
-import { useState } from "react";
-import { useGetEmptyHours } from "../../../../services/restaurantService/restaurant.service";
-import { useReserveUpdate } from "../../../../services/reserveService/reserve.service";
-import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { useReserveUpdate } from '../../../../services/reserveService/reserve.service'
+import { useGetEmptyHours } from '../../../../services/restaurantService/restaurant.service'
+import ReserveUpdateSchema from '../ReserveUpdateValidate/ReserveUpdateValidate'
+import { useFormik } from 'formik'
+import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 export const useReservationUpdate = ({
-  restaurantDetail,
-  reservationDetail,
+	restaurantDetail,
+	reservationDetail,
 }) => {
-  const { data: emptyHours, isLoading: emptyLoading } = useGetEmptyHours(
-    restaurantDetail.id,
-    reservationDetail.reservationDate
-  );
+	const { data: emptyHours, isLoading: emptyLoading } = useGetEmptyHours(
+		restaurantDetail.id,
+		reservationDetail.reservationDate
+	)
 
-  const { mutate: UpdateReserve } = useReserveUpdate();
+	const { mutate: UpdateReserve } = useReserveUpdate()
 
-  const [updateReserve, setUpdateReserve] = useState({
-    phone: "",
-    status: "",
-    reserveDate: "",
-    reserveTime: "",
-    peopleCount: "",
-    note: "",
-  });
+	const navigate = useNavigate()
 
-  const navigate = useNavigate();
+	const { values, handleBlur, handleChange, handleSubmit, errors, touched } =
+		useFormik({
+			initialValues: {
+				phone: '',
+				status: '',
+				reserveDate: '',
+				reserveTime: '',
+				peopleCount: '',
+				note: '',
+			},
 
-  const handleChange = (e) => {
-    setUpdateReserve({ ...updateReserve, [e.target.name]: e.target.value });
-  };
+			onSubmit: values => {
+				const requestData = {
+					id: reservationDetail.id,
+					userId: reservationDetail.user.id,
+					restaurantId: restaurantDetail.id,
+					phone: values.phone,
+					reservationDate: values.reserveDate,
+					reservationTime: values.reserveTime,
+					personCount: values.peopleCount,
+					note: values.note,
+					bookingStatus: values.status,
+				}
 
-  const handleUpdate = async (e) => {
-    e.preventDefault();
+				new Promise(() => {
+					UpdateReserve(requestData, {
+						onSuccess: () => {
+							return (
+								toast.success('Rezervasyon Güncellendi!'),
+								setTimeout(() => {
+									navigate('/reservations')
+								}, [5000])
+							)
+						},
+						onError: () => {
+							toast.error('İşlem Başarisiz!')
+						},
+					})
+				})
+			},
 
-    if (
-      updateReserve.phone === "" ||
-      updateReserve.peopleCount === "" ||
-      updateReserve.reserveDate === "" ||
-      updateReserve.reserveTime === "" ||
-      updateReserve.status === "" ||
-      updateReserve.note === ""
-    )
-      return toast.warn("Zorunlu Alanlari Doldurunuz!");
+			validationSchema: ReserveUpdateSchema,
+		})
 
-    const requestData = {
-      id: reservationDetail.id,
-      userId: reservationDetail.user.id,
-      phone: updateReserve.phone,
-      restaurantId: restaurantDetail.id,
-      reservationDate: updateReserve.reserveDate,
-      reservationTime: updateReserve.reserveTime,
-      personCount: updateReserve.peopleCount,
-      note: updateReserve.note,
-      bookingStatus: updateReserve.status,
-    };
+	const peopleLength = Array.from({ length: 25 }, (_, index) => index + 1)
+	const status = [
+		{ key: 'PENDING', value: 'PENDING' },
+		{ key: 'CANCELLED', value: 'CANCELLED' },
+	]
 
-    new Promise(() => {
-      UpdateReserve(requestData, {
-        onSuccess: () => {
-          return (
-            toast.success("Rezervasyon Güncellendi!"),
-            setTimeout(() => {
-              navigate("/reservations");
-            }, [4500])
-          );
-        },
-        onError: () => {
-          toast.error("İşlem Başarisiz!");
-        },
-      });
-    });
-  };
-
-  const peopleLength = Array.from({ length: 25 }, (_, index) => index + 1);
-  const status = [
-    { key: "PENDING", value: "PENDING" },
-    { key: "CANCELLED", value: "CANCELLED" },
-  ];
-
-  return {
-    handleUpdate,
-    peopleLength,
-    status,
-    emptyHours,
-    emptyLoading,
-    updateReserve,
-    handleChange,
-  };
-};
+	return {
+		peopleLength,
+		status,
+		values,
+		handleChange,
+		handleSubmit,
+		handleBlur,
+		errors,
+		touched,
+		emptyHours,
+		emptyLoading,
+	}
+}
