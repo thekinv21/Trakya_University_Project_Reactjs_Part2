@@ -1,7 +1,7 @@
 import * as yup from 'yup'
 
 const ReserveSchema = yup.object().shape({
-	name: yup.string().required('Zorunlu alan boş birakilamaz'),
+	name: yup.string().required('Telefon alani boş olamaz!'),
 
 	phone: yup
 		.string()
@@ -9,11 +9,11 @@ const ReserveSchema = yup.object().shape({
 			/^(\+?9?0?\d{10})$/,
 			'Geçerli bir Türkiye telefon numarasi giriniz'
 		)
-		.required('Zorunlu alan boş birakilamaz'),
+		.required('Telefon alani boş olamaz!'),
 
-	reserveDate: yup.string().required('Zorunlu alan boş birakilamaz'),
-	reserveTime: yup.string().required('Zorunlu alan boş birakilamaz'),
-	peopleCount: yup.string().required('Zorunlu alan boş birakilamaz'),
+	reserveDate: yup.string().required('Tarih alani boş olamaz!'),
+	reserveTime: yup.string().required('Saat alani boş olamaz!'),
+	peopleCount: yup.string().required('Kişi sayisi alani boş olamaz!'),
 })
 
 export default ReserveSchema
