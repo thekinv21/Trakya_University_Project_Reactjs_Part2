@@ -1,32 +1,26 @@
-import React from "react";
-import Container from "../../components/container/Container";
-import { Box } from "@chakra-ui/react";
-import UserCard from "../../components/cards/user/UserCard";
-import UserEdit from "../../components/cards/user/UserEdit";
+import Container from '../../components/container/Container'
+import UserCard from './components/user-card/UserCard'
+import UserEdit from './components/user-edit-card/UserEdit'
+import { Box } from '@chakra-ui/react'
+import { ToastContainer } from 'react-toastify'
 
 const Profile = () => {
-  return (
-    <React.Fragment>
-      {/*=================Profile Container================== */}
+	const userDetail = JSON.parse(sessionStorage.getItem('token'))
 
-      <Container>
-        {/*==============RESPONSİVE DEVİCES================*/}
+	return (
+		<Container>
+			<Box
+				className='container d-flex flex-row justify-content-center pt-5 '
+				gap={10}
+			>
+				<UserCard user={userDetail.user.username} />
 
-        <Box
-          className="container d-flex flex-row justify-content-center p-5 "
-          gap={10}
-        >
-          {/*==================-Profile User Card================ */}
+				<UserEdit />
+			</Box>
 
-          <UserCard user="Vadim" />
+			<ToastContainer />
+		</Container>
+	)
+}
 
-          {/*=====================Profile Edit Card=============== */}
-
-          <UserEdit />
-        </Box>
-      </Container>
-    </React.Fragment>
-  );
-};
-
-export default Profile;
+export default Profile
