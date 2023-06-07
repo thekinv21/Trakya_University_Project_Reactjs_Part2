@@ -6,6 +6,9 @@ import { useSelector } from 'react-redux'
 const UserCard = ({ user }) => {
 	const profileLinks = useSelector(state => state.Link.profileLinks)
 
+	const userDetail = JSON.parse(sessionStorage.getItem('token'))
+	const username = userDetail.user.username
+
 	return (
 		<Card
 			minW='280px'
@@ -17,7 +20,7 @@ const UserCard = ({ user }) => {
 			<Stack h='100%' justifyContent='center' alignItems='center'>
 				<Image pt={5} src={UserSvg} draggable={false} />
 				<Text p={5} fontSize={14}>
-					Hoşgeldin: {user ? user.toUpperCase() : 'User'}
+					Hoşgeldin: {username.toUpperCase()}
 				</Text>
 				<CardBody
 					p={5}

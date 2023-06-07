@@ -1,28 +1,24 @@
-import React from "react";
-import Title from "../title/title";
-import { Box } from "@chakra-ui/react";
-import RestItem from "./RestaurantItem/RestItem";
+import Title from '../title/title'
+import RestItem from './RestaurantItem/RestItem'
+import { Box } from '@chakra-ui/react'
+import React from 'react'
 
 const Restaurants = () => {
-  return (
-    <React.Fragment>
-      {/*====================RESTAURANTSLİST MAİN CONTAİNER=============*/}
+	return (
+		<Box className='container-fluid' textAlign='center' w='100%'>
+			{/*====================RESTAURANTSLİST TİTLE=================== */}
 
-      <Box className="container-fluid" textAlign="center" w="100%">
-        {/*====================RESTAURANTSLİST TİTLE=================== */}
+			<Title title='Popüler Restoranlar' />
 
-        <Title title="Popüler Restoranlar" />
+			{/*====================RESTAURANTSLİST CONTENT=================*/}
 
-        {/*====================RESTAURANTSLİST CONTENT=================*/}
+			<Box className='container pt-5' h={{ base: '60vh', md: '55vh' }}>
+				{/*====================RESTAURANTSLİST SLİDER===============*/}
 
-        <Box className="container pt-5" h="50vh">
-          {/*====================RESTAURANTSLİST SLİDER===============*/}
+				<RestItem />
+			</Box>
+		</Box>
+	)
+}
 
-          <RestItem />
-        </Box>
-      </Box>
-    </React.Fragment>
-  );
-};
-
-export default Restaurants;
+export default Restaurants

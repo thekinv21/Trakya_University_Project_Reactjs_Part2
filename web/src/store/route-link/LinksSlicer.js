@@ -1,90 +1,91 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { BiRestaurant } from "react-icons/bi";
-import { GiNotebook } from "react-icons/gi";
-import { FaStar, FaUser, FaHeart, FaComment } from "react-icons/fa";
+import { createSlice } from '@reduxjs/toolkit'
+import { BiRestaurant } from 'react-icons/bi'
+import { BsFillShieldLockFill } from 'react-icons/bs'
+import { FaStar, FaUser, FaHeart } from 'react-icons/fa'
+import { GiNotebook } from 'react-icons/gi'
 
 const initialState = {
-  LoginLinks: [
-    {
-      name: "Rezervasyonlar",
-      href: "/reservations",
-      icon: <GiNotebook fontSize="18px" />,
-    },
-    {
-      name: "Restoranlar",
-      href: "/discover",
-      icon: <BiRestaurant fontSize="18px" />,
-    },
-    {
-      name: "Favori Restoranlar",
-      href: "/favorites",
-      icon: <FaHeart fontSize="18px" />,
-    },
-    {
-      name: "Kategoriler",
-      href: "/discover",
-      icon: <FaStar fontSize="18px" />,
-    },
-    {
-      name: "Profilim",
-      href: "/profile",
-      icon: <FaUser fontSize="18px" />,
-    },
-  ],
+	LoginLinks: [
+		{
+			name: 'Rezervasyonlar',
+			href: '/reservations',
+			icon: <GiNotebook fontSize={18} />,
+		},
+		{
+			name: 'Restoranlar',
+			href: '/discover',
+			icon: <BiRestaurant fontSize={18} />,
+		},
+		{
+			name: 'Favori Restoranlar',
+			href: '/favorites',
+			icon: <FaHeart fontSize={18} />,
+		},
+		{
+			name: 'Kategoriler',
+			href: '/discover',
+			icon: <FaStar fontSize={18} />,
+		},
+		{
+			name: 'Profilim',
+			href: '/profile',
+			icon: <FaUser fontSize={18} />,
+		},
+	],
 
-  LogoutLinks: [
-    {
-      name: "Restoranlar",
-      href: "/discover",
-      icon: <BiRestaurant fontSize="18px" />,
-    },
-    {
-      name: "Favori Restoranlar",
-      href: "/favorites",
-      icon: <FaHeart fontSize="18px" />,
-    },
-    {
-      name: "Categoriler",
-      href: "#",
-      icon: <FaStar fontSize="18px" />,
-    },
-  ],
+	LogoutLinks: [
+		{
+			name: 'Restoranlar',
+			href: '/discover',
+			icon: <BiRestaurant fontSize={18} />,
+		},
+		{
+			name: 'Favori Restoranlar',
+			href: '/favorites',
+			icon: <FaHeart fontSize={18} />,
+		},
+		{
+			name: 'Categoriler',
+			href: '#',
+			icon: <FaStar fontSize={18} />,
+		},
+	],
 
-  profileLinks: [
-    {
-      name: "Rezervasyonlar",
-      href: "/reservations",
-      icon: <GiNotebook fontSize="18px" />,
-    },
-    {
-      name: "Favori Restoranlar",
-      href: "/favorites",
-      icon: <FaHeart fontSize="18px" />,
-    },
-    {
-      name: "Categoriler",
-      href: "#",
-      icon: <FaStar fontSize="18px" />,
-    },
-    {
-      name: "Profilim",
-      href: "/profile",
-      icon: <FaUser fontSize="18px" />,
-    },
+	profileLinks: [
+		{
+			name: 'Rezervasyonlar',
+			href: '/reservations',
+			icon: <GiNotebook fontSize={18} />,
+		},
+		{
+			name: 'Favori Restoranlar',
+			href: '/favorites',
+			icon: <FaHeart fontSize={18} />,
+		},
+		{
+			name: 'Kategoriler',
+			href: '#',
+			icon: <FaStar fontSize={18} />,
+		},
+		{
+			name: 'Profilim',
+			href: '/profile',
+			icon: <FaUser fontSize={18} />,
+		},
 
-    {
-      name: "Yorumlar",
-      href: "#",
-      icon: <FaComment fontSize="18px" />,
-    },
-  ],
-};
+		{
+			name: 'Şifre Değiştir',
+			href: '/reset_password',
+			icon: <BsFillShieldLockFill fontSize={18} />,
+		},
+	],
+}
 
 export const Links = createSlice({
-  name: "Links",
-  initialState,
+	name: 'Links',
+	initialState,
 
-  reducers: {},
-});
+	reducers: {},
+})
 
-export default Links.reducer;
+export default Links.reducer

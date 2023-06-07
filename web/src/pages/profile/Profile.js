@@ -5,15 +5,13 @@ import { Box } from '@chakra-ui/react'
 import { ToastContainer } from 'react-toastify'
 
 const Profile = () => {
-	const userDetail = JSON.parse(sessionStorage.getItem('token'))
-
 	return (
 		<Container>
 			<Box
 				className='container d-flex flex-row justify-content-center pt-5 '
 				gap={10}
 			>
-				<UserCard user={userDetail.user.username} />
+				<UserCard />
 
 				<UserEdit />
 			</Box>

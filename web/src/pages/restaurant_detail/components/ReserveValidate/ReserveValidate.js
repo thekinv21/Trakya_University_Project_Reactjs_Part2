@@ -1,7 +1,7 @@
 import * as yup from 'yup'
 
 const ReserveSchema = yup.object().shape({
-	name: yup.string().required('Telefon alani boş olamaz!'),
+	name: yup.string().required('İsim alani boş olamaz!'),
 
 	phone: yup
 		.string()
