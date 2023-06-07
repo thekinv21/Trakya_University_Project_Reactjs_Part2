@@ -1,53 +1,56 @@
-import React from "react";
-import NavbarContainer from "./components/navbar-container";
-import NavbarHamburger from "./components/navbar-hamburger";
-import { useDisclosure, Image, Link } from "@chakra-ui/react";
-import Logo from "../../assets/brand/searchLogo.svg";
-import RezztoranLogo from "../../assets/svg/REZZ.svg";
-import NavbarDropdown from "./components/navbar-dropdown";
-import NavbarMobile from "./components/navbar-mobile";
+import Logo from '../../assets/brand/searchLogo.svg'
+import RezztoranLogo from '../../assets/svg/REZZ.svg'
+import NavbarContainer from './components/navbar-container'
+import NavbarDropdown from './components/navbar-dropdown'
+import NavbarHamburger from './components/navbar-hamburger'
+import NavbarMobile from './components/navbar-mobile'
+import { useDisclosure, Image, Link } from '@chakra-ui/react'
+import React from 'react'
 
 const Navbar = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+	const userInfo = JSON.parse(sessionStorage.getItem('token'))
+	const username = userInfo.user.username
 
-  return (
-    <React.Fragment>
-      {/*-------------------Navbar Container------------------ */}
-      <NavbarContainer>
-        {/*-------------------Navbar hamburger menu------------------ */}
-        <NavbarHamburger isOpen={isOpen} onClose={onClose} onOpen={onOpen} />
+	const { isOpen, onOpen, onClose } = useDisclosure()
 
-        {/*-------------------Navbar Logo------------------ */}
+	return (
+		<React.Fragment>
+			{/*-------------------Navbar Container------------------ */}
+			<NavbarContainer>
+				{/*-------------------Navbar hamburger menu------------------ */}
+				<NavbarHamburger isOpen={isOpen} onClose={onClose} onOpen={onOpen} />
 
-        <Link href="/main">
-          <Image
-            cursor="pointer"
-            w={["60px", "60px", "80px", "90px"]}
-            src={Logo}
-            draggable="false"
-            display={["none", "none", "none", "block"]}
-          />
-        </Link>
+				{/*-------------------Navbar Logo------------------ */}
 
-        {/*-------------------Navbar Rezztoran Logo------------------ */}
+				<Link href='/main'>
+					<Image
+						cursor='pointer'
+						w={['60px', '60px', '80px', '90px']}
+						src={Logo}
+						draggable='false'
+						display={['none', 'none', 'none', 'block']}
+					/>
+				</Link>
 
-        <Image
-          h="60px"
-          w={["130px", "160px", "160px", "220px"]}
-          src={RezztoranLogo}
-          draggable="false"
-        />
+				{/*-------------------Navbar Rezztoran Logo------------------ */}
 
-        {/*-------------------Navbar UserLogo and Dropdown------------------ */}
+				<Image
+					h='60px'
+					w={['130px', '160px', '160px', '220px']}
+					src={RezztoranLogo}
+					draggable='false'
+				/>
 
-        <NavbarDropdown username="Vadim Kiniabaev" puan={100} />
+				{/*-------------------Navbar UserLogo and Dropdown------------------ */}
 
-        {/*-------------------Navbar Mobile Responsive------------------ */}
+				<NavbarDropdown username={username} />
 
-        <NavbarMobile openMobile={isOpen} closeMobile={onClose} />
-      </NavbarContainer>
-    </React.Fragment>
-  );
-};
+				{/*-------------------Navbar Mobile Responsive------------------ */}
 
-export default Navbar;
+				<NavbarMobile openMobile={isOpen} closeMobile={onClose} />
+			</NavbarContainer>
+		</React.Fragment>
+	)
+}
+
+export default Navbar
