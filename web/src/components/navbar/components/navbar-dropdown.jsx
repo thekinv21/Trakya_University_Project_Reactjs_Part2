@@ -25,7 +25,7 @@ const NavbarDropdown = ({ username }) => {
 				{/*=================USERNAME================ */}
 				<MenuCommand textAlign='center' mt={5}>
 					<Text color='#000' fontSize={13}>
-						{username.toUpperCase()}
+						{username ? username.toUpperCase() : 'User'}
 					</Text>
 					<Text fontSize={12} mt={2}>
 						İşlemleri Seçiniz

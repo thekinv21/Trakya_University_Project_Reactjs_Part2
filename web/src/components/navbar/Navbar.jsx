@@ -9,7 +9,12 @@ import React from 'react'
 
 const Navbar = () => {
 	const userInfo = JSON.parse(sessionStorage.getItem('token'))
-	const username = userInfo.user.username
+
+	let username
+
+	if (userInfo) {
+		username = userInfo.user.username
+	}
 
 	const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -43,7 +48,7 @@ const Navbar = () => {
 
 				{/*-------------------Navbar UserLogo and Dropdown------------------ */}
 
-				<NavbarDropdown username={username} />
+				<NavbarDropdown username={username ? username : 'User'} />
 
 				{/*-------------------Navbar Mobile Responsive------------------ */}
 
