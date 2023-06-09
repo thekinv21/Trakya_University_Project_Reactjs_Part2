@@ -1,6 +1,6 @@
 import { END_POINTS } from '../endpointService/endpoints.service'
+import { axiosInstance } from './../api/apiInterceptor'
 import { useMutation } from '@tanstack/react-query'
-import axios from 'axios'
 
 //*===================GET ACCESTOKEN==================
 
@@ -17,7 +17,7 @@ const putUser = async requestData => {
 		Authorization: `Bearer ${myToken}`,
 	}
 
-	const response = await axios.put(URL, requestData, { headers })
+	const response = await axiosInstance.put(URL, requestData, { headers })
 	return response.data
 }
 

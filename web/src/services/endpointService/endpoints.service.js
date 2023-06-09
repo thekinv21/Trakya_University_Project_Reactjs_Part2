@@ -1,6 +1,7 @@
 const BASE_URL = process.env.REACT_APP_API_ADDRESS
 
 export const END_POINTS = {
+	BASE_URL: BASE_URL,
 	USER_CONTROLLER: {
 		POST_RESET_PASSWORD: `${BASE_URL}/api/user/reset-password`,
 		DELETE_USER: `${BASE_URL}/api/user/:id`,
