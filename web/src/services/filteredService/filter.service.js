@@ -1,31 +1,20 @@
+// import { axiosInstance } from '../api/apiInterceptor'
 import { axiosInstance } from '../api/apiInterceptor'
 import { END_POINTS } from '../endpointService/endpoints.service'
 import { useQuery } from '@tanstack/react-query'
 
-const getFilterRestaurant = async (
-	restaurantCity,
-	restaurantName,
-	page,
-	size,
-	sort
-) => {
-	const URL = `${END_POINTS.RESTAURANT_CONTROLLER.GET_RESTAURANT_FILTERED}?city=${restaurantCity}&restaurantName=${restaurantName}&page=${page}&size=${size}&sortField=${sort}`
-
-	const response = await axiosInstance.get(URL)
+const getFilterRestaurant = async searchParams => {
+	const response = await axiosInstance.get(
+		END_POINTS.RESTAURANT_CONTROLLER.GET_RESTAURANT_FILTERED,
+		{ params: searchParams }
+	)
 	return response.data
 }
 
-export const useGetFilteredRest = (
-	restaurantCity,
-	restaurantName,
-	page,
-	size,
-	sort
-) => {
+export const useGetFilteredRest = searchParams => {
 	const { data, isLoading, refetch } = useQuery(
-		['filteredRestaurant', restaurantCity, restaurantName, page, size, sort],
-		() => getFilterRestaurant(restaurantCity, restaurantName, page, size, sort)
+		['filteredRestaurant', searchParams.toString()],
+		() => getFilterRestaurant(new URLSearchParams(searchParams))
 	)
-
-	return { data, isLoading, refetch }
+	return { data, refetch, isLoading }
 }
