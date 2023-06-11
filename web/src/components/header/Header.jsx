@@ -1,103 +1,94 @@
-import React from "react";
-import { Stack, useDisclosure, Image, Flex, Button } from "@chakra-ui/react";
-import HeaderContainer from "./header-container";
-import HeaderHamburger from "./header-hamburger";
-import RezztoranLogo from "../../assets/svg/REZZ.svg";
-import HeaderLink from "./header-links";
-import HeaderMobile from "./header-mobile";
-import { useDispatch } from "react-redux";
-import { resetAuth } from "../../store/auth/auth.slice";
-import { useNavigate } from "react-router-dom";
+import RezztoranLogo from '../../assets/svg/REZZ.svg'
+import { resetAuth } from '../../store/auth/auth.slice'
+import HeaderContainer from './header-container'
+import HeaderHamburger from './header-hamburger'
+import HeaderLink from './header-links'
+import HeaderMobile from './header-mobile'
+import { Stack, useDisclosure, Image, Flex, Button } from '@chakra-ui/react'
+import React, { useState, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 const Header = () => {
-  const isLogged = sessionStorage.getItem("token");
+	const isLogged = sessionStorage.getItem('token')
 
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+	const dispatch = useDispatch()
+	const navigate = useNavigate()
 
-  const [active, setActive] = React.useState(true);
+	const [active, setActive] = useState(true)
 
-  const { isOpen, onOpen, onClose } = useDisclosure();
+	const { isOpen, onOpen, onClose } = useDisclosure()
 
-  //*=====================LOGOUT ON WEBSTİYE====================
+	const doLogout = e => {
+		e.preventDefault()
 
-  const doLogout = (e) => {
-    e.preventDefault();
+		sessionStorage.removeItem('token')
+		dispatch(resetAuth())
+		navigate('/signin')
+	}
 
-    sessionStorage.removeItem("token");
-    dispatch(resetAuth());
-    navigate("/signin");
-  };
+	const doLogin = e => {
+		e.preventDefault()
+		navigate('/signin')
+	}
 
-  //*=====================LOGOUT TO WEBSTİYE====================
+	const changeBackground = () => {
+		if (window.scrollY >= 80) {
+			setActive(false)
+		} else {
+			setActive(true)
+		}
+	}
 
-  const doLogin = (e) => {
-    e.preventDefault();
-    navigate("/signin");
-  };
+	useEffect(() => {
+		window.addEventListener('scroll', changeBackground)
+		return () => {
+			window.removeEventListener('scroll', changeBackground)
+		}
+	}, [])
 
-  //*================Change header bg when scrolling==============
-  const changeBackground = () => {
-    if (window.scrollY >= 80) {
-      setActive(false);
-    } else {
-      setActive(true);
-    }
-  };
+	return (
+		<Stack>
+			<HeaderContainer active={active}>
+				<HeaderHamburger isOpen={isOpen} onClose={onClose} onOpen={onOpen} />
+				<Flex
+					w='100%'
+					alignItems='center'
+					justifyContent={{ base: 'flex-end', md: 'space-between' }}
+				>
+					<Image
+						w={{ base: '130px', md: '200px' }}
+						src={RezztoranLogo}
+						cursor='pointer'
+						display={{ base: 'none', md: 'block' }}
+					/>
+					<HeaderLink />
+					{isLogged ? (
+						<Button
+							size='sm'
+							colorScheme='red'
+							fontWeight={100}
+							w={120}
+							onClick={doLogout}
+						>
+							Çıkış
+						</Button>
+					) : (
+						<Button
+							size='sm'
+							colorScheme='green'
+							fontWeight={100}
+							w={120}
+							onClick={doLogin}
+						>
+							Giriş
+						</Button>
+					)}
+				</Flex>
+			</HeaderContainer>
+			<HeaderMobile isOpen={isOpen} onClose={onClose} />
+		</Stack>
+	)
+}
 
-  window.addEventListener("scroll", changeBackground);
-
-  return (
-    <React.Fragment>
-      <Stack>
-        <HeaderContainer active={active}>
-          {/*---------------------------Hamburger Menu When Window was Mobile Responsive------------------------ */}
-
-          <HeaderHamburger isOpen={isOpen} onClose={onClose} onOpen={onOpen} />
-
-          {/*-------------------------------Rezztoran Logo ------------------------ */}
-
-          <Flex w="100%" alignItems="center" justifyContent="space-between">
-            <Image
-              w={["130px", "160px", "160px", "220px"]}
-              src={RezztoranLogo}
-              cursor="pointer"
-              display={["none", "none", "none", "block"]}
-            />
-            {/*------------------------------Header Links----------------------------- */}
-
-            <HeaderLink />
-
-            {isLogged ? (
-              <Button
-                size="sm"
-                colorScheme="red"
-                fontWeight={100}
-                w={120}
-                onClick={doLogout}
-              >
-                Çikiş
-              </Button>
-            ) : (
-              <Button
-                onClick={doLogin}
-                size="sm"
-                colorScheme="green"
-                fontWeight={100}
-                w={120}
-              >
-                Giriş
-              </Button>
-            )}
-          </Flex>
-        </HeaderContainer>
-
-        {/*---------------------------Mobile Responsive Links and position------------------*/}
-
-        <HeaderMobile isOpen={isOpen} onClose={onClose} />
-      </Stack>
-    </React.Fragment>
-  );
-};
-
-export default Header;
+export default Header
