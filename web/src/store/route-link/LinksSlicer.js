@@ -45,8 +45,8 @@ const initialState = {
 			icon: <FaHeart fontSize={18} />,
 		},
 		{
-			name: 'Categoriler',
-			href: '#',
+			name: 'Kategoriler',
+			href: '/discover',
 			icon: <FaStar fontSize={18} />,
 		},
 	],
@@ -64,7 +64,7 @@ const initialState = {
 		},
 		{
 			name: 'Kategoriler',
-			href: '#',
+			href: '/discover',
 			icon: <FaStar fontSize={18} />,
 		},
 		{
