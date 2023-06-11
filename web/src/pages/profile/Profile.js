@@ -8,7 +8,11 @@ const Profile = () => {
 	return (
 		<Container>
 			<Box
-				className='container d-flex flex-row justify-content-center pt-5 '
+				display='flex'
+				alignContent='center'
+				justifyContent='center'
+				flexDirection='row'
+				pt={10}
 				gap={10}
 			>
 				<UserCard />
