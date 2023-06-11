@@ -1,72 +1,105 @@
 import { useGetFilteredRest } from './../../services/filteredService/filter.service'
-import { useRef, useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 
-export const useDiscover = () => {
-	const cityRef = useRef()
-	const restaurantNameRef = useRef()
+export const useDiscover = ({ searchUrl }) => {
+	const location = useLocation()
+	const navigate = useNavigate()
 
-	const [searchParams, setSearchParams] = useSearchParams()
-
-	const [selectedSortOption, setSelectedSortOption] = useState(
-		searchParams.get('sortField' || '')
-	)
-	const page = searchParams.get('page')
-
-	//*===================PAGİNATİON===================
-
-	const [currentPage, setCurrentPage] = useState(page || 0)
-
-	const sortField = searchParams.get('sortField') || ''
-	const restaurantName = searchParams.get('restaurantName') || ''
-	const city = searchParams.get('city') || ''
-	const size = searchParams.get('size') || '4'
-
-	const [initialValues, setInitialValues] = useState({
-		restaurantName: restaurantName,
-		city: city,
-		sortField: sortField,
+	const [params, setParams] = useState({
+		city: '',
+		restaurantName: '',
+		categories: '',
+		sortDirection: 'DESC',
+		sortField: 'averageReviewStar',
+		pageSize: 5,
+		currentPage: 0,
 	})
 
-	const { data: rest, isLoading } = useGetFilteredRest(
-		city,
-		restaurantName,
-		page - 1,
-		size,
-		sortField
-	)
+	const handleSearch = () => {
+		const searchParams = new URLSearchParams()
+		const { city, restaurantName, categories, sortDirection, sortField } =
+			params
+		searchParams.set('city', city)
+		searchParams.set('restaurantName', restaurantName)
+		if (Array.isArray(categories)) {
+			searchParams.set('categories', categories.join(','))
+		} else {
+			searchParams.set('categories', categories)
+		}
+		searchParams.set('sortDirection', sortDirection)
+		searchParams.set('sortField', sortField)
 
-	const handleClick = async () => {
-		window.location.href = `/discover?city=${
-			cityRef.current.input.value
-		}&restaurantName=${restaurantNameRef.current.input.value}&page=${
-			page - 1
-		}&size=${size}&sortField=${selectedSortOption}`
+		navigate(`?${searchParams.toString()}`)
 	}
 
-	const setPage = e => {
-		setSearchParams({
-			...searchParams,
-			page: e,
-			city: initialValues.city,
-			restaurantName: initialValues.restaurantName,
-			sortField: initialValues.sortField,
-		})
-		setCurrentPage(e)
+	useEffect(() => {
+		const searchParams = new URLSearchParams(location.search)
+		setParams(prevState => ({
+			...prevState,
+			city: searchParams.get('city') || '',
+			categories: searchParams.get('categories')
+				? searchParams.get('categories').split(',')
+				: [],
+			restaurantName: searchParams.get('restaurantName') || '',
+			sortDirection: searchParams.get('sortDirection') || 'DESC',
+			sortField: searchParams.get('sortField') || 'averageReviewStar',
+			currentPage: Number(searchParams.get('page')) + 1 || 1,
+		}))
+	}, [location.search])
+
+	const searchParams = new URLSearchParams(location.search)
+	searchParams.set('size', params.pageSize.toString())
+	const { data, isLoading, isError, error } = useGetFilteredRest(
+		searchParams.toString()
+	)
+	const handlePageChange = page => {
+		setParams(prevState => ({
+			...prevState,
+			currentPage: page,
+		}))
+		navigateWithPage(page - 1)
+	}
+
+	const handlePageSizeChange = (current, size) => {
+		setParams(prevState => ({
+			...prevState,
+			pageSize: size,
+			currentPage: 1,
+		}))
+
+		navigateWithPageSize(params.currentPage - 1, params.pageSize)
+	}
+
+	const navigateWithPage = page => {
+		const urlParams = new URLSearchParams(location.search)
+		urlParams.set('page', page.toString())
+		urlParams.set('size', params.pageSize.toString())
+		navigate(`?${urlParams.toString()}`)
+	}
+
+	const navigateWithPageSize = (page, size) => {
+		const urlParams = new URLSearchParams(location.search)
+		urlParams.set('page', page.toString())
+		urlParams.set('size', size.toString())
+		navigate(`?${urlParams.toString()}`)
+	}
+	const setParamField = (fieldName, value) => {
+		setParams(prevState => ({
+			...prevState,
+			[fieldName]: value,
+		}))
 	}
 
 	return {
-		cityRef,
-		restaurantNameRef,
-		selectedSortOption,
-		setSelectedSortOption,
-		initialValues,
-		handleClick,
-		page,
-		rest,
+		params,
 		isLoading,
-		currentPage,
-		setPage,
-		setInitialValues,
+		isError,
+		error,
+		setParamField,
+		handlePageChange,
+		handlePageSizeChange,
+		handleSearch,
+		data,
 	}
 }

@@ -1,24 +1,39 @@
-import SelectSortBy from './../../../../components/shared/selects/SelectSort'
-import RestaurantItems from './../RestaurantItems/RestaurantItems'
-import { useRestSearch } from './useRestSearch'
-import { Box, Heading, Card, Button } from '@chakra-ui/react'
-import { Input } from 'antd'
+import RestaurantItem from '../RestaurantItem/RestaurantItem'
+import { useDiscover } from './../../useDiscover'
+import { Box, Card, Heading } from '@chakra-ui/react'
+import { Button, Input, Select } from 'antd'
 
-const RestSearch = ({
-	cityRef,
-	restaurantNameRef,
-	initialValues,
-	handleClick,
-	page,
-	setCurrentPage,
-	setSelectedSortOption,
-	rest,
-}) => {
-	const { values, handleChange, handleSubmit, sortOptions } = useRestSearch({
-		initialValues,
-		handleClick,
+const RestSearch = () => {
+	const {
+		params,
+		isLoading,
+		isError,
+		error,
+		setParamField,
+		handlePageChange,
+		handlePageSizeChange,
+		handleSearch,
+		data,
+	} = useDiscover({
+		searchUrl: '',
 	})
+	const {
+		city,
+		restaurantName,
+		sortDirection,
+		sortField,
+		pageSize,
+		currentPage,
+		// categories,
+	} = params
 
+	if (isLoading) {
+		return <div>Loading...</div>
+	}
+
+	if (isError) {
+		return <div>Error: {error.message}</div>
+	}
 	return (
 		<>
 			<Card
@@ -45,8 +60,6 @@ const RestSearch = ({
 					Masa Bul :
 				</Heading>
 
-				{/*=====================SEARCH RESTAURANTS===================*/}
-
 				<Box
 					as='form'
 					display='flex'
@@ -59,66 +72,76 @@ const RestSearch = ({
 
 					<Box w='100%'>
 						<Input
-							ref={cityRef}
-							name='city'
-							value={values.city}
-							onChange={handleChange}
-							placeholder='Şehire Göre'
-							autoComplete='off'
+							type='text'
+							value={city}
+							placeholder='Şehir'
+							onChange={e => setParamField('city', e.target.value)}
 						/>
 					</Box>
 
-					{/*========================NAME GÖRE======================*/}
+					{/*======================NAME GÖRE==================*/}
 
 					<Box w='100%'>
 						<Input
-							name='restaurantName'
-							ref={restaurantNameRef}
-							value={values.restaurantName}
-							onChange={handleChange}
-							placeholder='Restoran İsmi'
-							autoComplete='off'
+							type='text'
+							placeholder='Restoran'
+							value={restaurantName}
+							onChange={e => setParamField('restaurantName', e.target.value)}
 						/>
+					</Box>
+
+					{/*========================AZALAN ARTANA======================*/}
+
+					<Box w='100%'>
+						<Select
+							style={{ width: '100%' }}
+							value={sortDirection}
+							onChange={value => setParamField('sortDirection', value)}
+						>
+							<Select.Option value='DESC'>Azalan</Select.Option>
+							<Select.Option value='ASC'>Artan</Select.Option>
+						</Select>
 					</Box>
 
 					{/*========================SIRALA======================*/}
 
 					<Box w='100%'>
-						<SelectSortBy
-							name={'sortBy'}
-							options={sortOptions}
-							placeholder='Siralamayi Seçiniz'
-							getValue={selectedValue => {
-								setSelectedSortOption(selectedValue)
-								values.sortField = selectedValue
-							}}
-						/>
+						<Select
+							style={{ width: '100%' }}
+							value={sortField}
+							onChange={value => setParamField('sortField', value)}
+						>
+							<Select.Option value='restaurantName'>
+								Restoran İsmine Göre
+							</Select.Option>
+							<Select.Option value='reviewsCount'>
+								Yorum Sayisina Göre
+							</Select.Option>
+							<Select.Option value='averageReviewStar'>
+								Yildiz Sayisina Göre
+							</Select.Option>
+						</Select>
 					</Box>
 
 					{/*=====================ARAMA BUTONU===================*/}
 
 					<Button
-						type='submit'
-						w='100%'
-						colorScheme='messenger'
-						color='#fff'
-						fontWeight='regular'
-						fontSize='small'
-						size='sm'
-						onClick={handleSubmit}
+						style={{ width: '100%' }}
+						type='primary'
+						onClick={handleSearch}
 					>
 						Filtrele
 					</Button>
 				</Box>
+
+				<RestaurantItem
+					data={data}
+					currentPage={currentPage}
+					pageSize={pageSize}
+					handlePageChange={handlePageChange}
+					handlePageSizeChange={handlePageSizeChange}
+				/>
 			</Card>
-
-			{/*=====================RESTAURANTS LİST==================*/}
-
-			<RestaurantItems
-				currentPage={page}
-				setCurrentPage={setCurrentPage}
-				rest={rest}
-			/>
 		</>
 	)
 }
