@@ -5,6 +5,7 @@ import Categories from './components/category/Categories'
 import Quetions from './components/questions/Quetions'
 import RestList from './components/restaurant_list/RestList'
 import React from 'react'
+import { ToastContainer } from 'react-toastify'
 
 const Main = () => {
 	return (
@@ -22,6 +23,7 @@ const Main = () => {
 				<Categories />
 				{/*=====================User Quetions======================= */}
 				<Quetions />
+				<ToastContainer />
 			</MainContainer>
 		</React.Fragment>
 	)
